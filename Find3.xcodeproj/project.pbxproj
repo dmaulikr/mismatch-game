@@ -21,6 +21,15 @@
 		086D9AA01B04120B00395DD5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A9F1B04120B00395DD5 /* Extensions.swift */; };
 		086D9AAC1B0646DB00395DD5 /* MyPicturesGlow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 086D9AAB1B0646DB00395DD5 /* MyPicturesGlow.atlas */; };
 		086D9AAE1B06492800395DD5 /* PictureSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9AAD1B06492800395DD5 /* PictureSprite.swift */; };
+		08988EFB1B1EB8E90017D046 /* Level4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08988EFA1B1EB8E90017D046 /* Level4.atlas */; };
+		08988EFD1B1EC2930017D046 /* Level4Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08988EFC1B1EC2930017D046 /* Level4Glow.atlas */; };
+		08B0DC401B1E186D00442AAC /* PicSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0DC3F1B1E186D00442AAC /* PicSprite.swift */; };
+		08B333311B1280D200148E07 /* Level1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08B333301B1280D200148E07 /* Level1.atlas */; };
+		08B333351B12811500148E07 /* Level1Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08B333341B12811500148E07 /* Level1Glow.atlas */; };
+		08B333371B12812300148E07 /* Level2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08B333361B12812300148E07 /* Level2.atlas */; };
+		08B333391B12812700148E07 /* Level2Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08B333381B12812700148E07 /* Level2Glow.atlas */; };
+		08B3333B1B12A9B700148E07 /* Level3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08B3333A1B12A9B700148E07 /* Level3.atlas */; };
+		08B3333D1B12A9BF00148E07 /* Level3Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 08B3333C1B12A9BF00148E07 /* Level3Glow.atlas */; };
 		08C99CD81B015D6D00C1965E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CD71B015D6D00C1965E /* AppDelegate.swift */; };
 		08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08C99CD91B015D6D00C1965E /* GameScene.sks */; };
 		08C99CDC1B015D6D00C1965E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CDB1B015D6D00C1965E /* GameScene.swift */; };
@@ -57,6 +66,15 @@
 		086D9A9F1B04120B00395DD5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		086D9AAB1B0646DB00395DD5 /* MyPicturesGlow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MyPicturesGlow.atlas; sourceTree = "<group>"; };
 		086D9AAD1B06492800395DD5 /* PictureSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureSprite.swift; sourceTree = "<group>"; };
+		08988EFA1B1EB8E90017D046 /* Level4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level4.atlas; sourceTree = "<group>"; };
+		08988EFC1B1EC2930017D046 /* Level4Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level4Glow.atlas; sourceTree = "<group>"; };
+		08B0DC3F1B1E186D00442AAC /* PicSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicSprite.swift; sourceTree = "<group>"; };
+		08B333301B1280D200148E07 /* Level1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level1.atlas; sourceTree = "<group>"; };
+		08B333341B12811500148E07 /* Level1Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level1Glow.atlas; sourceTree = "<group>"; };
+		08B333361B12812300148E07 /* Level2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level2.atlas; sourceTree = "<group>"; };
+		08B333381B12812700148E07 /* Level2Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level2Glow.atlas; sourceTree = "<group>"; };
+		08B3333A1B12A9B700148E07 /* Level3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level3.atlas; sourceTree = "<group>"; };
+		08B3333C1B12A9BF00148E07 /* Level3Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level3Glow.atlas; sourceTree = "<group>"; };
 		08C99CD21B015D6D00C1965E /* Find3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Find3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C99CD61B015D6D00C1965E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08C99CD71B015D6D00C1965E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +133,7 @@
 		0847B3651B07EEFE009D9580 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				08B0DC3F1B1E186D00442AAC /* PicSprite.swift */,
 				08C99CD91B015D6D00C1965E /* GameScene.sks */,
 				086D9AAD1B06492800395DD5 /* PictureSprite.swift */,
 				08C99CDB1B015D6D00C1965E /* GameScene.swift */,
@@ -154,6 +173,14 @@
 				0847B35F1B07C104009D9580 /* CloudKitManager.swift */,
 				08C99CDF1B015D6D00C1965E /* Main.storyboard */,
 				08C99CE21B015D6D00C1965E /* Images.xcassets */,
+				08988EFC1B1EC2930017D046 /* Level4Glow.atlas */,
+				08988EFA1B1EB8E90017D046 /* Level4.atlas */,
+				08B3333C1B12A9BF00148E07 /* Level3Glow.atlas */,
+				08B3333A1B12A9B700148E07 /* Level3.atlas */,
+				08B333381B12812700148E07 /* Level2Glow.atlas */,
+				08B333361B12812300148E07 /* Level2.atlas */,
+				08B333341B12811500148E07 /* Level1Glow.atlas */,
+				08B333301B1280D200148E07 /* Level1.atlas */,
 				0847B3541B06BBF5009D9580 /* MyPictures.atlas */,
 				086D9AAB1B0646DB00395DD5 /* MyPicturesGlow.atlas */,
 				08C99CE41B015D6D00C1965E /* LaunchScreen.xib */,
@@ -274,10 +301,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				08C99CE61B015D6D00C1965E /* LaunchScreen.xib in Resources */,
+				08988EFB1B1EB8E90017D046 /* Level4.atlas in Resources */,
+				08B333311B1280D200148E07 /* Level1.atlas in Resources */,
+				08B333391B12812700148E07 /* Level2Glow.atlas in Resources */,
+				08B3333D1B12A9BF00148E07 /* Level3Glow.atlas in Resources */,
 				08C99CE31B015D6D00C1965E /* Images.xcassets in Resources */,
 				0847B3551B06BBF5009D9580 /* MyPictures.atlas in Resources */,
 				08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */,
+				08B333371B12812300148E07 /* Level2.atlas in Resources */,
+				08B333351B12811500148E07 /* Level1Glow.atlas in Resources */,
+				08988EFD1B1EC2930017D046 /* Level4Glow.atlas in Resources */,
 				08C99CE11B015D6D00C1965E /* Main.storyboard in Resources */,
+				08B3333B1B12A9B700148E07 /* Level3.atlas in Resources */,
 				086D9AAC1B0646DB00395DD5 /* MyPicturesGlow.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +338,7 @@
 				0847B3621B07C2CB009D9580 /* HighScore.swift in Sources */,
 				086D9AAE1B06492800395DD5 /* PictureSprite.swift in Sources */,
 				08C99CDC1B015D6D00C1965E /* GameScene.swift in Sources */,
+				08B0DC401B1E186D00442AAC /* PicSprite.swift in Sources */,
 				086D9AA01B04120B00395DD5 /* Extensions.swift in Sources */,
 				0847B3571B079044009D9580 /* HomeViewController.swift in Sources */,
 				08C99CDE1B015D6D00C1965E /* GameViewController.swift in Sources */,

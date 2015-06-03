@@ -6,110 +6,55 @@
 //  Copyright (c) 2015 Susan Stevens. All rights reserved.
 //
 
-import SpriteKit
-
-// Reference: http://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type
-
-enum ShapeType: Int {
-    case Unknown = 0, Circle, Square, Triangle
-    static let allValues = [Circle, Square, Triangle]
-    
-    var shapeName: String {
-        let shapeNames = [
-        "Circle",
-        "Square",
-        "Triangle"]
-        
-        return shapeNames[rawValue - 1]
-    }
-    
-    var description: String {
-        return shapeName
-    }
-}
-
-enum ColorType: Int {
-    case Unknown = 0, Purple, Orange, Green
-    static let allValues = [Purple, Orange, Green]
-    
-    var colorName: String {
-        let colorNames = [
-            "Purple",
-            "Orange",
-            "Green"]
-        
-        return colorNames[rawValue - 1]
-    }
-    
-    var description: String {
-        return colorName
-    }
-}
-
-enum PatternType: Int {
-    case Unknown = 0, Grid, Stripes, Dots
-    static let allValues = [Grid, Stripes, Dots]
-    
-    var patternName: String {
-        let patternNames = [
-            "Grid",
-            "Stripes",
-            "Dots"]
-        
-        return patternNames[rawValue - 1]
-    }
-    
-    var description: String {
-        return patternName
-    }
-}
-
-
-class Picture: Printable, Hashable {
-    let shapeType: ShapeType
-    let colorType: ColorType
-    let patternType: PatternType
-    
-    let number: Int
-    let imageName: String
-    var sprite: PictureSprite?
-    
-    var column: Int?
-    var row: Int?
-    
-    init(shapeType: ShapeType, colorType: ColorType, patternType: PatternType, number: Int) {
-        self.shapeType = shapeType
-        self.colorType = colorType
-        self.patternType = patternType
-        self.number = number
-        self.imageName = "picture\(number)"
-    }
-    
-    var description: String {
-        return "shape: \(shapeType), color: \(colorType), pattern: \(patternType), number: \(number)"
-    }
-    
-    var hashValue: Int {
-        return number
-    }
-    
-    class func createAllPictures() -> Array<Picture> {
-        var pictures = [Picture]()
-        var i = 0
-        for shape in ShapeType.allValues {
-            for color in ColorType.allValues {
-                for pattern in PatternType.allValues {
-                    let picture = Picture(shapeType: shape, colorType: color, patternType: pattern, number: i)
-                    pictures += [picture]
-                    i++
-                }
-            }
-        }
-        return pictures
-    }
-    
-}
-
-func ==(lhs: Picture, rhs: Picture) -> Bool {
-    return lhs.number == rhs.number
-}
+//import SpriteKit
+//
+//class Picture: Printable, Hashable {
+//    let property1: Int
+//    let property2: Int
+//    let property3: Int
+//    var isOnscreen: Bool = false
+//    
+//    let imageNum: Int
+//    let imageName: String
+//    let glowImageName: String
+//    var sprite: PictureSprite?
+//    
+//    var column: Int?
+//    var row: Int?
+//    
+//    init(prop1: Int, prop2: Int, prop3: Int, imageNum: Int, level: String) {
+//        self.property1 = prop1
+//        self.property2 = prop2
+//        self.property3 = prop3
+//        self.imageNum = imageNum
+//        self.imageName = level + "-" + "\(imageNum)"
+//        self.glowImageName = self.imageName + "-glow"
+//    }
+//    
+//    var description: String {
+//        return imageName
+//    }
+//    
+//    var hashValue: Int {
+//        return imageNum
+//    }
+//    
+//    class func createAllPictures(level: String) -> Array<Picture> {
+//        var pictures = [Picture]()
+//        var i = 0
+//        for property1 in 0..<3 {
+//            for property2 in 0..<3 {
+//                for property3 in 0..<3 {
+//                    let picture = Picture(prop1: property1, prop2: property2, prop3: property3, imageNum: i, level: level)
+//                    pictures += [picture]
+//                    i++
+//                }
+//            }
+//        }
+//        return pictures
+//    }
+//}
+//
+//func ==(lhs: Picture, rhs: Picture) -> Bool {
+//    return lhs.imageNum == rhs.imageNum
+//}

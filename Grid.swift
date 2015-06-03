@@ -7,32 +7,45 @@
 //
 
 import Foundation
+import SpriteKit
 
 let NumColumns = 3
 let NumRows = 3
 
 class Grid {
-    var allPictures: Array<Picture>
-    var pictures = Array2D<Picture>(columns: NumColumns, rows: NumRows)
+    var allPictures: Array<PicSprite>
+    var pictures = Array2D<PicSprite>(columns: NumColumns, rows: NumRows)
     var validGroups = Set<PictureGroup>()
     var index = 0
     
-    init() {
-        allPictures = Picture.createAllPictures()
+    init(level: String, layer: SKNode) {
+        allPictures = PicSprite.createAll(level, layer: layer)
         
         do {
             allPictures.shuffle()
+            clearOnscreenPictures()
             for row in 0..<NumRows {
                 for column in 0..<NumColumns {
                     let picture = allPictures[index]
                     picture.column = column
                     picture.row = row
+                    picture.onscreen = true
                     pictures[column, row] = picture
                     index++
                 }
             }
             detectValidGroups()
         } while validGroups.isEmpty
+    }
+    
+    func clearOnscreenPictures() {
+        if pictures.columns * pictures.rows == NumColumns * NumRows {
+            for row in 0..<NumRows {
+                for column in 0..<NumColumns {
+                    pictures[column, row]?.onscreen = false
+                }
+            }
+        }
     }
     
     func detectValidGroups() {
@@ -51,7 +64,6 @@ class Grid {
                             if group.isValidGroup() {
                                 validGroups.insert(group)
                             }
-                            
                         }
                     }
                 }
@@ -60,7 +72,7 @@ class Grid {
         println("valid groups: \(validGroups.count)")
     }
     
-    func pictureAtColumn(column: Int, row: Int) -> Picture? {
+    func pictureAtColumn(column: Int, row: Int) -> PicSprite? {
         assert(column >= 0 && column < NumColumns)
         assert(row >= 0 && row < NumRows)
         return pictures[column, row]
@@ -72,11 +84,11 @@ class Grid {
         pictures[group.pictureC.column!, group.pictureC.row!] = nil
     }
     
-    func fillHoles() -> [[Picture]] {
-        var columns = [[Picture]]()
+    func fillHoles() -> [[PicSprite]] {
+        var columns = [[PicSprite]]()
         
         for column in 0..<NumColumns {
-            var array = [Picture]()
+            var array = [PicSprite]()
             for row in 0..<NumRows {
                 if pictures[column, row] == nil {
                     for lookup in (row + 1)..<NumRows {
@@ -99,30 +111,52 @@ class Grid {
         return columns
     }
     
-    func addMorePictures() -> [[Picture]] {
-        var columns = [[Picture]]()
+    func addMorePictures() -> [[PicSprite]] {
+        var columns = [[PicSprite]]()
+        
         do {
+            if !columns.isEmpty { clearPicsInColumns(columns) }
             columns.removeAll()
             for column in 0..<NumColumns {
-                var array = [Picture]()
+                var array = [PicSprite]()
                 for (var row = NumRows - 1; row >= 0 && pictures[column, row] == nil; --row) {
-                    if index == allPictures.count {
-                        index = 0
+                    println("index: \(index), sprite: \(allPictures[index].imageName)")
+                    while allPictures[index].onscreen {
+                        println("picture already on screen")
+                        index++
+                        if index == allPictures.count {
+                            allPictures.shuffle()
+                            index = 0
+                        }
                     }
                     let picture = allPictures[index]
                     picture.column = column
                     picture.row = row
+                    picture.onscreen = true
                     pictures[column, row] = picture
                     array.append(picture)
                     index++
+                    if index == allPictures.count {
+                        allPictures.shuffle()
+                        index = 0
+                    }
                 }
-            if !array.isEmpty {
-                columns.append(array)
+                if !array.isEmpty {
+                    columns.append(array)
                 }
             }
             detectValidGroups()
         } while validGroups.isEmpty
+    
         return columns
+    }
+    
+    func clearPicsInColumns(columns: [[PicSprite]]) {
+        for array in columns {
+            for picture in array {
+                picture.onscreen = false
+            }
+        }
     }
     
 }

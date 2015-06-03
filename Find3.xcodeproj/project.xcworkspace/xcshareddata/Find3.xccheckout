@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>362B1FB6-6CF2-4D67-8F7E-519F72332A08</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Find3</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BDDB29FAAD0B13107C6FD6918B623B52E98DC0FA</key>
+		<string>https://github.com/uchicago-mobi/susanstevens-MPCS51032-2015-Spring-Assignment-3.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Find3.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BDDB29FAAD0B13107C6FD6918B623B52E98DC0FA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/uchicago-mobi/susanstevens-MPCS51032-2015-Spring-Assignment-3.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BDDB29FAAD0B13107C6FD6918B623B52E98DC0FA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BDDB29FAAD0B13107C6FD6918B623B52E98DC0FA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Find3</string>
+		</dict>
+	</array>
+</dict>
+</plist>

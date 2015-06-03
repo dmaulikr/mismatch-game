@@ -9,41 +9,41 @@
 import Foundation
 
 struct PictureGroup: Hashable, Printable {
-    let pictureA: Picture
-    let pictureB: Picture
-    let pictureC: Picture
+    let pictureA: PicSprite
+    let pictureB: PicSprite
+    let pictureC: PicSprite
     
-    init(pictureA: Picture, pictureB: Picture, pictureC: Picture) {
+    init(pictureA: PicSprite, pictureB: PicSprite, pictureC: PicSprite) {
         self.pictureA = pictureA
         self.pictureB = pictureB
         self.pictureC = pictureC
     }
     
     func isValidGroup() -> Bool {
-        return checkShapeTypes() && checkColorTypes() && checkPatternTypes()
+        return checkProperty1() && checkProperty2() && checkProperty3()
     }
     
-    private func checkShapeTypes() -> Bool {
-        if pictureA.shapeType == pictureB.shapeType {
-            return pictureA.shapeType == pictureC.shapeType && pictureB.shapeType == pictureC.shapeType
+    private func checkProperty1() -> Bool {
+        if pictureA.property1 == pictureB.property1 {
+            return pictureA.property1 == pictureC.property1 && pictureB.property1 == pictureC.property1
         } else {
-            return pictureA.shapeType != pictureC.shapeType && pictureB.shapeType != pictureC.shapeType
+            return pictureA.property1 != pictureC.property1 && pictureB.property1 != pictureC.property1
         }
     }
     
-    private func checkColorTypes() -> Bool {
-        if pictureA.colorType == pictureB.colorType {
-            return pictureA.colorType == pictureC.colorType && pictureB.colorType == pictureC.colorType
+    private func checkProperty2() -> Bool {
+        if pictureA.property2 == pictureB.property2 {
+            return pictureA.property2 == pictureC.property2 && pictureB.property2 == pictureC.property2
         } else {
-            return pictureA.colorType != pictureC.colorType && pictureB.colorType != pictureC.colorType
+            return pictureA.property2 != pictureC.property2 && pictureB.property2 != pictureC.property2
         }
     }
     
-    private func checkPatternTypes() -> Bool {
-        if pictureA.patternType == pictureB.patternType {
-            return pictureA.patternType == pictureC.patternType && pictureB.patternType == pictureC.patternType
+    private func checkProperty3() -> Bool {
+        if pictureA.property3 == pictureB.property3 {
+            return pictureA.property3 == pictureC.property3 && pictureB.property3 == pictureC.property3
         } else {
-            return pictureA.patternType != pictureC.patternType && pictureB.patternType != pictureC.patternType
+            return pictureA.property3 != pictureC.property3 && pictureB.property3 != pictureC.property3
         }
     }
     
@@ -58,7 +58,7 @@ struct PictureGroup: Hashable, Printable {
 
 func ==(lhs: PictureGroup, rhs: PictureGroup) -> Bool {
     
-    var lhsSet = Set<Picture>()
+    var lhsSet = Set<PicSprite>()
     lhsSet.insert(lhs.pictureA)
     lhsSet.insert(lhs.pictureB)
     lhsSet.insert(lhs.pictureC)
