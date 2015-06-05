@@ -42,6 +42,7 @@ class GameScene: SKScene {
         gameLayer.addChild(picturesLayer)
     }
     
+    // Add the nine starting sprites
     func addSpritesForPictures(pictures: Array2D<PicSprite>) {
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
@@ -54,10 +55,12 @@ class GameScene: SKScene {
         }
     }
     
+    // Return the center point for a particular column and row on the grid
     func pointForColumn(column: Int, row: Int) -> CGPoint {
         return CGPoint(x: CGFloat(column)*TileWidth + TileWidth/2, y: CGFloat(row)*TileHeight + TileHeight/2)
     }
     
+    // Convert a point to a particular column and row on the grid
     func convertPoint(point: CGPoint) -> (success: Bool, column: Int, row: Int) {
         if point.x >= 0 && point.x < CGFloat(NumColumns) * TileWidth &&
             point.y >= 0 && point.y < CGFloat(NumRows) * TileHeight {
@@ -100,6 +103,7 @@ class GameScene: SKScene {
         println("replaceThree!")
     }
     
+    // Perform animation and remove valid group selected by user
     func animateValidGroup(group: PictureGroup, completion: () -> ()) {
         
         group.pictureA.removeWithActions()
@@ -119,6 +123,27 @@ class GameScene: SKScene {
         selectedPics.removeAll(keepCapacity: true)
     }
     
+    // Remove one PicSprite at given column and row (used in Level 5 for random sprite removal)
+    func removePicAtColumn(col: Int, row: Int, completion: () -> ()) {
+        
+        if let picture = grid.pictureAtColumn(col, row: row) {
+            
+            grid.pictures[col, row] = nil
+            
+            picture.removeWithActions()
+            runAction(SKAction.waitForDuration(0.6), completion: completion)
+            
+            if let index = find(selectedPics, picture) {
+                selectedPics.removeAtIndex(index)
+            }
+            
+            picture.onscreen = false
+            picture.selected = false
+            
+        }
+    }
+    
+    // Animate sprites falling down after a valid group has been selected
     func animateFallingPictures(columns: [[PicSprite]], completion: () -> ()) {
         var longestDuration: NSTimeInterval = 0
         for array in columns {
@@ -139,6 +164,7 @@ class GameScene: SKScene {
         runAction(SKAction.waitForDuration(longestDuration), completion: completion)
     }
     
+    // Animate new sprites falling into place after valid group selected
     func animateNewPictures(columns: [[PicSprite]], completion: () -> ()) {
         var longestDuration: NSTimeInterval = 0
         

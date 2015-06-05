@@ -9,6 +9,8 @@
 import Foundation
 import SpriteKit
 
+// A PicSprite is one of the shapes displayed onscreen
+
 class PicSprite: SKSpriteNode, Hashable {
     var selected: Bool = false
     var onscreen: Bool = false
@@ -63,7 +65,8 @@ class PicSprite: SKSpriteNode, Hashable {
         fatalError("init(coder) is not used in this app")
     }
     
-    class func createAll(level: String, layer: SKNode) -> Array<PicSprite> {
+    // Create all 27 PicSprites for a given level
+    class func createAll(level: String) -> Array<PicSprite> {
         var sprites = [PicSprite]()
         var i = 0
         for property1 in 0..<3 {
@@ -79,8 +82,27 @@ class PicSprite: SKSpriteNode, Hashable {
         return sprites
     }
     
+    // Return an array of the nine PicSprites used in the tutorial level
+    class func createTutorialPics() -> Array<PicSprite> {
+        var allSprites = createAll("level1")
+        var sprites = [PicSprite]()
+        
+        sprites += [allSprites[2]]
+        sprites += [allSprites[10]]
+        sprites += [allSprites[11]]
+        sprites += [allSprites[15]]
+        sprites += [allSprites[16]]
+        sprites += [allSprites[26]]
+        sprites += [allSprites[23]]
+        sprites += [allSprites[22]]
+        sprites += [allSprites[5]]
+        
+        return sprites
+    }
+    
     // MARK: Animations
     
+    // Called when user selects a sprite
     func selectSprite() {
         let texture = SKTexture(imageNamed: "\(imageName)-glow")
         self.size = texture.size()
@@ -88,6 +110,7 @@ class PicSprite: SKSpriteNode, Hashable {
         selected = true
     }
     
+    // Called when user deselects a sprite
     func deselectSprite() {
         let texture = SKTexture(imageNamed: imageName)
         self.size = texture.size()
@@ -95,6 +118,7 @@ class PicSprite: SKSpriteNode, Hashable {
         selected = false
     }
     
+    // Animations for removing a sprite from the screen
     func removeWithActions() {
         
         let width = self.frame.width
@@ -113,6 +137,23 @@ class PicSprite: SKSpriteNode, Hashable {
             })
     }
     
+    // Animations for valid group (used in tutorial level)
+    func expandAndDeselect() {
+        let expand = SKAction.resizeByWidth(10, height: 10, duration: 0.3)
+        expand.timingMode = .EaseIn
+        
+        let resize = SKAction.resizeByWidth(-10, height: -10, duration: 0.3)
+        resize.timingMode = .EaseOut
+        
+        let deselect = SKAction.runBlock {
+            self.deselectSprite()
+        }
+        
+        self.runAction(SKAction.sequence([expand, resize, deselect]))
+        
+    }
+    
+    // Animations for selections of invalid group
     func wiggleAndDeselect() {
         
         let originalPosition = position.x

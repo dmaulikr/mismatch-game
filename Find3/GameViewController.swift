@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var groupsFoundLabel: UILabel!
     
-    var timer = NSTimer()
+    var timer: SKAction!
     var counter: Int = 120
     var groupsFound: Int = 0
     
@@ -36,16 +36,11 @@ class GameViewController: UIViewController {
         
         let skView = view as! SKView
         skView.multipleTouchEnabled = false
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-        
-        
+
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
         scene.tapThreeHandler = handleTapThree
         scene.grid = Grid(level: level, layer: scene.picturesLayer)
-        
-        
         
         skView.presentScene(scene)
         
@@ -55,6 +50,13 @@ class GameViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "unwindToHomeSegue" || segue.identifier == "unwindToHomeFromButton" {
             println("remove scene from parent")
+            
+            scene.removeActionForKey("runTimer")
+            scene.removeActionForKey("runRemovePicTimer")
+            
+            for picture in scene.grid.allPictures {
+                picture.removeFromParent()
+            }
             
             let gameLayer = scene.childNodeWithName("Game Layer")
             let pictureLayer = gameLayer?.childNodeWithName("Pictures Layer")
@@ -67,10 +69,10 @@ class GameViewController: UIViewController {
             gameLayer?.removeFromParent()
             scene.removeFromParent()
             
-            self.timer.invalidate()
         }
     }
     
+    // Set up the game
     func beginGame() {
         let pictures = scene.grid.pictures
         scene.addSpritesForPictures(pictures)
@@ -80,28 +82,64 @@ class GameViewController: UIViewController {
         groupsFoundLabel.text = ""
         groupsFound = 0
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        timer = SKAction.waitForDuration(1.0)
+        var callUpdateCounter = SKAction.runBlock {
+            self.updateCounter()
+        }
+        let runTimer = SKAction.repeatAction(SKAction.sequence([timer, callUpdateCounter]), count: counter)
+        
+        self.scene.runAction(runTimer, withKey: "runTimer")
+        
+        if level == "level5" {
+            let removePicTimer = SKAction.waitForDuration(4.0, withRange: 3.0)
+            let callRemoveAtRandom = SKAction.runBlock {
+                self.removeAtRandom()
+            }
+            
+            let runRemovePicTimer = SKAction.repeatActionForever(SKAction.sequence([removePicTimer, callRemoveAtRandom]))
+            
+            self.scene.runAction(runRemovePicTimer, withKey: "runRemovePicTimer")
+        }
     }
     
+    // Decrement the counter after each second passes; display alert after 2 minutes
     func updateCounter() {
         counter--
         let minute = counter / 60
         let seconds = counter % 60
         timerLabel.text = String(format: "%01d:%02d", arguments: [minute, seconds])
         if counter == 0 {
-            timer.invalidate()
             self.view.userInteractionEnabled = false
+            self.scene.removeActionForKey("runRemovePicTimer")
             presentEndOfGameAlert()
-            saveScoreToCloud()
         }
     }
     
+    // Used in Level 5 to select a random PicSprite to remove
+    func removeAtRandom() {
+        let col = Int(arc4random_uniform(3))
+        let row = Int(arc4random_uniform(3))
+        
+        scene.removePicAtColumn(col, row: row) {
+            
+            let columns = self.scene.grid.fillHoles()
+            
+            println("Columns: \(columns.count)")
+            self.scene.animateFallingPictures(columns) {
+                let columns = self.scene.grid.addMorePictures()
+                self.scene.animateNewPictures(columns) {
+                    
+                }
+            }
+        }
+    }
+    
+    // Called when user has selected 3 sprites
     func handleTapThree(group: PictureGroup) {
         self.view.userInteractionEnabled = false
         
         println(group.description)
         
-        // if scene.grid.validGroups.contains(group) {
         if group.isValidGroup() {
             println("valid group")
             updateGroupsFoundLabel()
@@ -125,11 +163,13 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Increment number of groups found
     func updateGroupsFoundLabel() {
         groupsFound++
         groupsFoundLabel.text = String(groupsFound)
     }
     
+    // Display alert when two minutes have passed
     func presentEndOfGameAlert() {
         let alertController = UIAlertController(title: "Good game!", message: "You found \(groupsFound) groups", preferredStyle: .Alert)
         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
@@ -141,11 +181,6 @@ class GameViewController: UIViewController {
         self.presentViewController(alertController, animated: true) {
             println("presenting alert controller")
         }
-    }
-    
-    func saveScoreToCloud() {
-        let score = HighScore(score: groupsFound, date: NSDate())
-        CloudKitManager.sharedInstance.addHighScore(score)
     }
 
 }

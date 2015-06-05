@@ -18,14 +18,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    override func viewDidLoad() {
-        let leftConstraint = NSLayoutConstraint(item: self.contentView, attribute: .Leading, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: self.contentView, attribute: .Trailing, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1.0, constant: 0)
-        
-        self.view.addConstraint(leftConstraint)
-        self.view.addConstraint(rightConstraint)
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "Level1Segue" {
@@ -47,6 +39,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         } else if segue.identifier == "Level5Segue" {
             if let gameVC = segue.destinationViewController as? GameViewController {
                 gameVC.level = "level5"
+            }
+        } else if segue.identifier == "TutorialSegue" {
+            if let tutorialVC = segue.destinationViewController as? PageDataSourceViewController {
+                tutorialVC.level = "tutorial"
             }
         }
     }

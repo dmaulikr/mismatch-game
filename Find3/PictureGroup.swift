@@ -8,6 +8,8 @@
 
 import Foundation
 
+// PictureGroup class represents three PicSprites that may or may not form a valid group
+
 struct PictureGroup: Hashable, Printable {
     let pictureA: PicSprite
     let pictureB: PicSprite
@@ -19,6 +21,7 @@ struct PictureGroup: Hashable, Printable {
         self.pictureC = pictureC
     }
     
+    // Checks the three properties of each PicSprite in the group
     func isValidGroup() -> Bool {
         return checkProperty1() && checkProperty2() && checkProperty3()
     }

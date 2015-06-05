@@ -12,10 +12,46 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var splashScreen: UIView!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        if ((NSUserDefaults.standardUserDefaults().objectForKey("FirstLaunchDate")) == nil) {
+            let date = NSDate()
+            NSUserDefaults.standardUserDefaults().setObject(date, forKey: "FirstLaunchDate")
+            println("first launch date: \(date)")
+        }
+        
+        splashScreen = NSBundle.mainBundle().loadNibNamed("splashScreen", owner: self, options: nil)[0] as! UIView
+        splashScreen.frame = window!.bounds
+        
+        window!.rootViewController!.view.addSubview(splashScreen)
+        println("Splash screen displayed")
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("dismissSplashScreen"), userInfo: nil, repeats: false)
+        
+        setPreferenceDefaults()
+        
         return true
+    }
+    
+    // Fade out splash screen
+    func dismissSplashScreen() {
+        UIView.animateWithDuration(2.0, animations: {
+            self.splashScreen.alpha = 0.0
+            },
+            completion: { finished in
+                self.splashScreen.removeFromSuperview()
+                println("dismissed splash screen")
+        })
+    }
+    
+    // Set developer name in Settings bundle
+    func setPreferenceDefaults() {
+        var defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue("Susan Stevens", forKey: "SettingsCreatedBy")
+        defaults.synchronize()
     }
 
     func applicationWillResignActive(application: UIApplication) {
