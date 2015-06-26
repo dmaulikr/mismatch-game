@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080A25F31B3DAB980088D671 /* EndOfGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A25F21B3DAB980088D671 /* EndOfGameView.swift */; };
 		082B234A1B2A46C10070A2B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B23491B2A46C10070A2B3 /* TutorialViewController.swift */; };
 		0847B3531B06A89E009D9580 /* PictureGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847B3521B06A89E009D9580 /* PictureGroup.swift */; };
 		0847B39C1B080BAA009D9580 /* PageDataSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847B39B1B080BAA009D9580 /* PageDataSourceViewController.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080A25F21B3DAB980088D671 /* EndOfGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameView.swift; sourceTree = "<group>"; };
 		082B23491B2A46C10070A2B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		0847B3521B06A89E009D9580 /* PictureGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureGroup.swift; sourceTree = "<group>"; };
 		0847B35C1B07AFF6009D9580 /* Find3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Find3.entitlements; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				08CD12C31B214DB5007FBC55 /* splashScreen.xib */,
 				08B0DC3F1B1E186D00442AAC /* PicSprite.swift */,
+				080A25F21B3DAB980088D671 /* EndOfGameView.swift */,
 				08C99CD91B015D6D00C1965E /* GameScene.sks */,
 				08C99CDB1B015D6D00C1965E /* GameScene.swift */,
 				08CD12C11B212FFE007FBC55 /* TutorialScene.swift */,
@@ -414,6 +417,7 @@
 				086D9A9E1B04106700395DD5 /* Grid.swift in Sources */,
 				082B234A1B2A46C10070A2B3 /* TutorialViewController.swift in Sources */,
 				086D9A981B04094B00395DD5 /* Array2D.swift in Sources */,
+				080A25F31B3DAB980088D671 /* EndOfGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

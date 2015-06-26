@@ -26,11 +26,6 @@ class PicSprite: SKSpriteNode, Hashable {
     var column: Int?
     var row: Int?
     
-    var selectSound = AVAudioPlayer()
-    var dropSound = AVAudioPlayer()
-    var validGroupSound = AVAudioPlayer()
-    var invalidGroupSound = AVAudioPlayer()
-    
     init(prop1: Int, prop2: Int, prop3: Int, imageNum: Int, level: Int) {
         self.property1 = prop1
         self.property2 = prop2
@@ -194,18 +189,6 @@ class PicSprite: SKSpriteNode, Hashable {
         runAction(SKAction.sequence([repeatedWiggle, SKAction.moveToX(originalPosition, duration: 0.1)])) {
             self.deselectSprite()
         }
-    }
-
-    func setupAudioPlayer(file: String, type: String) -> AVAudioPlayer {
-        var path = NSBundle.mainBundle().pathForResource(file, ofType: type)
-        var url = NSURL.fileURLWithPath(path!)
-        
-        var error: NSError?
-        
-        var audioPlayer: AVAudioPlayer?
-        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
-        
-        return audioPlayer!
     }
 }
 

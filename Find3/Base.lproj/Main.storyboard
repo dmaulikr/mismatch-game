@@ -233,7 +233,7 @@
                                     <segue destination="yED-n6-fc9" kind="unwind" identifier="unwindToHomeFromButton" unwindAction="unwindToHome:" id="r9f-8q-qWY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gii-Nt-IkO">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gii-Nt-IkO" customClass="EndOfGameView" customModule="Find3" customModuleProvider="target">
                                 <rect key="frame" x="183" y="223" width="234" height="154"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBG-oV-coi">
@@ -275,6 +275,13 @@
                                     <constraint firstAttribute="width" constant="234" id="31Q-8D-EC6"/>
                                     <constraint firstAttribute="height" constant="154" id="Tw8-Ls-XrF"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="gameOverMsg" destination="7KN-dk-hgA" id="4fd-IT-u8V"/>
+                                    <outlet property="gameOverTitle" destination="49P-ne-lM6" id="bzt-wi-cjT"/>
+                                    <outlet property="starOne" destination="hiS-1I-2AK" id="Veb-mX-5nd"/>
+                                    <outlet property="starThree" destination="4FY-dw-HAs" id="AMQ-a8-aBT"/>
+                                    <outlet property="starTwo" destination="uiK-NB-APR" id="QAh-2o-8BP"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,13 +305,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="gameOverMsg" destination="7KN-dk-hgA" id="Qn3-Sc-bHf"/>
-                        <outlet property="gameOverTitle" destination="49P-ne-lM6" id="Sae-Zv-KFU"/>
                         <outlet property="gameOverView" destination="gii-Nt-IkO" id="Lkv-KY-I5F"/>
                         <outlet property="groupsFoundLabel" destination="vUQ-WD-7Fc" id="v5e-rv-77T"/>
-                        <outlet property="starOne" destination="hiS-1I-2AK" id="5es-f3-QIj"/>
-                        <outlet property="starThree" destination="4FY-dw-HAs" id="I6e-4T-dZI"/>
-                        <outlet property="starTwo" destination="uiK-NB-APR" id="ogi-uI-gq7"/>
                         <outlet property="timerLabel" destination="qeM-Q0-qtY" id="W8s-Ib-bPi"/>
                         <segue destination="yED-n6-fc9" kind="unwind" identifier="unwindToHomeSegue" unwindAction="unwindToHome:" id="Qon-lJ-030"/>
                     </connections>

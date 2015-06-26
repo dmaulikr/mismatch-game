@@ -18,20 +18,11 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var groupsFoundLabel: UILabel!
     
-    @IBOutlet weak var gameOverView: UIView!
-    
-    @IBOutlet weak var starOne: UIImageView!
-    @IBOutlet weak var starTwo: UIImageView!
-    @IBOutlet weak var starThree: UIImageView!
-    
-    @IBOutlet weak var gameOverTitle: UILabel!
-    @IBOutlet weak var gameOverMsg: UILabel!
+    @IBOutlet weak var gameOverView: EndOfGameView!
     
     var timer: SKAction!
     var counter: Int = 120
     var groupsFound: Int = 0
-    
-    let titles = ["Remarkable!", "Outstanding!", "Impressive!"]
     
     var backgroundMusic = AVAudioPlayer()
     
@@ -68,11 +59,11 @@ class GameViewController: UIViewController {
         
         skView.presentScene(scene)
         
-        var musicPath = NSBundle.mainBundle().pathForResource("Main Title - reg", ofType: "mp3")
-        var musicUrl = NSURL.fileURLWithPath(musicPath!)
-        var error: NSError?
-        
-        backgroundMusic = AVAudioPlayer(contentsOfURL: musicUrl, error: &error)
+        if let musicPath = NSBundle.mainBundle().pathForResource("Main Title - reg", ofType: "mp3") {
+            let musicUrl = NSURL.fileURLWithPath(musicPath)
+            var error: NSError?
+            backgroundMusic = AVAudioPlayer(contentsOfURL: musicUrl, error: &error)
+        }
         
         beginGame()
     }
@@ -240,51 +231,10 @@ class GameViewController: UIViewController {
         
         view.userInteractionEnabled = true
         
-        if groupsFound >= oneStarScore && prevHighScore < oneStarScore {
-            gameOverTitle.text = "Congrats!"
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
-        } else if groupsFound < oneStarScore {
-            
-            switch groupsFound {
-            case 0:
-                gameOverTitle.text = "Better luck next time!"
-                gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-            case 1:
-                gameOverTitle.text = "Not bad!"
-                gameOverMsg.text = "You found \(groupsFound) (mis)match."
-            default:
-                gameOverTitle.text = titles[Int(arc4random_uniform(UInt32(titles.count)))]
-                gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-            }
-            
-            if prevHighScore < oneStarScore {
-                gameOverMsg.text! += " You need at least \(oneStarScore) to unlock the next level."
-            }
-        } else if groupsFound > prevHighScore {
-            gameOverTitle.text = "New High Score!"
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-        } else {
-            gameOverTitle.text = titles[Int(arc4random_uniform(UInt32(titles.count)))]
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-        }
-        
-        starOne.image = UIImage(named: "star-empty")
-        starTwo.image = UIImage(named: "star-empty")
-        starThree.image = UIImage(named: "star-empty")
-        
-        if groupsFound >= oneStarScore {
-            starOne.image = UIImage(named: "star")
-        }
-        
-        if groupsFound >= twoStarScore {
-            starTwo.image = UIImage(named: "star")
-        }
-        
-        if groupsFound >= threeStarScore {
-            starThree.image = UIImage(named: "star")
-        }
-        
+        gameOverView.setEndOfGameText(groupsFound, prevHighScore: prevHighScore)
+        gameOverView.setEndOfGameStars(groupsFound)
         gameOverView.hidden = false
+        
         UIView.animateWithDuration(0.25, animations: {
             self.groupsFoundLabel.alpha = 0.5
             self.timerLabel.alpha = 0.5
