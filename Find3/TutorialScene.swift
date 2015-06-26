@@ -12,7 +12,6 @@ class TutorialScene: SKScene {
     
     let TileWidth: CGFloat = 100.0
     let TileHeight: CGFloat = 100.0
-    let offsetForInstructions: CGFloat = 30
     
     let gameLayer = SKNode()
     let picturesLayer = SKNode()
@@ -57,18 +56,19 @@ class TutorialScene: SKScene {
     }
     
     // Perform animation when user selects a valid group
-    func animateValidGroupTutorial(group: PictureGroup) {
+    func animateValidGroupTutorial(group: PictureGroup, completion: () -> ()) {
         
-        group.pictureA.expandAndDeselect()
-        group.pictureB.expandAndDeselect()
-        group.pictureC.expandAndDeselect()
-        
-        selectedPics.removeAll(keepCapacity: true)
+        let expandAction = SKAction.runBlock {
+            group.pictureA.expand()
+            group.pictureB.expand()
+            group.pictureC.expand()
+        }
+        runAction(SKAction.sequence([expandAction, SKAction.waitForDuration(1.0)]), completion: completion)
     }
     
     // Return center point for given column and row on grid
     func pointForColumn(column: Int, row: Int) -> CGPoint {
-        return CGPoint(x: CGFloat(column)*TileWidth + TileWidth/2, y: CGFloat(row)*TileHeight + TileHeight/2 - offsetForInstructions)
+        return CGPoint(x: CGFloat(column)*TileWidth + TileWidth/2, y: CGFloat(row)*TileHeight + TileHeight/2)
     }
     
     // Return column and row for given point

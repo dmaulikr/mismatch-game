@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController!.view.addSubview(splashScreen)
         println("Splash screen displayed")
         
-        var timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("dismissSplashScreen"), userInfo: nil, repeats: false)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("dismissSplashScreen"), userInfo: nil, repeats: false)
         
         setPreferenceDefaults()
         

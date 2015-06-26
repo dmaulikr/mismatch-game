@@ -55,7 +55,7 @@ struct PictureGroup: Hashable, Printable {
     }
     
     var description: String {
-        return "Group: \(pictureA.imageName), \(pictureB.imageName), \(pictureC.imageName)"
+        return "Selected group: \(pictureA.imageName), \(pictureB.imageName), \(pictureC.imageName)"
     }
 }
 

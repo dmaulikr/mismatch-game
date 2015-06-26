@@ -7,17 +7,33 @@
 //
 
 import UIKit
+import AVFoundation
 import SpriteKit
 
 class GameViewController: UIViewController {
-    var level: String!
+    var level: Int!
     var scene: GameScene!
+    var skView: SKView!
+    
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var groupsFoundLabel: UILabel!
+    
+    @IBOutlet weak var gameOverView: UIView!
+    
+    @IBOutlet weak var starOne: UIImageView!
+    @IBOutlet weak var starTwo: UIImageView!
+    @IBOutlet weak var starThree: UIImageView!
+    
+    @IBOutlet weak var gameOverTitle: UILabel!
+    @IBOutlet weak var gameOverMsg: UILabel!
     
     var timer: SKAction!
     var counter: Int = 120
     var groupsFound: Int = 0
+    
+    let titles = ["Remarkable!", "Outstanding!", "Impressive!"]
+    
+    var backgroundMusic = AVAudioPlayer()
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -34,20 +50,40 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let skView = view as! SKView
+        skView = view as! SKView
         skView.multipleTouchEnabled = false
-
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+        
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
         scene.tapThreeHandler = handleTapThree
         scene.grid = Grid(level: level, layer: scene.picturesLayer)
         
+        gameOverView.layer.cornerRadius = 10.0
+        gameOverView.layer.borderColor = lightBlue.CGColor
+        gameOverView.layer.borderWidth = 1.0
+        gameOverView.alpha = 0.0
+        gameOverView.hidden = true
+        
         skView.presentScene(scene)
+        
+        var musicPath = NSBundle.mainBundle().pathForResource("Main Title - reg", ofType: "mp3")
+        var musicUrl = NSURL.fileURLWithPath(musicPath!)
+        var error: NSError?
+        
+        backgroundMusic = AVAudioPlayer(contentsOfURL: musicUrl, error: &error)
         
         beginGame()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        skView.presentScene(nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        backgroundMusic.stop()
+        
         if segue.identifier == "unwindToHomeSegue" || segue.identifier == "unwindToHomeFromButton" {
             println("remove scene from parent")
             
@@ -58,17 +94,22 @@ class GameViewController: UIViewController {
                 picture.removeFromParent()
             }
             
+            scene.grid.allPictures.removeAll()
+            scene.grid.validGroups.removeAll()
+            scene.selectedPics.removeAll()
+            
+            for row in 0..<3 {
+                for col in 0..<3 {
+                    scene.grid.pictures[col, row] = nil
+                }
+            }
+            
             let gameLayer = scene.childNodeWithName("Game Layer")
             let pictureLayer = gameLayer?.childNodeWithName("Pictures Layer")
-            
-            for picture in scene.grid.allPictures {
-                picture.removeFromParent()
-            }
             
             pictureLayer?.removeFromParent()
             gameLayer?.removeFromParent()
             scene.removeFromParent()
-            
         }
     }
     
@@ -86,11 +127,12 @@ class GameViewController: UIViewController {
         var callUpdateCounter = SKAction.runBlock {
             self.updateCounter()
         }
+        
         let runTimer = SKAction.repeatAction(SKAction.sequence([timer, callUpdateCounter]), count: counter)
         
-        self.scene.runAction(runTimer, withKey: "runTimer")
+        scene.runAction(runTimer, withKey: "runTimer")
         
-        if level == "level5" {
+        if level == 10 {
             let removePicTimer = SKAction.waitForDuration(4.0, withRange: 3.0)
             let callRemoveAtRandom = SKAction.runBlock {
                 self.removeAtRandom()
@@ -104,14 +146,21 @@ class GameViewController: UIViewController {
     
     // Decrement the counter after each second passes; display alert after 2 minutes
     func updateCounter() {
+        
+        if counter == 120 {
+            backgroundMusic.play()
+        }
+        
         counter--
         let minute = counter / 60
         let seconds = counter % 60
         timerLabel.text = String(format: "%01d:%02d", arguments: [minute, seconds])
+        
         if counter == 0 {
-            self.view.userInteractionEnabled = false
+            self.scene.userInteractionEnabled = false
             self.scene.removeActionForKey("runRemovePicTimer")
-            presentEndOfGameAlert()
+            let prevHighScore = updateHighScore()
+            presentEndOfGameAlert(prevHighScore)
         }
     }
     
@@ -124,7 +173,6 @@ class GameViewController: UIViewController {
             
             let columns = self.scene.grid.fillHoles()
             
-            println("Columns: \(columns.count)")
             self.scene.animateFallingPictures(columns) {
                 let columns = self.scene.grid.addMorePictures()
                 self.scene.animateNewPictures(columns) {
@@ -169,18 +217,79 @@ class GameViewController: UIViewController {
         groupsFoundLabel.text = String(groupsFound)
     }
     
-    // Display alert when two minutes have passed
-    func presentEndOfGameAlert() {
-        let alertController = UIAlertController(title: "Good game!", message: "You found \(groupsFound) groups", preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            println("OK pressed")
-            self.performSegueWithIdentifier("unwindToHomeSegue", sender: self)
+    /* Returns two bools - first indicates if new high score, second indicates if next level unlocked */
+    func updateHighScore() -> Int {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var prevHighScore = 0
+        if var highScoreArray = defaults.arrayForKey("highScores") as? [Int] {
+            
+            if highScoreArray.count < level+1 {
+                highScoreArray += [groupsFound]
+            } else {
+                prevHighScore = highScoreArray[level]
+                highScoreArray[level] = prevHighScore >= groupsFound ? prevHighScore : groupsFound
+            }
+            
+            defaults.setObject(highScoreArray, forKey: "highScores")
         }
-        alertController.addAction(OKAction)
-        
-        self.presentViewController(alertController, animated: true) {
-            println("presenting alert controller")
-        }
+        return prevHighScore
     }
-
+    
+    // Display alert when two minutes have passed
+    func presentEndOfGameAlert(prevHighScore: Int) {
+        
+        view.userInteractionEnabled = true
+        
+        if groupsFound >= oneStarScore && prevHighScore < oneStarScore {
+            gameOverTitle.text = "Congrats!"
+            gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
+        } else if groupsFound < oneStarScore {
+            
+            switch groupsFound {
+            case 0:
+                gameOverTitle.text = "Better luck next time!"
+                gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+            case 1:
+                gameOverTitle.text = "Not bad!"
+                gameOverMsg.text = "You found \(groupsFound) (mis)match."
+            default:
+                gameOverTitle.text = titles[Int(arc4random_uniform(UInt32(titles.count)))]
+                gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+            }
+            
+            if prevHighScore < oneStarScore {
+                gameOverMsg.text! += " You need at least \(oneStarScore) to unlock the next level."
+            }
+        } else if groupsFound > prevHighScore {
+            gameOverTitle.text = "New High Score!"
+            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+        } else {
+            gameOverTitle.text = titles[Int(arc4random_uniform(UInt32(titles.count)))]
+            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+        }
+        
+        starOne.image = UIImage(named: "star-empty")
+        starTwo.image = UIImage(named: "star-empty")
+        starThree.image = UIImage(named: "star-empty")
+        
+        if groupsFound >= oneStarScore {
+            starOne.image = UIImage(named: "star")
+        }
+        
+        if groupsFound >= twoStarScore {
+            starTwo.image = UIImage(named: "star")
+        }
+        
+        if groupsFound >= threeStarScore {
+            starThree.image = UIImage(named: "star")
+        }
+        
+        gameOverView.hidden = false
+        UIView.animateWithDuration(0.25, animations: {
+            self.groupsFoundLabel.alpha = 0.5
+            self.timerLabel.alpha = 0.5
+            self.scene.alpha = 0.5
+            self.gameOverView.alpha = 1.0
+        })
+    }
 }

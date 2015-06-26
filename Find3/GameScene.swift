@@ -10,8 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
 
-    let TileWidth: CGFloat = 110.0
-    let TileHeight: CGFloat = 110.0
+    let TileWidth: CGFloat = 100.0
+    let TileHeight: CGFloat = 100.0
     
     let gameLayer = SKNode()
     let picturesLayer = SKNode()
@@ -111,7 +111,9 @@ class GameScene: SKScene {
         group.pictureC.removeWithActions()
         
         runAction(SKAction.waitForDuration(0.6), completion: completion)
-    
+        
+        println("removed valid group")
+        
         group.pictureA.onscreen = false
         group.pictureB.onscreen = false
         group.pictureC.onscreen = false
@@ -131,7 +133,8 @@ class GameScene: SKScene {
             grid.pictures[col, row] = nil
             
             picture.removeWithActions()
-            runAction(SKAction.waitForDuration(0.6), completion: completion)
+            
+            println("random picture removed")
             
             if let index = find(selectedPics, picture) {
                 selectedPics.removeAtIndex(index)
@@ -139,6 +142,7 @@ class GameScene: SKScene {
             
             picture.onscreen = false
             picture.selected = false
+            runAction(SKAction.waitForDuration(0.6), completion: completion)
             
         }
     }
@@ -149,7 +153,6 @@ class GameScene: SKScene {
         for array in columns {
             for (idx, picture) in enumerate(array) {
                 let newPosition = pointForColumn(picture.column!, row: picture.row!)
-                picture.hidden = false
                 let delay = 0.05 + 0.15 * NSTimeInterval(idx)
                 
                 let duration = NSTimeInterval(((picture.position.y - newPosition.y) / TileHeight) * 0.1)
@@ -172,6 +175,7 @@ class GameScene: SKScene {
             let startRow = array[0].row! + 1
             for (idx, picture) in enumerate(array) {
                 picture.position = pointForColumn(picture.column!, row: startRow)
+                println("picture about to be added")
                 picturesLayer.addChild(picture)
                 
                 let delay = 0.1 + 0.2 * NSTimeInterval(array.count - idx - 1)
