@@ -151,10 +151,16 @@ class PicSprite: SKSpriteNode, Hashable {
         let growAction = SKAction.resizeByWidth(10, height: 10, duration: 0.3)
         growAction.timingMode = .EaseIn
         
+        let playValidSound = SKAction.runBlock {
+            if !Sounds.sharedInstance.validGroupSound.playing {
+                Sounds.sharedInstance.validGroupSound.play()
+            }
+        }
+        
         let shrinkAction = SKAction.resizeByWidth(-width, height: -height, duration: 0.2)
         shrinkAction.timingMode = .EaseOut
         
-        self.runAction(SKAction.sequence([growAction, shrinkAction, SKAction.removeFromParent()]))
+        self.runAction(SKAction.sequence([growAction, playValidSound, shrinkAction, SKAction.removeFromParent()]))
         
         runAction(SKAction.waitForDuration(0.6), completion: {
             self.deselectSprite()
@@ -176,17 +182,23 @@ class PicSprite: SKSpriteNode, Hashable {
     // Animations for selections of invalid group
     func wiggleAndDeselect() {
         
+        let playInvalidSound = SKAction.runBlock {
+            if !Sounds.sharedInstance.invalidGroupSound.playing {
+                Sounds.sharedInstance.invalidGroupSound.play()
+            }
+        }
+        
         let originalPosition = position.x
         let leftPosition = position.x - 5.0
         let rightPosition = position.x + 5.0
         
-        let moveLeft = SKAction.moveToX(leftPosition, duration: 0.07)
-        let moveRight = SKAction.moveToX(rightPosition, duration: 0.07)
+        let moveLeft = SKAction.moveToX(leftPosition, duration: 0.05)
+        let moveRight = SKAction.moveToX(rightPosition, duration: 0.05)
         
         let wiggle = SKAction.sequence([moveLeft, moveRight])
         let repeatedWiggle = SKAction.repeatAction(wiggle, count: 4)
         
-        runAction(SKAction.sequence([repeatedWiggle, SKAction.moveToX(originalPosition, duration: 0.1)])) {
+        runAction(SKAction.sequence([playInvalidSound, repeatedWiggle, SKAction.moveToX(originalPosition, duration: 0.1)])) {
             self.deselectSprite()
         }
     }

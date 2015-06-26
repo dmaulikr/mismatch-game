@@ -17,14 +17,11 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var groupsFoundLabel: UILabel!
-    
     @IBOutlet weak var gameOverView: EndOfGameView!
     
     var timer: SKAction!
     var counter: Int = 120
     var groupsFound: Int = 0
-    
-    var backgroundMusic = AVAudioPlayer()
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -59,12 +56,6 @@ class GameViewController: UIViewController {
         
         skView.presentScene(scene)
         
-        if let musicPath = NSBundle.mainBundle().pathForResource("Main Title - reg", ofType: "mp3") {
-            let musicUrl = NSURL.fileURLWithPath(musicPath)
-            var error: NSError?
-            backgroundMusic = AVAudioPlayer(contentsOfURL: musicUrl, error: &error)
-        }
-        
         beginGame()
     }
     
@@ -73,7 +64,7 @@ class GameViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        backgroundMusic.stop()
+        Sounds.sharedInstance.backgroundMusic.stop()
         
         if segue.identifier == "unwindToHomeSegue" || segue.identifier == "unwindToHomeFromButton" {
             println("remove scene from parent")
@@ -139,7 +130,7 @@ class GameViewController: UIViewController {
     func updateCounter() {
         
         if counter == 120 {
-            backgroundMusic.play()
+            Sounds.sharedInstance.backgroundMusic.play()
         }
         
         counter--
@@ -183,6 +174,7 @@ class GameViewController: UIViewController {
             println("valid group")
             updateGroupsFoundLabel()
             scene.grid.removePictures(group)
+            
             scene.animateValidGroup(group) {
                 let columns = self.scene.grid.fillHoles()
                 self.scene.animateFallingPictures(columns) {
@@ -242,4 +234,5 @@ class GameViewController: UIViewController {
             self.gameOverView.alpha = 1.0
         })
     }
+    
 }

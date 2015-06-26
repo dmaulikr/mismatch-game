@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("dismissSplashScreen"), userInfo: nil, repeats: false)
         
         setPreferenceDefaults()
+        
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
         
         return true
     }

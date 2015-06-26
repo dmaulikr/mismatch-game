@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		080A25F31B3DAB980088D671 /* EndOfGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A25F21B3DAB980088D671 /* EndOfGameView.swift */; };
+		080A25F91B3E0CD80088D671 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A25F81B3E0CD80088D671 /* Sounds.swift */; };
 		082B234A1B2A46C10070A2B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B23491B2A46C10070A2B3 /* TutorialViewController.swift */; };
 		0847B3531B06A89E009D9580 /* PictureGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847B3521B06A89E009D9580 /* PictureGroup.swift */; };
 		0847B39C1B080BAA009D9580 /* PageDataSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847B39B1B080BAA009D9580 /* PageDataSourceViewController.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		080A25F21B3DAB980088D671 /* EndOfGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameView.swift; sourceTree = "<group>"; };
+		080A25F81B3E0CD80088D671 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		082B23491B2A46C10070A2B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		0847B3521B06A89E009D9580 /* PictureGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureGroup.swift; sourceTree = "<group>"; };
 		0847B35C1B07AFF6009D9580 /* Find3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Find3.entitlements; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				0847B35C1B07AFF6009D9580 /* Find3.entitlements */,
 				08C99CD71B015D6D00C1965E /* AppDelegate.swift */,
+				080A25F81B3E0CD80088D671 /* Sounds.swift */,
 				0847B3641B07EEEC009D9580 /* Model */,
 				0847B3651B07EEFE009D9580 /* View */,
 				0847B3631B07EEA6009D9580 /* Controller */,
@@ -413,6 +416,7 @@
 				089D4CE61B34E7F3005626E0 /* LastTutorialViewController.swift in Sources */,
 				089D4CE41B34A33C005626E0 /* FadeSegue.swift in Sources */,
 				08C99CDE1B015D6D00C1965E /* GameViewController.swift in Sources */,
+				080A25F91B3E0CD80088D671 /* Sounds.swift in Sources */,
 				08C99CD81B015D6D00C1965E /* AppDelegate.swift in Sources */,
 				086D9A9E1B04106700395DD5 /* Grid.swift in Sources */,
 				082B234A1B2A46C10070A2B3 /* TutorialViewController.swift in Sources */,

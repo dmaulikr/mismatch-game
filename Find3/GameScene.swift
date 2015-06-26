@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene {
 
@@ -40,6 +41,7 @@ class GameScene: SKScene {
         picturesLayer.name = "Pictures Layer"
         gameLayer.name = "Game Layer"
         gameLayer.addChild(picturesLayer)
+        
     }
     
     // Add the nine starting sprites
@@ -76,6 +78,13 @@ class GameScene: SKScene {
         let (success, column, row) = convertPoint(location)
         
         if success {
+            
+            if Sounds.sharedInstance.selectSound.playing {
+                Sounds.sharedInstance.selectSound.stop()
+                Sounds.sharedInstance.selectSound.currentTime = 0.0
+            }
+            Sounds.sharedInstance.selectSound.play()
+            
             if let picture = grid.pictureAtColumn(column, row: row) {
                 if picture.selected {
                     
@@ -149,6 +158,9 @@ class GameScene: SKScene {
     
     // Animate sprites falling down after a valid group has been selected
     func animateFallingPictures(columns: [[PicSprite]], completion: () -> ()) {
+        
+        // dropSound.play()
+        
         var longestDuration: NSTimeInterval = 0
         for array in columns {
             for (idx, picture) in enumerate(array) {
