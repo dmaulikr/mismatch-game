@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var groupsFoundLabel: UILabel!
     @IBOutlet weak var gameOverView: EndOfGameView!
     
-    var timer: SKAction!
+    var runTimer: SKAction!
     var counter: Int = 120
     var groupsFound: Int = 0
     
@@ -38,6 +38,10 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseGame", name: "pauseGame", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resumeGame", name: "resumeGame", object: nil)
         
         skView = view as! SKView
         skView.multipleTouchEnabled = false
@@ -106,12 +110,12 @@ class GameViewController: UIViewController {
         groupsFoundLabel.text = ""
         groupsFound = 0
         
-        timer = SKAction.waitForDuration(1.0)
+        let timer = SKAction.waitForDuration(1.0)
         var callUpdateCounter = SKAction.runBlock {
             self.updateCounter()
         }
         
-        let runTimer = SKAction.repeatAction(SKAction.sequence([timer, callUpdateCounter]), count: counter)
+        runTimer = SKAction.repeatAction(SKAction.sequence([timer, callUpdateCounter]), count: counter)
         
         scene.runAction(runTimer, withKey: "runTimer")
         
@@ -131,6 +135,7 @@ class GameViewController: UIViewController {
     func updateCounter() {
         
         if counter == 120 {
+            Sounds.sharedInstance.backgroundMusic.currentTime = 0
             Sounds.sharedInstance.backgroundMusic.play()
         }
         
@@ -262,6 +267,18 @@ class GameViewController: UIViewController {
                 println("New score submitted to game center")
             }
         })
+    }
+    
+    func pauseGame() {
+        println("pausing game")
+        scene.removeActionForKey("runTimer")
+        Sounds.sharedInstance.backgroundMusic.pause()
+    }
+    
+    func resumeGame() {
+        println("resuming game")
+        scene.runAction(runTimer, withKey: "runTimer")
+        Sounds.sharedInstance.backgroundMusic.play()
     }
     
 }
