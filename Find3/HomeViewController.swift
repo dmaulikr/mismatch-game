@@ -82,57 +82,73 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         view.layer.borderColor = colors[indexPath.row % 6].CGColor
         view.layer.borderWidth = 6.0
-        view.alpha = 1.0
+        
         
         if indexPath.row == 0 {
+            
+            // Tutorial Level
+            
+            view.alpha = 1.0
             levelLabel.text = "Tutorial"
+            
             star1.hidden = true
             star2.hidden = true
             star3.hidden = true
-            scoreLabel.text = ""
-        } else {
-            levelLabel.text = "Level \(indexPath.row)"
-        }
-        
-        if highScores.count >= indexPath.row + 1 && indexPath.row != 0 {
             
-            let score = highScores[indexPath.row]
-            scoreLabel.text = "High Score: \(score)"
+            scoreLabel.text = ""
+            
+        } else if indexPath.row + 1 <= highScores.count {
+            
+            // Levels that have been played
+            
+            view.alpha = 1.0
+            levelLabel.text = "Level \(indexPath.row)"
             
             star1.hidden = false
             star2.hidden = false
             star3.hidden = false
             
-            switch score {
-            case 0..<oneStarScore:
-                star1.image = UIImage(named: "star-empty")
-                star2.image = UIImage(named: "star-empty")
-                star3.image = UIImage(named: "star-empty")
-            case oneStarScore..<twoStarScore:
-                star1.image = UIImage(named: "star")
-                star2.image = UIImage(named: "star-empty")
-                star3.image = UIImage(named: "star-empty")
-            case twoStarScore..<threeStarScore:
-                star1.image = UIImage(named: "star")
-                star2.image = UIImage(named: "star")
-                star3.image = UIImage(named: "star-empty")
-            default:
-                star1.image = UIImage(named: "star")
-                star2.image = UIImage(named: "star")
-                star3.image = UIImage(named: "star")
-            }
-        } else if indexPath.row > unlockedLevels {
+            formatStars(highScores[indexPath.row], stars: [star1, star2, star3])
             
-            view.alpha = 0.5
+            scoreLabel.text = "High Score: \(highScores[indexPath.row])"
             
-            scoreLabel.text = ""
+        } else {
+            
+            // Levels that have NOT been played
+            
+            view.alpha = indexPath.row > unlockedLevels ? 0.5 : 1.0
+            
+            levelLabel.text = "Level \(indexPath.row)"
             
             star1.hidden = true
             star2.hidden = true
             star3.hidden = true
+            
+            scoreLabel.text = ""
         }
         
         return cell
+    }
+    
+    func formatStars(score: Int, stars: [UIImageView]) {
+        switch score {
+        case 0..<oneStarScore:
+            stars[0].image = UIImage(named: "star-empty")
+            stars[1].image = UIImage(named: "star-empty")
+            stars[2].image = UIImage(named: "star-empty")
+        case oneStarScore..<twoStarScore:
+            stars[0].image = UIImage(named: "star")
+            stars[1].image = UIImage(named: "star-empty")
+            stars[2].image = UIImage(named: "star-empty")
+        case twoStarScore..<threeStarScore:
+            stars[0].image = UIImage(named: "star")
+            stars[1].image = UIImage(named: "star")
+            stars[2].image = UIImage(named: "star-empty")
+        default:
+            stars[0].image = UIImage(named: "star")
+            stars[1].image = UIImage(named: "star")
+            stars[2].image = UIImage(named: "star")
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
