@@ -36,6 +36,7 @@
 		089D4CE21B3489FD005626E0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE11B3489FD005626E0 /* ExampleViewController.swift */; };
 		089D4CE41B34A33C005626E0 /* FadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE31B34A33C005626E0 /* FadeSegue.swift */; };
 		089D4CE61B34E7F3005626E0 /* LastTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */; };
+		08A7CBD11B4065340016BC81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A7CBD01B4065340016BC81 /* LaunchScreen.xib */; };
 		08B0DC401B1E186D00442AAC /* PicSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0DC3F1B1E186D00442AAC /* PicSprite.swift */; };
 		08C99CD81B015D6D00C1965E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CD71B015D6D00C1965E /* AppDelegate.swift */; };
 		08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08C99CD91B015D6D00C1965E /* GameScene.sks */; };
@@ -100,6 +101,7 @@
 		089D4CE11B3489FD005626E0 /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		089D4CE31B34A33C005626E0 /* FadeSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeSegue.swift; sourceTree = "<group>"; };
 		089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTutorialViewController.swift; sourceTree = "<group>"; };
+		08A7CBD01B4065340016BC81 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../LaunchScreen.xib; sourceTree = "<group>"; };
 		08B0DC3F1B1E186D00442AAC /* PicSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicSprite.swift; sourceTree = "<group>"; };
 		08C99CD21B015D6D00C1965E /* Find3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Find3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C99CD61B015D6D00C1965E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				0847B3651B07EEFE009D9580 /* View */,
 				0847B3631B07EEA6009D9580 /* Controller */,
 				08C99CDF1B015D6D00C1965E /* Main.storyboard */,
+				08A7CBD01B4065340016BC81 /* LaunchScreen.xib */,
 				08C99CE21B015D6D00C1965E /* Images.xcassets */,
 				0866A2611B32703B008BAD0A /* Level1.atlas */,
 				0866A2621B32703B008BAD0A /* Level1Glow.atlas */,
@@ -368,6 +371,7 @@
 				08D6BF401B3A1A4200FC113A /* Drop 3.wav in Resources */,
 				08D6BF461B3A1A6100FC113A /* Wrong.wav in Resources */,
 				08CD12C41B214DB5007FBC55 /* splashScreen.xib in Resources */,
+				08A7CBD11B4065340016BC81 /* LaunchScreen.xib in Resources */,
 				0866A2731B32703B008BAD0A /* Level1.atlas in Resources */,
 				0866A2771B32703B008BAD0A /* Level3.atlas in Resources */,
 				08D6BF421B3A1A4A00FC113A /* Tap - select.wav in Resources */,
@@ -546,6 +550,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Find3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -561,6 +566,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Find3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

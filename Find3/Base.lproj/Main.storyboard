@@ -95,6 +95,9 @@
                                 <state key="normal" title="Leaderboard">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showLeaderboard" destination="G6n-Dc-N2e" eventType="touchUpInside" id="1UV-zX-XuQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I54-Ed-FwU">
                                 <rect key="frame" x="527" y="28" width="57" height="30"/>

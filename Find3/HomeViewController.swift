@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import GameKit
 
 enum tags: Int {
     case levelLabel = 100
@@ -29,7 +30,7 @@ let oneStarScore = 10
 let twoStarScore = 15
 let threeStarScore = 20
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GKGameCenterControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -88,11 +89,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             star1.hidden = true
             star2.hidden = true
             star3.hidden = true
+            scoreLabel.text = ""
         } else {
             levelLabel.text = "Level \(indexPath.row)"
         }
-        
-        scoreLabel.text = ""
         
         if highScores.count >= indexPath.row + 1 && indexPath.row != 0 {
             
@@ -125,6 +125,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             view.alpha = 0.5
             
+            scoreLabel.text = ""
+            
             star1.hidden = true
             star2.hidden = true
             star3.hidden = true
@@ -154,4 +156,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func showLeaderboard() {
+        var gcViewController = GKGameCenterViewController()
+        gcViewController.gameCenterDelegate = self
+        gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcViewController.leaderboardIdentifier = "mismatch-leaderboard"
+        
+        self.presentViewController(gcViewController, animated: true, completion: nil)
+        
+    }
+    
 }

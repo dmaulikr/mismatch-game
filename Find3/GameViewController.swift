@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import SpriteKit
+import GameKit
 
 class GameViewController: UIViewController {
     var level: Int!
@@ -200,7 +201,7 @@ class GameViewController: UIViewController {
         groupsFoundLabel.text = String(groupsFound)
     }
     
-    /* Returns two bools - first indicates if new high score, second indicates if next level unlocked */
+    /* Returns the previous high score */
     func updateHighScore() -> Int {
         let defaults = NSUserDefaults.standardUserDefaults()
         var prevHighScore = 0
@@ -227,11 +228,39 @@ class GameViewController: UIViewController {
         gameOverView.setEndOfGameStars(groupsFound)
         gameOverView.hidden = false
         
+        updateGameCenter()
+        
         UIView.animateWithDuration(0.25, animations: {
             self.groupsFoundLabel.alpha = 0.5
             self.timerLabel.alpha = 0.5
             self.scene.alpha = 0.5
             self.gameOverView.alpha = 1.0
+        })
+    }
+    
+    func updateGameCenter() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var overallScore = 0
+        if var highScoreArray = defaults.arrayForKey("highScores") as? [Int] {
+            for highScore in highScoreArray {
+                overallScore += highScore
+            }
+            overallScore -= highScoreArray[0]
+        }
+        
+        let leaderboardID = "mismatch_leaderboard"
+        var gkScore = GKScore(leaderboardIdentifier: leaderboardID)
+        gkScore.value = Int64(overallScore)
+        
+        let localPlayer = GKLocalPlayer.localPlayer()
+        
+        GKScore.reportScores([gkScore], withCompletionHandler: { (error: NSError!) -> Void in
+            if error != nil {
+                println(error.localizedDescription)
+            } else {
+                println("New score submitted to game center")
+            }
         })
     }
     

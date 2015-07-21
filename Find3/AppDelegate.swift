@@ -8,13 +8,15 @@
 
 import UIKit
 import AVFoundation
+import GameKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var splashScreen: UIView!
-
+    var gameCenterEnabled = Bool()
+    var gameCenterDefaultLeaderboard = String()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -34,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setPreferenceDefaults()
         
+        self.authenticateLocalPlayer()
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
         
         return true
@@ -55,6 +58,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var defaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue("Susan Stevens", forKey: "SettingsCreatedBy")
         defaults.synchronize()
+    }
+    
+    // Authenticate player for Game Center
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = { (viewController, error) -> Void in
+            if (viewController != nil) {
+                self.window?.rootViewController?.presentViewController(viewController, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                self.gameCenterEnabled = true
+                
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardID: String!, error: NSError!) -> Void in
+                    if error != nil {
+                        println(error)
+                    } else {
+                        self.gameCenterDefaultLeaderboard = leaderboardID
+                    }
+                })
+    
+            } else {
+                self.gameCenterEnabled = false
+                println("Local player could not be authenticated, disabling game center")
+                println(error)
+            }
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
