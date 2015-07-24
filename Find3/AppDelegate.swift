@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        println("application did finish launching")
+        
         if ((NSUserDefaults.standardUserDefaults().objectForKey("FirstLaunchDate")) == nil) {
             let date = NSDate()
             NSUserDefaults.standardUserDefaults().setObject(date, forKey: "FirstLaunchDate")
@@ -62,10 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Authenticate player for Game Center
     func authenticateLocalPlayer() {
+        
+        println("authenticating player for game center")
+        
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         
         localPlayer.authenticateHandler = { (viewController, error) -> Void in
-            if (viewController != nil) {
+            if (viewController != nil && self.window?.rootViewController?.presentedViewController == nil) {
                 self.window?.rootViewController?.presentViewController(viewController, animated: true, completion: nil)
             } else if (localPlayer.authenticated) {
                 self.gameCenterEnabled = true
@@ -85,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

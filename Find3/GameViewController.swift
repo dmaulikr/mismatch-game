@@ -71,6 +71,8 @@ class GameViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Sounds.sharedInstance.backgroundMusic.stop()
         
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
         if segue.identifier == "unwindToHomeSegue" || segue.identifier == "unwindToHomeFromButton" {
             println("remove scene from parent")
             

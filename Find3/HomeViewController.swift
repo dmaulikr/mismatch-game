@@ -131,19 +131,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func formatStars(score: Int, stars: [UIImageView]) {
+        
         switch score {
+            
         case 0..<oneStarScore:
             stars[0].image = UIImage(named: "star-empty")
             stars[1].image = UIImage(named: "star-empty")
             stars[2].image = UIImage(named: "star-empty")
+            
         case oneStarScore..<twoStarScore:
             stars[0].image = UIImage(named: "star")
             stars[1].image = UIImage(named: "star-empty")
             stars[2].image = UIImage(named: "star-empty")
+            
         case twoStarScore..<threeStarScore:
             stars[0].image = UIImage(named: "star")
             stars[1].image = UIImage(named: "star")
             stars[2].image = UIImage(named: "star-empty")
+            
         default:
             stars[0].image = UIImage(named: "star")
             stars[1].image = UIImage(named: "star")
