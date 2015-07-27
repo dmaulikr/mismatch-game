@@ -20,19 +20,21 @@
 		0866A2781B32703B008BAD0A /* Level3Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2661B32703B008BAD0A /* Level3Glow.atlas */; };
 		0866A2791B32703B008BAD0A /* Level4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2671B32703B008BAD0A /* Level4.atlas */; };
 		0866A27A1B32703B008BAD0A /* Level4Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2681B32703B008BAD0A /* Level4Glow.atlas */; };
-		0866A27B1B32703B008BAD0A /* Level5.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2691B32703B008BAD0A /* Level5.atlas */; };
-		0866A27C1B32703B008BAD0A /* Level5Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26A1B32703B008BAD0A /* Level5Glow.atlas */; };
-		0866A27D1B32703B008BAD0A /* Level6.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26B1B32703B008BAD0A /* Level6.atlas */; };
-		0866A27E1B32703B008BAD0A /* Level6Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26C1B32703B008BAD0A /* Level6Glow.atlas */; };
-		0866A27F1B32703B008BAD0A /* Level7.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26D1B32703B008BAD0A /* Level7.atlas */; };
-		0866A2801B32703B008BAD0A /* Level7Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26E1B32703B008BAD0A /* Level7Glow.atlas */; };
 		0866A2811B32703B008BAD0A /* Level8.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26F1B32703B008BAD0A /* Level8.atlas */; };
 		0866A2821B32703B008BAD0A /* Level8Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2701B32703B008BAD0A /* Level8Glow.atlas */; };
-		0866A2831B32703B008BAD0A /* Level9.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2711B32703B008BAD0A /* Level9.atlas */; };
-		0866A2841B32703B008BAD0A /* Level9Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2721B32703B008BAD0A /* Level9Glow.atlas */; };
 		086D9A981B04094B00395DD5 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A971B04094B00395DD5 /* Array2D.swift */; };
 		086D9A9E1B04106700395DD5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A9D1B04106700395DD5 /* Grid.swift */; };
 		086D9AA01B04120B00395DD5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A9F1B04120B00395DD5 /* Extensions.swift */; };
+		0871DE841B6693B700649F94 /* Level5.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE831B6693B700649F94 /* Level5.atlas */; };
+		0871DE861B6693C400649F94 /* Level5Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE851B6693C400649F94 /* Level5Glow.atlas */; };
+		0871DE881B66944400649F94 /* Level6.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE871B66944400649F94 /* Level6.atlas */; };
+		0871DE8A1B66945400649F94 /* Level6Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE891B66945400649F94 /* Level6Glow.atlas */; };
+		0871DE8C1B66948100649F94 /* Level7.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8B1B66948100649F94 /* Level7.atlas */; };
+		0871DE8E1B66949000649F94 /* Level7Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8D1B66949000649F94 /* Level7Glow.atlas */; };
+		0871DE931B66949D00649F94 /* Level9.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8F1B66949D00649F94 /* Level9.atlas */; };
+		0871DE941B66949D00649F94 /* Level9Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE901B66949D00649F94 /* Level9Glow.atlas */; };
+		0871DE951B66949D00649F94 /* Level10.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE911B66949D00649F94 /* Level10.atlas */; };
+		0871DE961B66949D00649F94 /* Level10Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE921B66949D00649F94 /* Level10Glow.atlas */; };
 		089D4CE21B3489FD005626E0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE11B3489FD005626E0 /* ExampleViewController.swift */; };
 		089D4CE41B34A33C005626E0 /* FadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE31B34A33C005626E0 /* FadeSegue.swift */; };
 		089D4CE61B34E7F3005626E0 /* LastTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */; };
@@ -85,19 +87,21 @@
 		0866A2661B32703B008BAD0A /* Level3Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level3Glow.atlas; sourceTree = "<group>"; };
 		0866A2671B32703B008BAD0A /* Level4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level4.atlas; sourceTree = "<group>"; };
 		0866A2681B32703B008BAD0A /* Level4Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level4Glow.atlas; sourceTree = "<group>"; };
-		0866A2691B32703B008BAD0A /* Level5.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5.atlas; sourceTree = "<group>"; };
-		0866A26A1B32703B008BAD0A /* Level5Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5Glow.atlas; sourceTree = "<group>"; };
-		0866A26B1B32703B008BAD0A /* Level6.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6.atlas; sourceTree = "<group>"; };
-		0866A26C1B32703B008BAD0A /* Level6Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6Glow.atlas; sourceTree = "<group>"; };
-		0866A26D1B32703B008BAD0A /* Level7.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7.atlas; sourceTree = "<group>"; };
-		0866A26E1B32703B008BAD0A /* Level7Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7Glow.atlas; sourceTree = "<group>"; };
 		0866A26F1B32703B008BAD0A /* Level8.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level8.atlas; sourceTree = "<group>"; };
 		0866A2701B32703B008BAD0A /* Level8Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level8Glow.atlas; sourceTree = "<group>"; };
-		0866A2711B32703B008BAD0A /* Level9.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9.atlas; sourceTree = "<group>"; };
-		0866A2721B32703B008BAD0A /* Level9Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9Glow.atlas; sourceTree = "<group>"; };
 		086D9A971B04094B00395DD5 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		086D9A9D1B04106700395DD5 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../Grid.swift; sourceTree = "<group>"; };
 		086D9A9F1B04120B00395DD5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0871DE831B6693B700649F94 /* Level5.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5.atlas; sourceTree = "<group>"; };
+		0871DE851B6693C400649F94 /* Level5Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5Glow.atlas; sourceTree = "<group>"; };
+		0871DE871B66944400649F94 /* Level6.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6.atlas; sourceTree = "<group>"; };
+		0871DE891B66945400649F94 /* Level6Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6Glow.atlas; sourceTree = "<group>"; };
+		0871DE8B1B66948100649F94 /* Level7.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7.atlas; sourceTree = "<group>"; };
+		0871DE8D1B66949000649F94 /* Level7Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7Glow.atlas; sourceTree = "<group>"; };
+		0871DE8F1B66949D00649F94 /* Level9.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9.atlas; sourceTree = "<group>"; };
+		0871DE901B66949D00649F94 /* Level9Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9Glow.atlas; sourceTree = "<group>"; };
+		0871DE911B66949D00649F94 /* Level10.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level10.atlas; sourceTree = "<group>"; };
+		0871DE921B66949D00649F94 /* Level10Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level10Glow.atlas; sourceTree = "<group>"; };
 		089D4CE11B3489FD005626E0 /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		089D4CE31B34A33C005626E0 /* FadeSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeSegue.swift; sourceTree = "<group>"; };
 		089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTutorialViewController.swift; sourceTree = "<group>"; };
@@ -227,16 +231,18 @@
 				0866A2661B32703B008BAD0A /* Level3Glow.atlas */,
 				0866A2671B32703B008BAD0A /* Level4.atlas */,
 				0866A2681B32703B008BAD0A /* Level4Glow.atlas */,
-				0866A2691B32703B008BAD0A /* Level5.atlas */,
-				0866A26A1B32703B008BAD0A /* Level5Glow.atlas */,
-				0866A26B1B32703B008BAD0A /* Level6.atlas */,
-				0866A26C1B32703B008BAD0A /* Level6Glow.atlas */,
-				0866A26D1B32703B008BAD0A /* Level7.atlas */,
-				0866A26E1B32703B008BAD0A /* Level7Glow.atlas */,
+				0871DE831B6693B700649F94 /* Level5.atlas */,
+				0871DE851B6693C400649F94 /* Level5Glow.atlas */,
+				0871DE871B66944400649F94 /* Level6.atlas */,
+				0871DE891B66945400649F94 /* Level6Glow.atlas */,
+				0871DE8B1B66948100649F94 /* Level7.atlas */,
+				0871DE8D1B66949000649F94 /* Level7Glow.atlas */,
 				0866A26F1B32703B008BAD0A /* Level8.atlas */,
 				0866A2701B32703B008BAD0A /* Level8Glow.atlas */,
-				0866A2711B32703B008BAD0A /* Level9.atlas */,
-				0866A2721B32703B008BAD0A /* Level9Glow.atlas */,
+				0871DE8F1B66949D00649F94 /* Level9.atlas */,
+				0871DE901B66949D00649F94 /* Level9Glow.atlas */,
+				0871DE911B66949D00649F94 /* Level10.atlas */,
+				0871DE921B66949D00649F94 /* Level10Glow.atlas */,
 				08C99CD51B015D6D00C1965E /* Supporting Files */,
 			);
 			path = Find3;
@@ -362,36 +368,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				08D6BF361B3A112200FC113A /* main title alt.mp3 in Resources */,
-				0866A27B1B32703B008BAD0A /* Level5.atlas in Resources */,
 				08D6BF441B3A1A5200FC113A /* Wrong 2.wav in Resources */,
 				0866A2821B32703B008BAD0A /* Level8Glow.atlas in Resources */,
-				0866A2831B32703B008BAD0A /* Level9.atlas in Resources */,
 				08C99CE31B015D6D00C1965E /* Images.xcassets in Resources */,
+				0871DE941B66949D00649F94 /* Level9Glow.atlas in Resources */,
 				0866A2751B32703B008BAD0A /* Level2.atlas in Resources */,
 				08D6BF401B3A1A4200FC113A /* Drop 3.wav in Resources */,
 				08D6BF461B3A1A6100FC113A /* Wrong.wav in Resources */,
 				08CD12C41B214DB5007FBC55 /* splashScreen.xib in Resources */,
+				0871DE951B66949D00649F94 /* Level10.atlas in Resources */,
 				08A7CBD11B4065340016BC81 /* LaunchScreen.xib in Resources */,
 				0866A2731B32703B008BAD0A /* Level1.atlas in Resources */,
+				0871DE8C1B66948100649F94 /* Level7.atlas in Resources */,
 				0866A2771B32703B008BAD0A /* Level3.atlas in Resources */,
+				0871DE8A1B66945400649F94 /* Level6Glow.atlas in Resources */,
 				08D6BF421B3A1A4A00FC113A /* Tap - select.wav in Resources */,
+				0871DE931B66949D00649F94 /* Level9.atlas in Resources */,
 				0866A27A1B32703B008BAD0A /* Level4Glow.atlas in Resources */,
-				0866A27C1B32703B008BAD0A /* Level5Glow.atlas in Resources */,
+				0871DE841B6693B700649F94 /* Level5.atlas in Resources */,
 				08D6BF381B3A11B100FC113A /* Main Title - reg.mp3 in Resources */,
 				0866A2741B32703B008BAD0A /* Level1Glow.atlas in Resources */,
 				08CD12C61B21507F007FBC55 /* Settings.bundle in Resources */,
 				0866A2781B32703B008BAD0A /* Level3Glow.atlas in Resources */,
+				0871DE8E1B66949000649F94 /* Level7Glow.atlas in Resources */,
 				08D6BF3E1B3A1A3A00FC113A /* Drop 2.wav in Resources */,
+				0871DE881B66944400649F94 /* Level6.atlas in Resources */,
 				08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */,
 				08C99CE11B015D6D00C1965E /* Main.storyboard in Resources */,
-				0866A27D1B32703B008BAD0A /* Level6.atlas in Resources */,
-				0866A27F1B32703B008BAD0A /* Level7.atlas in Resources */,
-				0866A27E1B32703B008BAD0A /* Level6Glow.atlas in Resources */,
+				0871DE961B66949D00649F94 /* Level10Glow.atlas in Resources */,
 				0866A2761B32703B008BAD0A /* Level2Glow.atlas in Resources */,
-				0866A2801B32703B008BAD0A /* Level7Glow.atlas in Resources */,
+				0871DE861B6693C400649F94 /* Level5Glow.atlas in Resources */,
 				0866A2791B32703B008BAD0A /* Level4.atlas in Resources */,
 				0866A2811B32703B008BAD0A /* Level8.atlas in Resources */,
-				0866A2841B32703B008BAD0A /* Level9Glow.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

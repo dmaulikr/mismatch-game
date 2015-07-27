@@ -21,10 +21,12 @@ class PicSprite: SKSpriteNode, Hashable {
     let property3: Int
     
     let imageNum: Int
-    let imageName: String
+    var imageName: String
     
     var column: Int?
     var row: Int?
+    
+    var action: SKAction?
     
     init(prop1: Int, prop2: Int, prop3: Int, imageNum: Int, level: Int) {
         self.property1 = prop1
@@ -33,10 +35,8 @@ class PicSprite: SKSpriteNode, Hashable {
         
         self.imageNum = imageNum
         
-        if level == 5 || level == 9 {
+        if level == 5 || level == 9 || level == 10 {
             self.imageName = "level\(level)" + "-" + "\(imageNum % 9)"
-        } else if level == 10 {
-            self.imageName = "level1-\(imageNum)"
         } else {
             self.imageName = "level\(level)" + "-" + "\(imageNum)"
         }
@@ -44,20 +44,7 @@ class PicSprite: SKSpriteNode, Hashable {
         let texture = SKTexture(imageNamed: imageName)
         super.init(texture: texture, color: nil, size: texture.size())
         
-        if level == 5 {
-            let rotateAction = SKAction.rotateByAngle(0.7853981634, duration: 0.5)
-            
-            if property1 == 0 {
-                self.runAction(SKAction.repeatActionForever(SKAction.sequence([rotateAction])))
-            }
-            
-            let largerAction = SKAction.resizeByWidth(15, height: 15, duration: 1.0)
-            let smallerAction = SKAction.resizeByWidth(-15, height: -15, duration: 1.0)
-            
-            if property1 == 1 {
-                self.runAction(SKAction.repeatActionForever(SKAction.sequence([largerAction, smallerAction])))
-            }
-        }
+        self.addAnimations(level)
         
         self.userInteractionEnabled = false
     }
@@ -126,6 +113,31 @@ class PicSprite: SKSpriteNode, Hashable {
     
     // MARK: Animations
     
+    func addAnimations(level: Int) {
+        
+        if level == 5 {
+            
+            let spinAction = SKAction.rotateByAngle(0.7853981634, duration: 0.5)
+            let glideAction = SKAction.moveByX(0.0, y: 10.0, duration: 0.5)
+            
+            if property1 == 0 {
+                runAction(SKAction.repeatActionForever(spinAction))
+            } else if property1 == 1 {
+                runAction(SKAction.repeatActionForever(SKAction.sequence([glideAction, glideAction.reversedAction()])))
+            }
+            
+        } else if level == 9 {
+            
+        } else if level == 10 {
+            
+        } else {
+            
+            
+            
+            removeAllActions()
+        }
+    }
+    
     // Called when user selects a sprite
     func selectSprite() {
         let texture = SKTexture(imageNamed: "\(imageName)-glow")
@@ -144,6 +156,8 @@ class PicSprite: SKSpriteNode, Hashable {
     
     // Animations for removing a sprite from the screen
     func removeWithActions() {
+        
+        self.removeAllActions()
         
         let width = self.frame.width
         let height = self.frame.height

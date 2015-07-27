@@ -23,14 +23,20 @@ class Grid {
     
     init(level: Int, layer: SKNode) {
         
-        if level == -1 {
+        switch level {
+        case -1:
             allPictures = PicSprite.createExamplePics()
-        } else if level == 0 {
+        case 0:
             allPictures = PicSprite.createTutorialPics()
-        } else {
+        default:
             allPictures = PicSprite.createAll(level)
-            allPictures.shuffle()
         }
+        
+    }
+    
+    func selectInitialPictures() {
+        
+        allPictures.shuffle()
         
         do {
             clearOnscreenPictures()
@@ -50,6 +56,23 @@ class Grid {
             }
             detectValidGroups()
         } while validGroups.isEmpty
+    }
+    
+    func setLevel(level: Int) {
+        for picSprite in allPictures {
+            
+            picSprite.zRotation = 0.0
+            
+            if level == 5 || level == 9 || level == 10 {
+                picSprite.imageName = "level\(level)" + "-" + "\(picSprite.imageNum % 9)"
+                picSprite.addAnimations(level)
+            } else {
+                picSprite.imageName = "level\(level)" + "-" + "\(picSprite.imageNum)"
+                picSprite.removeAllActions()
+            }
+
+            picSprite.deselectSprite()
+        }
     }
     
     // Mark any pictures currently onscreen as being offscreen

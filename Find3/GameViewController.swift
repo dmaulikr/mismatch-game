@@ -39,10 +39,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseGame", name: "pauseGame", object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resumeGame", name: "resumeGame", object: nil)
-        
         skView = view as! SKView
         skView.multipleTouchEnabled = false
 //        skView.showsFPS = true
@@ -56,56 +52,47 @@ class GameViewController: UIViewController {
         gameOverView.layer.cornerRadius = 10.0
         gameOverView.layer.borderColor = lightBlue.CGColor
         gameOverView.layer.borderWidth = 1.0
+        
+        skView.presentScene(scene)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let firstSprite = scene.grid.allPictures[0]
+        if firstSprite.imageName != "level\(level)" + "-" + "\(firstSprite.imageNum)" {
+            scene.grid.setLevel(level)
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseGame", name: "pauseGame", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resumeGame", name: "resumeGame", object: nil)
+        
         gameOverView.alpha = 0.0
         gameOverView.hidden = true
         
-        skView.presentScene(scene)
+        scene.userInteractionEnabled = true
+        scene.alpha = 1.0
+        groupsFoundLabel.alpha = 1.0
+        timerLabel.alpha = 1.0
         
         beginGame()
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        skView.presentScene(nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Sounds.sharedInstance.backgroundMusic.stop()
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        scene.removeActionForKey("runTimer")
         
-        if segue.identifier == "unwindToHomeSegue" || segue.identifier == "unwindToHomeFromButton" {
-            println("remove scene from parent")
-            
-            scene.removeActionForKey("runTimer")
-            scene.removeActionForKey("runRemovePicTimer")
-            
-            for picture in scene.grid.allPictures {
-                picture.removeFromParent()
-            }
-            
-            scene.grid.allPictures.removeAll()
-            scene.grid.validGroups.removeAll()
-            scene.selectedPics.removeAll()
-            
-            for row in 0..<3 {
-                for col in 0..<3 {
-                    scene.grid.pictures[col, row] = nil
-                }
-            }
-            
-            let gameLayer = scene.childNodeWithName("Game Layer")
-            let pictureLayer = gameLayer?.childNodeWithName("Pictures Layer")
-            
-            pictureLayer?.removeFromParent()
-            gameLayer?.removeFromParent()
-            scene.removeFromParent()
-        }
+        scene.removeSpritesFromScene(scene.grid.pictures)
     }
     
     // Set up the game
     func beginGame() {
+        
+        scene.grid.selectInitialPictures()
+        
         let pictures = scene.grid.pictures
-        scene.addSpritesForPictures(pictures)
+        scene.addSpritesToScene(pictures)
         
         timerLabel.text = "2:00"
         counter = 120
@@ -120,17 +107,6 @@ class GameViewController: UIViewController {
         runTimer = SKAction.repeatAction(SKAction.sequence([timer, callUpdateCounter]), count: counter)
         
         scene.runAction(runTimer, withKey: "runTimer")
-        
-        if level == 10 {
-            let removePicTimer = SKAction.waitForDuration(4.0, withRange: 3.0)
-            let callRemoveAtRandom = SKAction.runBlock {
-                self.removeAtRandom()
-            }
-            
-            let runRemovePicTimer = SKAction.repeatActionForever(SKAction.sequence([removePicTimer, callRemoveAtRandom]))
-            
-            self.scene.runAction(runRemovePicTimer, withKey: "runRemovePicTimer")
-        }
     }
     
     // Decrement the counter after each second passes; display alert after 2 minutes
@@ -151,24 +127,6 @@ class GameViewController: UIViewController {
             self.scene.removeActionForKey("runRemovePicTimer")
             let prevHighScore = updateHighScore()
             presentEndOfGameAlert(prevHighScore)
-        }
-    }
-    
-    // Used in Level 5 to select a random PicSprite to remove
-    func removeAtRandom() {
-        let col = Int(arc4random_uniform(3))
-        let row = Int(arc4random_uniform(3))
-        
-        scene.removePicAtColumn(col, row: row) {
-            
-            let columns = self.scene.grid.fillHoles()
-            
-            self.scene.animateFallingPictures(columns) {
-                let columns = self.scene.grid.addMorePictures()
-                self.scene.animateNewPictures(columns) {
-                    
-                }
-            }
         }
     }
     

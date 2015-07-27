@@ -133,7 +133,7 @@
         <!--Page Data Source View Controller-->
         <scene sceneID="NPi-Ez-ofV">
             <objects>
-                <viewController id="CKZ-wE-Sra" customClass="PageDataSourceViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageDataSourceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CKZ-wE-Sra" customClass="PageDataSourceViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OM1-WQ-Cc3"/>
                         <viewControllerLayoutGuide type="bottom" id="Jp9-az-9qu"/>
@@ -183,7 +183,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="GameViewController" storyboardIdentifier="GameViewController" id="BV1-FR-VrT" customClass="GameViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="maK-i9-Uhn"/>
                         <viewControllerLayoutGuide type="bottom" id="khH-OB-KpY"/>
@@ -854,7 +854,7 @@
         <!--Page View Controller-->
         <scene sceneID="Rbt-gI-BgM">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qz5-18-Bap" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Qz5-18-Bap" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efs-Tm-yy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="368" y="1009"/>

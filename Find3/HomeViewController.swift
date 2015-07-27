@@ -39,9 +39,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let colors = [lightBlue, green, purple, pink, orange, darkBlue]
     
+    var tutorialPageVC: PageDataSourceViewController?
+    var gameVC: GameViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorColor = UIColor.clearColor()
+        let storyboard = self.storyboard
+        tutorialPageVC = storyboard?.instantiateViewControllerWithIdentifier("PageDataSourceVC") as? PageDataSourceViewController
+        gameVC = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as? GameViewController
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -158,9 +164,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
-            performSegueWithIdentifier("TutorialSegue", sender: self)
+            
+            self.presentViewController(tutorialPageVC!, animated: true, completion: nil)
+            
         } else if indexPath.row <= unlockedLevels {
-            performSegueWithIdentifier("LevelSegue", sender: self)
+            
+            gameVC!.level = indexPath.row
+            self.presentViewController(gameVC!, animated: true, completion: nil)
+            
+            // performSegueWithIdentifier("LevelSegue", sender: self)
+            
         }
     }
     

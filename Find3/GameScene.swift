@@ -45,13 +45,23 @@ class GameScene: SKScene {
     }
     
     // Add the nine starting sprites
-    func addSpritesForPictures(pictures: Array2D<PicSprite>) {
+    func addSpritesToScene(pictures: Array2D<PicSprite>) {
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
                 if let picture = pictures[column, row] {
                     picture.position = pointForColumn(column, row: row)
                     picturesLayer.addChild(picture)
                     println(picture.imageName)
+                }
+            }
+        }
+    }
+    
+    func removeSpritesFromScene(pictures: Array2D<PicSprite>) {
+        for row in 0..<NumRows {
+            for column in 0..<NumColumns {
+                if let picture = pictures[column, row] {
+                    picture.removeFromParent()
                 }
             }
         }
@@ -134,32 +144,8 @@ class GameScene: SKScene {
         selectedPics.removeAll(keepCapacity: true)
     }
     
-    // Remove one PicSprite at given column and row (used in Level 5 for random sprite removal)
-    func removePicAtColumn(col: Int, row: Int, completion: () -> ()) {
-        
-        if let picture = grid.pictureAtColumn(col, row: row) {
-            
-            grid.pictures[col, row] = nil
-            
-            picture.removeWithActions()
-            
-            println("random picture removed")
-            
-            if let index = find(selectedPics, picture) {
-                selectedPics.removeAtIndex(index)
-            }
-            
-            picture.onscreen = false
-            picture.selected = false
-            runAction(SKAction.waitForDuration(0.6), completion: completion)
-            
-        }
-    }
-    
     // Animate sprites falling down after a valid group has been selected
     func animateFallingPictures(columns: [[PicSprite]], completion: () -> ()) {
-        
-        // dropSound.play()
         
         var longestDuration: NSTimeInterval = 0
         for array in columns {
