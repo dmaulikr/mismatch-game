@@ -17,36 +17,23 @@ class EndOfGameView: UIView {
     @IBOutlet weak var gameOverTitle: UILabel!
     @IBOutlet weak var gameOverMsg: UILabel!
     
-    let titles = ["Remarkable!", "Outstanding!", "Impressive!"]
+    var titles: [String] = []
     
     func setEndOfGameText(groupsFound: Int, prevHighScore: Int) {
         
         if groupsFound >= oneStarScore && prevHighScore < oneStarScore {
             gameOverTitle.text = "Congrats!"
             gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
-        } else if groupsFound < oneStarScore {
-            
-            switch groupsFound {
-            case 0:
-                gameOverTitle.text = "Better luck next time!"
-                gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-            case 1:
-                gameOverTitle.text = "Not bad!"
-                gameOverMsg.text = "You found \(groupsFound) (mis)match."
-            default:
-                gameOverTitle.text = titles[Int(arc4random_uniform(UInt32(titles.count)))]
-                gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-            }
-            
-            if prevHighScore < oneStarScore {
-                gameOverMsg.text! += " You need at least \(oneStarScore) to unlock the next level."
-            }
         } else if groupsFound > prevHighScore {
             gameOverTitle.text = "New High Score!"
             gameOverMsg.text = "You found \(groupsFound) (mis)matches."
         } else {
-            gameOverTitle.text = titles[Int(arc4random_uniform(UInt32(titles.count)))]
+            gameOverTitle.text = generateTitle(groupsFound)
             gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+            
+            if prevHighScore < oneStarScore {
+                gameOverMsg.text! += " You need at least \(oneStarScore) to unlock the next level."
+            }
         }
     }
     
@@ -67,5 +54,22 @@ class EndOfGameView: UIView {
             starThree.image = UIImage(named: "star")
         }
     }
-
+    
+    func generateTitle(groupsFound: Int) -> String {
+        
+        switch groupsFound {
+        case 0:
+            titles = ["Better luck next time!"]
+        case 1..<oneStarScore:
+            titles = ["Not bad!", "A-okay!", "Nice!"]
+        case oneStarScore..<twoStarScore:
+            titles = ["Awesome!", "High five!", "Thumbs up!"]
+        case twoStarScore..<threeStarScore:
+            titles = ["Amazing!", "Stellar!", "Superb!"]
+        default:
+            titles = ["Remarkable!", "Outstanding!", "Astonishing!"]
+        }
+        
+        return titles[Int(arc4random_uniform(UInt32(titles.count)))]
+    }
 }

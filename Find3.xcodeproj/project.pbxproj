@@ -48,7 +48,6 @@
 		08C99CE31B015D6D00C1965E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08C99CE21B015D6D00C1965E /* Images.xcassets */; };
 		08C99CF21B015D6D00C1965E /* Find3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CF11B015D6D00C1965E /* Find3Tests.swift */; };
 		08CD12C21B212FFE007FBC55 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CD12C11B212FFE007FBC55 /* TutorialScene.swift */; };
-		08CD12C41B214DB5007FBC55 /* splashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CD12C31B214DB5007FBC55 /* splashScreen.xib */; };
 		08CD12C61B21507F007FBC55 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08CD12C51B21507F007FBC55 /* Settings.bundle */; };
 		08D6BF341B3A0BA000FC113A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6BF331B3A0BA000FC113A /* HomeViewController.swift */; };
 		08D6BF361B3A112200FC113A /* main title alt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF351B3A112200FC113A /* main title alt.mp3 */; };
@@ -119,7 +118,6 @@
 		08C99CF01B015D6D00C1965E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08C99CF11B015D6D00C1965E /* Find3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find3Tests.swift; sourceTree = "<group>"; };
 		08CD12C11B212FFE007FBC55 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
-		08CD12C31B214DB5007FBC55 /* splashScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = splashScreen.xib; sourceTree = "<group>"; };
 		08CD12C51B21507F007FBC55 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		08D6BF331B3A0BA000FC113A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		08D6BF351B3A112200FC113A /* main title alt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "main title alt.mp3"; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 		0847B3651B07EEFE009D9580 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				08CD12C31B214DB5007FBC55 /* splashScreen.xib */,
 				08B0DC3F1B1E186D00442AAC /* PicSprite.swift */,
 				080A25F21B3DAB980088D671 /* EndOfGameView.swift */,
 				08C99CD91B015D6D00C1965E /* GameScene.sks */,
@@ -375,7 +372,6 @@
 				0866A2751B32703B008BAD0A /* Level2.atlas in Resources */,
 				08D6BF401B3A1A4200FC113A /* Drop 3.wav in Resources */,
 				08D6BF461B3A1A6100FC113A /* Wrong.wav in Resources */,
-				08CD12C41B214DB5007FBC55 /* splashScreen.xib in Resources */,
 				0871DE951B66949D00649F94 /* Level10.atlas in Resources */,
 				08A7CBD11B4065340016BC81 /* LaunchScreen.xib in Resources */,
 				0866A2731B32703B008BAD0A /* Level1.atlas in Resources */,

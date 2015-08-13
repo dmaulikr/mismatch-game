@@ -39,6 +39,9 @@ class ExampleViewController: UIViewController {
     }
     
     func displaySprites() {
+        
+        scene.grid.selectInitialPictures()
+        
         let pictures = scene.grid.pictures
         scene.addSpritesForPictures(pictures)
     }

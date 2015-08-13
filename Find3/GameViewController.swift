@@ -84,6 +84,7 @@ class GameViewController: UIViewController {
         scene.removeActionForKey("runTimer")
         
         scene.removeSpritesFromScene(scene.grid.pictures)
+        scene.selectedPics.removeAll(keepCapacity: true)
     }
     
     // Set up the game

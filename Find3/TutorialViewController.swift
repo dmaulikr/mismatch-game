@@ -43,6 +43,8 @@ class TutorialViewController: UIViewController {
     
     func beginGame() {
         
+        scene.grid.selectInitialPictures()
+        
         let pictures = scene.grid.pictures
         scene.addSpritesForPictures(pictures)
         hintLabel.alpha = 0.0

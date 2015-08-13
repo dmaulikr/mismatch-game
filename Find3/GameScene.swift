@@ -51,6 +51,12 @@ class GameScene: SKScene {
                 if let picture = pictures[column, row] {
                     picture.position = pointForColumn(column, row: row)
                     picturesLayer.addChild(picture)
+                    
+                    if let action = picture.action {
+                        picture.removeAllActions()
+                        picture.runAction(action)
+                    }
+                    
                     println(picture.imageName)
                 }
             }
@@ -188,8 +194,15 @@ class GameScene: SKScene {
                     SKAction.sequence([
                         SKAction.waitForDuration(delay),
                         SKAction.group([
-                            SKAction.fadeInWithDuration(0.05), moveAction])
+                            SKAction.fadeInWithDuration(0.05), moveAction]),
                     ]))
+                
+                
+                if let action = picture.action {
+                    picture.runAction(action)
+                }
+                
+                
             }
         }
         runAction(SKAction.waitForDuration(longestDuration), completion: completion)

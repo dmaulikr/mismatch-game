@@ -115,26 +115,24 @@ class PicSprite: SKSpriteNode, Hashable {
     
     func addAnimations(level: Int) {
         
+        removeAllActions()
+        action = nil
+        
         if level == 5 {
             
             let spinAction = SKAction.rotateByAngle(0.7853981634, duration: 0.5)
             let glideAction = SKAction.moveByX(0.0, y: 10.0, duration: 0.5)
             
             if property1 == 0 {
-                runAction(SKAction.repeatActionForever(spinAction))
+                action = SKAction.repeatActionForever(spinAction)
             } else if property1 == 1 {
-                runAction(SKAction.repeatActionForever(SKAction.sequence([glideAction, glideAction.reversedAction()])))
+                action = SKAction.repeatActionForever(SKAction.sequence([glideAction, glideAction.reversedAction()]))
             }
             
         } else if level == 9 {
             
         } else if level == 10 {
             
-        } else {
-            
-            
-            
-            removeAllActions()
         }
     }
     

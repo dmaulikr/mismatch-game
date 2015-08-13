@@ -42,6 +42,15 @@ class Grid {
             clearOnscreenPictures()
             for row in 0..<NumRows {
                 for column in 0..<NumColumns {
+                    
+                    while allPictures[index].parent != nil || allPictures[index].onscreen {
+                        index++
+                        if index == allPictures.count {
+                            allPictures.shuffle()
+                            index = 0
+                        }
+                    }
+
                     let picture = allPictures[index]
                     picture.column = column
                     picture.row = row
@@ -68,6 +77,7 @@ class Grid {
                 picSprite.addAnimations(level)
             } else {
                 picSprite.imageName = "level\(level)" + "-" + "\(picSprite.imageNum)"
+                picSprite.action = nil
                 picSprite.removeAllActions()
             }
 

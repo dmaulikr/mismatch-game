@@ -14,7 +14,6 @@ import GameKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var splashScreen: UIView!
     var gameCenterEnabled = Bool()
     var gameCenterDefaultLeaderboard = String()
 
@@ -22,37 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         println("application did finish launching")
         
-        if ((NSUserDefaults.standardUserDefaults().objectForKey("FirstLaunchDate")) == nil) {
-            let date = NSDate()
-            NSUserDefaults.standardUserDefaults().setObject(date, forKey: "FirstLaunchDate")
-            println("first launch date: \(date)")
-        }
-        
-        splashScreen = NSBundle.mainBundle().loadNibNamed("splashScreen", owner: self, options: nil)[0] as! UIView
-        splashScreen.frame = window!.bounds
-        
-        window!.rootViewController!.view.addSubview(splashScreen)
-        println("Splash screen displayed")
-        
-        var timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("dismissSplashScreen"), userInfo: nil, repeats: false)
-        
         setPreferenceDefaults()
         
         self.authenticateLocalPlayer()
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
         
         return true
-    }
-    
-    // Fade out splash screen
-    func dismissSplashScreen() {
-        UIView.animateWithDuration(2.0, animations: {
-            self.splashScreen.alpha = 0.0
-            },
-            completion: { finished in
-                self.splashScreen.removeFromSuperview()
-                println("dismissed splash screen")
-        })
     }
     
     // Set developer name in Settings bundle
