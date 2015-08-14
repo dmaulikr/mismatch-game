@@ -19,9 +19,9 @@ class EndOfGameView: UIView {
     
     var titles: [String] = []
     
-    func setEndOfGameText(groupsFound: Int, prevHighScore: Int) {
+    func setEndOfGameText(groupsFound: Int, prevHighScore: Int, level: Int) {
         
-        if groupsFound >= oneStarScore && prevHighScore < oneStarScore {
+        if groupsFound >= oneStarScore && prevHighScore < oneStarScore && level != 10 {
             gameOverTitle.text = "Congrats!"
             gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
         } else if groupsFound > prevHighScore {
@@ -31,7 +31,7 @@ class EndOfGameView: UIView {
             gameOverTitle.text = generateTitle(groupsFound)
             gameOverMsg.text = "You found \(groupsFound) (mis)matches."
             
-            if prevHighScore < oneStarScore {
+            if prevHighScore < oneStarScore && level != 10 {
                 gameOverMsg.text! += " You need at least \(oneStarScore) to unlock the next level."
             }
         }

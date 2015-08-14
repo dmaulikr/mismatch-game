@@ -106,11 +106,11 @@ class GameViewController: UIViewController {
         }
         
         runTimer = SKAction.repeatAction(SKAction.sequence([timer, callUpdateCounter]), count: counter)
-        
         scene.runAction(runTimer, withKey: "runTimer")
+        
     }
     
-    // Decrement the counter after each second passes; display alert after 2 minutes
+    // Decrement the counter every second; display alert after 2 minutes
     func updateCounter() {
         
         if counter == 120 {
@@ -190,7 +190,7 @@ class GameViewController: UIViewController {
         
         view.userInteractionEnabled = true
         
-        gameOverView.setEndOfGameText(groupsFound, prevHighScore: prevHighScore)
+        gameOverView.setEndOfGameText(groupsFound, prevHighScore: prevHighScore, level: level)
         gameOverView.setEndOfGameStars(groupsFound)
         gameOverView.hidden = false
         

@@ -118,21 +118,58 @@ class PicSprite: SKSpriteNode, Hashable {
         removeAllActions()
         action = nil
         
+        let waitAction = SKAction.waitForDuration(1.0, withRange: 1.0)
+        
         if level == 5 {
             
-            let spinAction = SKAction.rotateByAngle(0.7853981634, duration: 0.5)
-            let glideAction = SKAction.moveByX(0.0, y: 10.0, duration: 0.5)
+            let spinAction = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.25)
+            let spinSequence = SKAction.sequence([spinAction, SKAction.waitForDuration(1.0)])
+            
+            let expandAction = SKAction.scaleBy(1.1, duration: 0.2)
+            let expandSequence = SKAction.sequence([expandAction, expandAction.reversedAction(),
+                SKAction.waitForDuration(1.0)])
             
             if property1 == 0 {
-                action = SKAction.repeatActionForever(spinAction)
+                action = SKAction.sequence([waitAction, SKAction.repeatActionForever(spinSequence)])
             } else if property1 == 1 {
-                action = SKAction.repeatActionForever(SKAction.sequence([glideAction, glideAction.reversedAction()]))
+                action = SKAction.sequence([waitAction, SKAction.repeatActionForever(expandSequence)])
             }
             
         } else if level == 9 {
             
+            let dipAction = SKAction.rotateByAngle(-CGFloat(M_PI / 8.0), duration: 0.1)
+            let dipSequence = SKAction.sequence([dipAction, dipAction.reversedAction(),
+                SKAction.waitForDuration(1.0)])
+            
+            let shrinkAction = SKAction.scaleBy(0.8, duration: 0.5)
+            let shrinkSequence = SKAction.sequence([shrinkAction, shrinkAction.reversedAction(), SKAction.waitForDuration(0.5)])
+            
+            if property1 == 0 {
+                action = SKAction.sequence([waitAction, SKAction.repeatActionForever(dipSequence)])
+            } else if property1 == 1 {
+                action = SKAction.sequence([waitAction, SKAction.repeatActionForever(shrinkSequence)])
+            }
+            
+            
         } else if level == 10 {
             
+            let wobbleRightAction = SKAction.rotateByAngle(-CGFloat(M_PI / 6.0), duration: 0.4)
+            let wobbleLeftAction = SKAction.rotateByAngle(CGFloat(M_PI / 6.0), duration: 0.4)
+            let wobbleSequence = SKAction.sequence([wobbleRightAction, wobbleRightAction.reversedAction(), wobbleLeftAction, wobbleLeftAction.reversedAction()])
+            
+            let stretchAction = SKAction.scaleXBy(1.2, y: 1.0, duration: 0.1)
+            let stretchSequence = SKAction.sequence([stretchAction, stretchAction.reversedAction(),
+                stretchAction, stretchAction.reversedAction(), SKAction.waitForDuration(1.0)])
+            
+//            let fadeOutAction = SKAction.fadeAlphaTo(0.2, duration: 0.5)
+//            let fadeInAction = SKAction.fadeAlphaTo(1.0, duration: 0.2)
+//            let fadeSequence = SKAction.sequence([fadeOutAction, fadeInAction, SKAction.waitForDuration(1.0)])
+            
+            if property1 == 0 {
+                action = SKAction.sequence([waitAction, SKAction.repeatActionForever(wobbleSequence)])
+            } else if property1 == 1 {
+                action = SKAction.sequence([waitAction, SKAction.repeatActionForever(stretchSequence)])
+            }
         }
     }
     

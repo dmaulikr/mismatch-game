@@ -71,6 +71,7 @@ class Grid {
         for picSprite in allPictures {
             
             picSprite.zRotation = 0.0
+            picSprite.alpha = 1.0
             
             if level == 5 || level == 9 || level == 10 {
                 picSprite.imageName = "level\(level)" + "-" + "\(picSprite.imageNum % 9)"

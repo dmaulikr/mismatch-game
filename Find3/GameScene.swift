@@ -16,6 +16,7 @@ class GameScene: SKScene {
     
     let gameLayer = SKNode()
     let picturesLayer = SKNode()
+    
     var grid: Grid!
     
     var tapThreeHandler: ((PictureGroup) -> ())?
