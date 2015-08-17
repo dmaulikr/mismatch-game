@@ -10,22 +10,20 @@ import Foundation
 import AVFoundation
 
 class Sounds {
-    var backgroundMusic = AVAudioPlayer()
-    var selectSound = AVAudioPlayer()
-    var dropSound = AVAudioPlayer()
-    var validGroupSound = AVAudioPlayer()
-    var invalidGroupSound = AVAudioPlayer()
+    var backgroundMusic     = AVAudioPlayer()
+    var selectSound         = AVAudioPlayer()
+    var validGroupSound     = AVAudioPlayer()
+    var invalidGroupSound   = AVAudioPlayer()
     
     static let sharedInstance = Sounds()
     
     private init() {
-        backgroundMusic = setupAudioPlayer("Main Title - reg", type: "mp3")
-        selectSound = setupAudioPlayer("Tap - select", type: "wav")
-        dropSound = setupAudioPlayer("Drop 3", type: "wav")
-        validGroupSound = setupAudioPlayer("Drop 3", type: "wav")
-        invalidGroupSound = setupAudioPlayer("Wrong", type: "wav")
+        backgroundMusic     = setupAudioPlayer("mismatch-background-music", type: "mp3")
+        selectSound         = setupAudioPlayer("select-sound", type: "wav")
+        validGroupSound     = setupAudioPlayer("valid-group-sound", type: "wav")
+        invalidGroupSound   = setupAudioPlayer("invalid-group-sound", type: "wav")
         
-        backgroundMusic.volume = 0.2
+        backgroundMusic.volume = 0.6
     }
     
     func setupAudioPlayer(file: String, type: String) -> AVAudioPlayer {

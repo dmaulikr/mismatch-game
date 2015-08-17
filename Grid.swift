@@ -73,7 +73,7 @@ class Grid {
             picSprite.zRotation = 0.0
             picSprite.alpha = 1.0
             
-            if level == 5 || level == 9 || level == 10 {
+            if level == 8 || level == 9 || level == 10 {
                 picSprite.imageName = "level\(level)" + "-" + "\(picSprite.imageNum % 9)"
                 picSprite.addAnimations(level)
             } else {

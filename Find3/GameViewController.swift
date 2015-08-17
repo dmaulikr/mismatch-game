@@ -77,6 +77,11 @@ class GameViewController: UIViewController {
         beginGame()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        Sounds.sharedInstance.backgroundMusic.currentTime = 0
+        Sounds.sharedInstance.backgroundMusic.play()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Sounds.sharedInstance.backgroundMusic.stop()
         
@@ -112,11 +117,6 @@ class GameViewController: UIViewController {
     
     // Decrement the counter every second; display alert after 2 minutes
     func updateCounter() {
-        
-        if counter == 120 {
-            Sounds.sharedInstance.backgroundMusic.currentTime = 0
-            Sounds.sharedInstance.backgroundMusic.play()
-        }
         
         counter--
         let minute = counter / 60

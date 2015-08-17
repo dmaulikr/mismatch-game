@@ -9,7 +9,21 @@
 /* Begin PBXBuildFile section */
 		080A25F31B3DAB980088D671 /* EndOfGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A25F21B3DAB980088D671 /* EndOfGameView.swift */; };
 		080A25F91B3E0CD80088D671 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A25F81B3E0CD80088D671 /* Sounds.swift */; };
+		0820BDCB1B8259B700832AD6 /* select-sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0820BDCA1B8259B700832AD6 /* select-sound.wav */; };
+		0820BDCD1B825ACE00832AD6 /* valid-group-sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0820BDCC1B825ACE00832AD6 /* valid-group-sound.wav */; };
+		0820BDCF1B825D8500832AD6 /* mismatch-background-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0820BDCE1B825D8500832AD6 /* mismatch-background-music.mp3 */; };
+		0820BDD11B825DC700832AD6 /* invalid-group-sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0820BDD01B825DC700832AD6 /* invalid-group-sound.wav */; };
+		0820BDD31B825EDB00832AD6 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0820BDD21B825EDB00832AD6 /* Animations.swift */; };
 		082B234A1B2A46C10070A2B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082B23491B2A46C10070A2B3 /* TutorialViewController.swift */; };
+		084567A31B7EA268003FA975 /* Level5.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A01B7EA268003FA975 /* Level5.atlas */; };
+		084567A41B7EA268003FA975 /* Level6.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A11B7EA268003FA975 /* Level6.atlas */; };
+		084567A51B7EA268003FA975 /* Level6Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A21B7EA268003FA975 /* Level6Glow.atlas */; };
+		084567AC1B7EA284003FA975 /* Level8.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A61B7EA284003FA975 /* Level8.atlas */; };
+		084567AD1B7EA284003FA975 /* Level8Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A71B7EA284003FA975 /* Level8Glow.atlas */; };
+		084567AE1B7EA284003FA975 /* Level9.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A81B7EA284003FA975 /* Level9.atlas */; };
+		084567AF1B7EA284003FA975 /* Level9Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567A91B7EA284003FA975 /* Level9Glow.atlas */; };
+		084567B01B7EA284003FA975 /* Level10.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567AA1B7EA284003FA975 /* Level10.atlas */; };
+		084567B11B7EA284003FA975 /* Level10Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 084567AB1B7EA284003FA975 /* Level10Glow.atlas */; };
 		0847B3531B06A89E009D9580 /* PictureGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847B3521B06A89E009D9580 /* PictureGroup.swift */; };
 		0847B39C1B080BAA009D9580 /* PageDataSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847B39B1B080BAA009D9580 /* PageDataSourceViewController.swift */; };
 		0866A2731B32703B008BAD0A /* Level1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2611B32703B008BAD0A /* Level1.atlas */; };
@@ -20,21 +34,11 @@
 		0866A2781B32703B008BAD0A /* Level3Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2661B32703B008BAD0A /* Level3Glow.atlas */; };
 		0866A2791B32703B008BAD0A /* Level4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2671B32703B008BAD0A /* Level4.atlas */; };
 		0866A27A1B32703B008BAD0A /* Level4Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2681B32703B008BAD0A /* Level4Glow.atlas */; };
-		0866A2811B32703B008BAD0A /* Level8.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A26F1B32703B008BAD0A /* Level8.atlas */; };
-		0866A2821B32703B008BAD0A /* Level8Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0866A2701B32703B008BAD0A /* Level8Glow.atlas */; };
 		086D9A981B04094B00395DD5 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A971B04094B00395DD5 /* Array2D.swift */; };
 		086D9A9E1B04106700395DD5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A9D1B04106700395DD5 /* Grid.swift */; };
 		086D9AA01B04120B00395DD5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A9F1B04120B00395DD5 /* Extensions.swift */; };
-		0871DE841B6693B700649F94 /* Level5.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE831B6693B700649F94 /* Level5.atlas */; };
-		0871DE861B6693C400649F94 /* Level5Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE851B6693C400649F94 /* Level5Glow.atlas */; };
-		0871DE881B66944400649F94 /* Level6.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE871B66944400649F94 /* Level6.atlas */; };
-		0871DE8A1B66945400649F94 /* Level6Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE891B66945400649F94 /* Level6Glow.atlas */; };
 		0871DE8C1B66948100649F94 /* Level7.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8B1B66948100649F94 /* Level7.atlas */; };
 		0871DE8E1B66949000649F94 /* Level7Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8D1B66949000649F94 /* Level7Glow.atlas */; };
-		0871DE931B66949D00649F94 /* Level9.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8F1B66949D00649F94 /* Level9.atlas */; };
-		0871DE941B66949D00649F94 /* Level9Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE901B66949D00649F94 /* Level9Glow.atlas */; };
-		0871DE951B66949D00649F94 /* Level10.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE911B66949D00649F94 /* Level10.atlas */; };
-		0871DE961B66949D00649F94 /* Level10Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE921B66949D00649F94 /* Level10Glow.atlas */; };
 		089D4CE21B3489FD005626E0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE11B3489FD005626E0 /* ExampleViewController.swift */; };
 		089D4CE41B34A33C005626E0 /* FadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE31B34A33C005626E0 /* FadeSegue.swift */; };
 		089D4CE61B34E7F3005626E0 /* LastTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */; };
@@ -50,15 +54,8 @@
 		08CD12C21B212FFE007FBC55 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CD12C11B212FFE007FBC55 /* TutorialScene.swift */; };
 		08CD12C61B21507F007FBC55 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08CD12C51B21507F007FBC55 /* Settings.bundle */; };
 		08D6BF341B3A0BA000FC113A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6BF331B3A0BA000FC113A /* HomeViewController.swift */; };
-		08D6BF361B3A112200FC113A /* main title alt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF351B3A112200FC113A /* main title alt.mp3 */; };
-		08D6BF381B3A11B100FC113A /* Main Title - reg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF371B3A11B100FC113A /* Main Title - reg.mp3 */; };
 		08D6BF3A1B3A131200FC113A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D6BF391B3A131200FC113A /* AVFoundation.framework */; };
 		08D6BF3C1B3A131C00FC113A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D6BF3B1B3A131C00FC113A /* AudioToolbox.framework */; };
-		08D6BF3E1B3A1A3A00FC113A /* Drop 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF3D1B3A1A3A00FC113A /* Drop 2.wav */; };
-		08D6BF401B3A1A4200FC113A /* Drop 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF3F1B3A1A4200FC113A /* Drop 3.wav */; };
-		08D6BF421B3A1A4A00FC113A /* Tap - select.wav in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF411B3A1A4A00FC113A /* Tap - select.wav */; };
-		08D6BF441B3A1A5200FC113A /* Wrong 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF431B3A1A5200FC113A /* Wrong 2.wav */; };
-		08D6BF461B3A1A6100FC113A /* Wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BF451B3A1A6100FC113A /* Wrong.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +71,21 @@
 /* Begin PBXFileReference section */
 		080A25F21B3DAB980088D671 /* EndOfGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameView.swift; sourceTree = "<group>"; };
 		080A25F81B3E0CD80088D671 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		0820BDCA1B8259B700832AD6 /* select-sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "select-sound.wav"; sourceTree = "<group>"; };
+		0820BDCC1B825ACE00832AD6 /* valid-group-sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "valid-group-sound.wav"; sourceTree = "<group>"; };
+		0820BDCE1B825D8500832AD6 /* mismatch-background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mismatch-background-music.mp3"; sourceTree = "<group>"; };
+		0820BDD01B825DC700832AD6 /* invalid-group-sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "invalid-group-sound.wav"; sourceTree = "<group>"; };
+		0820BDD21B825EDB00832AD6 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		082B23491B2A46C10070A2B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		084567A01B7EA268003FA975 /* Level5.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5.atlas; sourceTree = "<group>"; };
+		084567A11B7EA268003FA975 /* Level6.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6.atlas; sourceTree = "<group>"; };
+		084567A21B7EA268003FA975 /* Level6Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6Glow.atlas; sourceTree = "<group>"; };
+		084567A61B7EA284003FA975 /* Level8.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level8.atlas; sourceTree = "<group>"; };
+		084567A71B7EA284003FA975 /* Level8Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level8Glow.atlas; sourceTree = "<group>"; };
+		084567A81B7EA284003FA975 /* Level9.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9.atlas; sourceTree = "<group>"; };
+		084567A91B7EA284003FA975 /* Level9Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9Glow.atlas; sourceTree = "<group>"; };
+		084567AA1B7EA284003FA975 /* Level10.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level10.atlas; sourceTree = "<group>"; };
+		084567AB1B7EA284003FA975 /* Level10Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level10Glow.atlas; sourceTree = "<group>"; };
 		0847B3521B06A89E009D9580 /* PictureGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureGroup.swift; sourceTree = "<group>"; };
 		0847B35C1B07AFF6009D9580 /* Find3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Find3.entitlements; sourceTree = "<group>"; };
 		0847B39B1B080BAA009D9580 /* PageDataSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDataSourceViewController.swift; sourceTree = "<group>"; };
@@ -86,21 +97,11 @@
 		0866A2661B32703B008BAD0A /* Level3Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level3Glow.atlas; sourceTree = "<group>"; };
 		0866A2671B32703B008BAD0A /* Level4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level4.atlas; sourceTree = "<group>"; };
 		0866A2681B32703B008BAD0A /* Level4Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level4Glow.atlas; sourceTree = "<group>"; };
-		0866A26F1B32703B008BAD0A /* Level8.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level8.atlas; sourceTree = "<group>"; };
-		0866A2701B32703B008BAD0A /* Level8Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level8Glow.atlas; sourceTree = "<group>"; };
 		086D9A971B04094B00395DD5 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		086D9A9D1B04106700395DD5 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../Grid.swift; sourceTree = "<group>"; };
 		086D9A9F1B04120B00395DD5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		0871DE831B6693B700649F94 /* Level5.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5.atlas; sourceTree = "<group>"; };
-		0871DE851B6693C400649F94 /* Level5Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5Glow.atlas; sourceTree = "<group>"; };
-		0871DE871B66944400649F94 /* Level6.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6.atlas; sourceTree = "<group>"; };
-		0871DE891B66945400649F94 /* Level6Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level6Glow.atlas; sourceTree = "<group>"; };
 		0871DE8B1B66948100649F94 /* Level7.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7.atlas; sourceTree = "<group>"; };
 		0871DE8D1B66949000649F94 /* Level7Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7Glow.atlas; sourceTree = "<group>"; };
-		0871DE8F1B66949D00649F94 /* Level9.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9.atlas; sourceTree = "<group>"; };
-		0871DE901B66949D00649F94 /* Level9Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level9Glow.atlas; sourceTree = "<group>"; };
-		0871DE911B66949D00649F94 /* Level10.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level10.atlas; sourceTree = "<group>"; };
-		0871DE921B66949D00649F94 /* Level10Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level10Glow.atlas; sourceTree = "<group>"; };
 		089D4CE11B3489FD005626E0 /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		089D4CE31B34A33C005626E0 /* FadeSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeSegue.swift; sourceTree = "<group>"; };
 		089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTutorialViewController.swift; sourceTree = "<group>"; };
@@ -120,15 +121,8 @@
 		08CD12C11B212FFE007FBC55 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		08CD12C51B21507F007FBC55 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		08D6BF331B3A0BA000FC113A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		08D6BF351B3A112200FC113A /* main title alt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "main title alt.mp3"; sourceTree = "<group>"; };
-		08D6BF371B3A11B100FC113A /* Main Title - reg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Main Title - reg.mp3"; sourceTree = "<group>"; };
 		08D6BF391B3A131200FC113A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		08D6BF3B1B3A131C00FC113A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		08D6BF3D1B3A1A3A00FC113A /* Drop 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Drop 2.wav"; sourceTree = "<group>"; };
-		08D6BF3F1B3A1A4200FC113A /* Drop 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Drop 3.wav"; sourceTree = "<group>"; };
-		08D6BF411B3A1A4A00FC113A /* Tap - select.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Tap - select.wav"; sourceTree = "<group>"; };
-		08D6BF431B3A1A5200FC113A /* Wrong 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Wrong 2.wav"; sourceTree = "<group>"; };
-		08D6BF451B3A1A6100FC113A /* Wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wrong.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +208,7 @@
 				0847B35C1B07AFF6009D9580 /* Find3.entitlements */,
 				08C99CD71B015D6D00C1965E /* AppDelegate.swift */,
 				080A25F81B3E0CD80088D671 /* Sounds.swift */,
+				0820BDD21B825EDB00832AD6 /* Animations.swift */,
 				0847B3641B07EEEC009D9580 /* Model */,
 				0847B3651B07EEFE009D9580 /* View */,
 				0847B3631B07EEA6009D9580 /* Controller */,
@@ -228,18 +223,17 @@
 				0866A2661B32703B008BAD0A /* Level3Glow.atlas */,
 				0866A2671B32703B008BAD0A /* Level4.atlas */,
 				0866A2681B32703B008BAD0A /* Level4Glow.atlas */,
-				0871DE831B6693B700649F94 /* Level5.atlas */,
-				0871DE851B6693C400649F94 /* Level5Glow.atlas */,
-				0871DE871B66944400649F94 /* Level6.atlas */,
-				0871DE891B66945400649F94 /* Level6Glow.atlas */,
+				084567A01B7EA268003FA975 /* Level5.atlas */,
+				084567A11B7EA268003FA975 /* Level6.atlas */,
+				084567A21B7EA268003FA975 /* Level6Glow.atlas */,
 				0871DE8B1B66948100649F94 /* Level7.atlas */,
 				0871DE8D1B66949000649F94 /* Level7Glow.atlas */,
-				0866A26F1B32703B008BAD0A /* Level8.atlas */,
-				0866A2701B32703B008BAD0A /* Level8Glow.atlas */,
-				0871DE8F1B66949D00649F94 /* Level9.atlas */,
-				0871DE901B66949D00649F94 /* Level9Glow.atlas */,
-				0871DE911B66949D00649F94 /* Level10.atlas */,
-				0871DE921B66949D00649F94 /* Level10Glow.atlas */,
+				084567A61B7EA284003FA975 /* Level8.atlas */,
+				084567A71B7EA284003FA975 /* Level8Glow.atlas */,
+				084567A81B7EA284003FA975 /* Level9.atlas */,
+				084567A91B7EA284003FA975 /* Level9Glow.atlas */,
+				084567AA1B7EA284003FA975 /* Level10.atlas */,
+				084567AB1B7EA284003FA975 /* Level10Glow.atlas */,
 				08C99CD51B015D6D00C1965E /* Supporting Files */,
 			);
 			path = Find3;
@@ -248,13 +242,10 @@
 		08C99CD51B015D6D00C1965E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				08D6BF371B3A11B100FC113A /* Main Title - reg.mp3 */,
-				08D6BF351B3A112200FC113A /* main title alt.mp3 */,
-				08D6BF3D1B3A1A3A00FC113A /* Drop 2.wav */,
-				08D6BF3F1B3A1A4200FC113A /* Drop 3.wav */,
-				08D6BF411B3A1A4A00FC113A /* Tap - select.wav */,
-				08D6BF451B3A1A6100FC113A /* Wrong.wav */,
-				08D6BF431B3A1A5200FC113A /* Wrong 2.wav */,
+				0820BDD01B825DC700832AD6 /* invalid-group-sound.wav */,
+				0820BDCE1B825D8500832AD6 /* mismatch-background-music.mp3 */,
+				0820BDCA1B8259B700832AD6 /* select-sound.wav */,
+				0820BDCC1B825ACE00832AD6 /* valid-group-sound.wav */,
 				08CD12C51B21507F007FBC55 /* Settings.bundle */,
 				08C99CD61B015D6D00C1965E /* Info.plist */,
 			);
@@ -364,38 +355,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08D6BF361B3A112200FC113A /* main title alt.mp3 in Resources */,
-				08D6BF441B3A1A5200FC113A /* Wrong 2.wav in Resources */,
-				0866A2821B32703B008BAD0A /* Level8Glow.atlas in Resources */,
+				0820BDCB1B8259B700832AD6 /* select-sound.wav in Resources */,
 				08C99CE31B015D6D00C1965E /* Images.xcassets in Resources */,
-				0871DE941B66949D00649F94 /* Level9Glow.atlas in Resources */,
+				084567A31B7EA268003FA975 /* Level5.atlas in Resources */,
 				0866A2751B32703B008BAD0A /* Level2.atlas in Resources */,
-				08D6BF401B3A1A4200FC113A /* Drop 3.wav in Resources */,
-				08D6BF461B3A1A6100FC113A /* Wrong.wav in Resources */,
-				0871DE951B66949D00649F94 /* Level10.atlas in Resources */,
+				084567A41B7EA268003FA975 /* Level6.atlas in Resources */,
+				084567AD1B7EA284003FA975 /* Level8Glow.atlas in Resources */,
 				08A7CBD11B4065340016BC81 /* LaunchScreen.xib in Resources */,
+				084567A51B7EA268003FA975 /* Level6Glow.atlas in Resources */,
+				0820BDCD1B825ACE00832AD6 /* valid-group-sound.wav in Resources */,
 				0866A2731B32703B008BAD0A /* Level1.atlas in Resources */,
+				084567AC1B7EA284003FA975 /* Level8.atlas in Resources */,
 				0871DE8C1B66948100649F94 /* Level7.atlas in Resources */,
+				0820BDCF1B825D8500832AD6 /* mismatch-background-music.mp3 in Resources */,
 				0866A2771B32703B008BAD0A /* Level3.atlas in Resources */,
-				0871DE8A1B66945400649F94 /* Level6Glow.atlas in Resources */,
-				08D6BF421B3A1A4A00FC113A /* Tap - select.wav in Resources */,
-				0871DE931B66949D00649F94 /* Level9.atlas in Resources */,
 				0866A27A1B32703B008BAD0A /* Level4Glow.atlas in Resources */,
-				0871DE841B6693B700649F94 /* Level5.atlas in Resources */,
-				08D6BF381B3A11B100FC113A /* Main Title - reg.mp3 in Resources */,
+				0820BDD11B825DC700832AD6 /* invalid-group-sound.wav in Resources */,
+				084567B11B7EA284003FA975 /* Level10Glow.atlas in Resources */,
 				0866A2741B32703B008BAD0A /* Level1Glow.atlas in Resources */,
 				08CD12C61B21507F007FBC55 /* Settings.bundle in Resources */,
+				084567AE1B7EA284003FA975 /* Level9.atlas in Resources */,
 				0866A2781B32703B008BAD0A /* Level3Glow.atlas in Resources */,
 				0871DE8E1B66949000649F94 /* Level7Glow.atlas in Resources */,
-				08D6BF3E1B3A1A3A00FC113A /* Drop 2.wav in Resources */,
-				0871DE881B66944400649F94 /* Level6.atlas in Resources */,
 				08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */,
+				084567B01B7EA284003FA975 /* Level10.atlas in Resources */,
 				08C99CE11B015D6D00C1965E /* Main.storyboard in Resources */,
-				0871DE961B66949D00649F94 /* Level10Glow.atlas in Resources */,
 				0866A2761B32703B008BAD0A /* Level2Glow.atlas in Resources */,
-				0871DE861B6693C400649F94 /* Level5Glow.atlas in Resources */,
+				084567AF1B7EA284003FA975 /* Level9Glow.atlas in Resources */,
 				0866A2791B32703B008BAD0A /* Level4.atlas in Resources */,
-				0866A2811B32703B008BAD0A /* Level8.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +414,7 @@
 				080A25F91B3E0CD80088D671 /* Sounds.swift in Sources */,
 				08C99CD81B015D6D00C1965E /* AppDelegate.swift in Sources */,
 				086D9A9E1B04106700395DD5 /* Grid.swift in Sources */,
+				0820BDD31B825EDB00832AD6 /* Animations.swift in Sources */,
 				082B234A1B2A46C10070A2B3 /* TutorialViewController.swift in Sources */,
 				086D9A981B04094B00395DD5 /* Array2D.swift in Sources */,
 				080A25F31B3DAB980088D671 /* EndOfGameView.swift in Sources */,
