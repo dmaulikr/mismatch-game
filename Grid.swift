@@ -34,7 +34,7 @@ class Grid {
         
     }
     
-    func selectInitialPictures() {
+    func selectInitialPictures(level: Int) {
         
         allPictures.shuffle()
         
@@ -65,6 +65,41 @@ class Grid {
             }
             detectValidGroups()
         } while validGroups.isEmpty
+    }
+    
+    func setupExamplePictures(page: Int) {
+        
+        index = 0
+        
+        for row in 0..<NumRows {
+            for column in 0..<NumColumns {
+                let picture = allPictures[index]
+                
+                picture.column = column
+                picture.row = row
+                picture.onscreen = true
+                picture.deselectSprite()
+                
+                pictures[column, row] = picture
+                
+                index++
+            }
+        }
+        
+        if page == 2 {
+            pictures[0, 1]?.selectSprite()
+            pictures[1, 1]?.selectSprite()
+            pictures[1, 0]?.selectSprite()
+        } else if page == 3 {
+            pictures[0, 0]?.selectSprite()
+            pictures[1, 0]?.selectSprite()
+            pictures[2, 0]?.selectSprite()
+        } else if page == 4 {
+            pictures[1, 0]?.selectSprite()
+            pictures[2, 0]?.selectSprite()
+            pictures[2, 2]?.selectSprite()
+        }
+        
     }
     
     func setLevel(level: Int) {

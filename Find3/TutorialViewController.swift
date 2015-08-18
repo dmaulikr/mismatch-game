@@ -43,7 +43,7 @@ class TutorialViewController: UIViewController {
     
     func beginGame() {
         
-        scene.grid.selectInitialPictures()
+        scene.grid.selectInitialPictures(level)
         
         let pictures = scene.grid.pictures
         scene.addSpritesForPictures(pictures)

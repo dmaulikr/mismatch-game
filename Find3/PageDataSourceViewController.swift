@@ -14,7 +14,14 @@ import SpriteKit
 class PageDataSourceViewController: UIViewController, UIPageViewControllerDataSource {
     
     private var pageController: UIPageViewController!
-    private let pages = ["InstructionsPage1", "InstructionsPage2", "InstructionsPage3", "InstructionsPage4"]
+    
+    private let pages = [
+        "InstructionsPage0",
+        "InstructionsPage1",
+        "InstructionsPage2",
+        "InstructionsPage3",
+        "InstructionsPage4",
+        "InstructionsPage5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +57,12 @@ class PageDataSourceViewController: UIViewController, UIPageViewControllerDataSo
     private func getPageController(index: Int) -> UIViewController? {
         if index < pages.count {
             let viewController = self.storyboard!.instantiateViewControllerWithIdentifier(pages[index]) as! UIViewController
+            
+            if index >= 2 && index <= 4 {
+                let exampleVC = viewController as! ExampleViewController
+                exampleVC.page = index
+            }
+            
             return viewController
         }
         return nil

@@ -95,7 +95,7 @@ class GameViewController: UIViewController {
     // Set up the game
     func beginGame() {
         
-        scene.grid.selectInitialPictures()
+        scene.grid.selectInitialPictures(level)
         
         let pictures = scene.grid.pictures
         scene.addSpritesToScene(pictures)

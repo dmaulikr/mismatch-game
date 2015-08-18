@@ -12,6 +12,7 @@ import SpriteKit
 class ExampleViewController: UIViewController {
 
     var scene: TutorialScene!
+    var page: Int?
     let level = -1
     
     override func prefersStatusBarHidden() -> Bool {
@@ -40,9 +41,10 @@ class ExampleViewController: UIViewController {
     
     func displaySprites() {
         
-        scene.grid.selectInitialPictures()
+        scene.grid.setupExamplePictures(page!)
         
         let pictures = scene.grid.pictures
+        
         scene.addSpritesForPictures(pictures)
     }
 }

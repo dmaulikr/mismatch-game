@@ -74,19 +74,15 @@ class PicSprite: SKSpriteNode, Hashable {
         var allSprites = createAll(1)
         var sprites = [PicSprite]()
         
+        sprites += [allSprites[10]]
+        sprites += [allSprites[12]]
         sprites += [allSprites[17]]
         sprites += [allSprites[21]]
+        sprites += [allSprites[3]]
+        sprites += [allSprites[0]]
         sprites += [allSprites[2]]
         sprites += [allSprites[25]]
-        sprites += [allSprites[12]]
-        sprites += [allSprites[14]]
-        sprites += [allSprites[10]]
-        sprites += [allSprites[22]]
-        sprites += [allSprites[0]]
-        
-        sprites[0].selectSprite()
-        sprites[4].selectSprite()
-        sprites[6].selectSprite()
+        sprites += [allSprites[9]]
         
         return sprites
     }

@@ -312,7 +312,7 @@
         <!--View Controller-->
         <scene sceneID="vOd-EL-q54">
             <objects>
-                <viewController restorationIdentifier="InstructionsPage1" storyboardIdentifier="InstructionsPage1" id="Gy2-Ln-hnM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstructionsPage0" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gy2-Ln-hnM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XNA-dh-xy1"/>
                         <viewControllerLayoutGuide type="bottom" id="47n-Ym-o6A"/>
@@ -507,7 +507,7 @@
         <!--Example View Controller-->
         <scene sceneID="0Gq-zk-sPL">
             <objects>
-                <viewController storyboardIdentifier="InstructionsPage3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sy3-MK-uPf" customClass="ExampleViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstructionsPage2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sy3-MK-uPf" customClass="ExampleViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4dx-Zs-teD"/>
                         <viewControllerLayoutGuide type="bottom" id="ROw-yB-ezR"/>
@@ -537,7 +537,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" colors (purple, blue, green) and patterns (stripes, grid, dots).">
+                                    <fragment content=" shapes (square, circle and triangle).">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -568,7 +568,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" shape (triangle).">
+                                    <fragment content=" color and pattern.">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
@@ -604,10 +604,112 @@
             </objects>
             <point key="canvasLocation" x="1026" y="1717"/>
         </scene>
+        <!--Example View Controller-->
+        <scene sceneID="5LR-DJ-xRb">
+            <objects>
+                <viewController storyboardIdentifier="InstructionsPage3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4CN-J1-shU" customClass="ExampleViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="THi-sL-I1W"/>
+                        <viewControllerLayoutGuide type="bottom" id="9hc-0I-PoX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zHx-Df-6lp" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t39-dK-x3D">
+                                <rect key="frame" x="155" y="100" width="290" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4Eq-tn-aZW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="290" id="I4M-x1-kKf"/>
+                                    <constraint firstAttribute="height" constant="40" id="h9P-Hy-Obm"/>
+                                    <constraint firstAttribute="width" constant="290" id="xhE-n8-yNN"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="In this (mis)match, all three images have the ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="same">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" shape (triangle).">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4Eq-tn-aZW"/>
+                                        <exclude reference="I4M-x1-kKf"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYq-Ju-6fu">
+                                <rect key="frame" x="152" y="460" width="297" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="o9H-WI-2yD"/>
+                                    <constraint firstAttribute="width" constant="297" id="yuA-E6-Ang"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Each image has a ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="different">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" color (purple, blue, green) and pattern (stripes, grid and dots).">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="iYq-Ju-6fu" secondAttribute="centerX" id="4bE-Ch-SD7"/>
+                            <constraint firstAttribute="centerY" secondItem="iYq-Ju-6fu" secondAttribute="centerY" constant="-180" id="7bO-qo-6BB"/>
+                            <constraint firstAttribute="centerX" secondItem="t39-dK-x3D" secondAttribute="centerX" id="Wmg-FD-hZo"/>
+                            <constraint firstAttribute="centerY" secondItem="t39-dK-x3D" secondAttribute="centerY" constant="180" id="nLr-8x-yQi"/>
+                            <constraint firstItem="t39-dK-x3D" firstAttribute="top" secondItem="THi-sL-I1W" secondAttribute="bottom" constant="102" id="piR-6b-kIJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="piR-6b-kIJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Er-dy-Eip" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1713" y="1717"/>
+        </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="Ln1-AI-Syl">
             <objects>
-                <viewController storyboardIdentifier="InstructionsPage4" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LGM-Zx-5bb" customClass="TutorialViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstructionsPage5" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LGM-Zx-5bb" customClass="TutorialViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q8Y-jc-mep"/>
                         <viewControllerLayoutGuide type="bottom" id="kT4-lv-zOP"/>
@@ -680,7 +782,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzV-K7-Cao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="1717"/>
+            <point key="canvasLocation" x="1713" y="2409"/>
+        </scene>
+        <!--Example View Controller-->
+        <scene sceneID="QVO-XS-ngH">
+            <objects>
+                <viewController storyboardIdentifier="InstructionsPage4" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ILq-ng-HpD" customClass="ExampleViewController" customModule="Find3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iVB-5Z-wGy"/>
+                        <viewControllerLayoutGuide type="bottom" id="ino-1C-sg9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CuN-JP-vgb" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfT-Go-OJv">
+                                <rect key="frame" x="138" y="460" width="324" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="324" id="2HX-xM-smq"/>
+                                    <constraint firstAttribute="height" constant="40" id="JiB-Xb-3hS"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Instead, there are two images with grid patterns and one with dots.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsv-xr-o57">
+                                <rect key="frame" x="140" y="100" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="E13-7o-GMP"/>
+                                    <constraint firstAttribute="height" constant="40" id="ei0-5e-WhO"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="This is NOT a (mis)match.">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" The patterns on the images aren't all the same or all different.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Lsv-xr-o57" secondAttribute="centerY" constant="180" id="OQL-os-aOS"/>
+                            <constraint firstAttribute="centerX" secondItem="lfT-Go-OJv" secondAttribute="centerX" id="RXC-D2-nQE"/>
+                            <constraint firstAttribute="centerY" secondItem="lfT-Go-OJv" secondAttribute="centerY" constant="-180" id="cFM-a7-uks"/>
+                            <constraint firstAttribute="centerX" secondItem="Lsv-xr-o57" secondAttribute="centerX" id="mVd-MO-mzR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xBL-6P-7eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="2398"/>
         </scene>
         <!--Last Tutorial View Controller-->
         <scene sceneID="O18-Mk-tMy">
@@ -750,7 +919,7 @@
                                     <constraint firstAttribute="height" constant="77" id="Eni-Gj-bJM"/>
                                     <constraint firstAttribute="width" constant="292" id="jQZ-nX-TWS"/>
                                 </constraints>
-                                <string key="text">You'll have two minutes to find as many (mis)matches as you can. There will always be one (or more!) onscreen. Find 10 or more to unlock the next level!</string>
+                                <string key="text">You'll have two minutes to find as many (mis)matches as you can. There will always be one (or more) onscreen. Find 10 or more to unlock the next level!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -789,12 +958,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4U-fB-kxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ehs-St-47e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2430" y="1353"/>
+            <point key="canvasLocation" x="2406" y="2409"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Cd1-sO-6GL">
             <objects>
-                <viewController storyboardIdentifier="InstructionsPage2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0bW-be-V0h" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstructionsPage1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0bW-be-V0h" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Spe-BD-lKg"/>
                         <viewControllerLayoutGuide type="bottom" id="nHz-Lz-ho1"/>
@@ -909,6 +1078,6 @@
         <image name="star-empty" width="27" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4u6-fi-8aH"/>
+        <segue reference="bkf-Wu-h7l"/>
     </inferredMetricsTieBreakers>
 </document>
