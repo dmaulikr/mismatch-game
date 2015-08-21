@@ -24,9 +24,11 @@ class ExampleViewController: UIViewController {
         
         let skView = view as! SKView
         skView.multipleTouchEnabled = false
+        
         scene = TutorialScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
         scene.grid = Grid(level: level, layer: scene.picturesLayer)
+        
         skView.presentScene(scene)
         
         view.userInteractionEnabled = false
@@ -34,17 +36,23 @@ class ExampleViewController: UIViewController {
         displaySprites()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func displaySprites() {
         
         scene.grid.setupExamplePictures(page!)
-        
         let pictures = scene.grid.pictures
+        scene.addSpritesToScene(pictures)
         
-        scene.addSpritesForPictures(pictures)
+        // Display red x on page 5
+        
+        if page == 5 {
+            let redXTexture = SKTexture(imageNamed: "red-x")
+            let redX = SKSpriteNode(texture: redXTexture)
+            
+            redX.position = CGPoint(x: (TileHeight * CGFloat(NumRows)) / 2,
+                                    y: (TileWidth * CGFloat(NumColumns)) / 2)
+            
+            scene.picturesLayer.addChild(redX)
+        }
+        
     }
 }

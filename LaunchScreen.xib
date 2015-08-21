@@ -10,10 +10,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to (mis)match" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYy-Mo-Guv">
-                    <rect key="frame" x="78" y="183" width="325" height="113"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(mis)match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYy-Mo-Guv">
+                    <rect key="frame" x="78" y="201" width="325" height="77"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="113" id="01D-mp-xsc"/>
+                        <constraint firstAttribute="height" constant="77" id="01D-mp-xsc"/>
                         <constraint firstAttribute="width" constant="325" id="zvm-Y1-b0w"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Superclarendon-Regular" family="Superclarendon" pointSize="45"/>

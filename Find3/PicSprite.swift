@@ -53,6 +53,8 @@ class PicSprite: SKSpriteNode, Hashable {
         fatalError("init(coder) is not used in this app")
     }
     
+// MARK: - Class functions
+    
     // Create all 27 PicSprites for a given level
     class func createAll(level: Int) -> Array<PicSprite> {
         var sprites = [PicSprite]()
@@ -62,7 +64,6 @@ class PicSprite: SKSpriteNode, Hashable {
                 for property3 in 0..<3 {
                     let sprite = PicSprite(prop1: property1, prop2: property2, prop3: property3, imageNum: i, level: level)
                     sprites += [sprite]
-                    sprite.name = "Shape"
                     i++
                 }
             }
@@ -77,9 +78,11 @@ class PicSprite: SKSpriteNode, Hashable {
         sprites += [allSprites[10]]
         sprites += [allSprites[12]]
         sprites += [allSprites[17]]
+        
         sprites += [allSprites[21]]
         sprites += [allSprites[3]]
         sprites += [allSprites[0]]
+        
         sprites += [allSprites[2]]
         sprites += [allSprites[25]]
         sprites += [allSprites[9]]
@@ -92,22 +95,73 @@ class PicSprite: SKSpriteNode, Hashable {
         var allSprites = createAll(1)
         var sprites = [PicSprite]()
         
-        sprites += [allSprites[23]]
+        
+        sprites += [allSprites[1]]
         sprites += [allSprites[3]]
-        sprites += [allSprites[13]]
         sprites += [allSprites[11]]
-        sprites += [allSprites[21]]
+        
+        sprites += [allSprites[13]]
         sprites += [allSprites[16]]
         sprites += [allSprites[17]]
-        sprites += [allSprites[1]]
+        
         sprites += [allSprites[19]]
+        sprites += [allSprites[21]]
+        sprites += [allSprites[23]]
         
         sprites.shuffle()
         
         return sprites
     }
     
-    // MARK: Animations
+// MARK: - Selection and deselection
+    
+    // Called when user selects a sprite
+    func selectSprite() {
+        
+        let texture = SKTexture(imageNamed: "\(imageName)-glow")
+        self.size = texture.size()
+        self.texture = texture
+        selected = true
+        
+    }
+    
+    // Called when user deselects a sprite
+    func deselectSprite() {
+        
+        let texture = SKTexture(imageNamed: imageName)
+        self.size = texture.size()
+        self.texture = texture
+        selected = false
+    
+    }
+    
+// MARK: - Animations
+    
+    func runValidGroupAction() {
+        
+        removeAllActions()
+        
+        runAction(Animations.sharedInstance.validGroup)
+        
+        runAction(SKAction.waitForDuration(0.6), completion: {
+            self.zRotation = 0.0
+            self.deselectSprite()
+            })
+    }
+    
+    func runTutorialValidGroupAction() {
+        runAction(Animations.sharedInstance.tutorialValidGroup)
+    }
+    
+    func runInvalidGroupAction() {
+        
+        runAction(Animations.sharedInstance.invalidGroup) {
+            self.deselectSprite()
+        }
+        
+    }
+    
+// MARK: - Levels 8-10 animations
     
     func addAnimations(level: Int) {
         
@@ -143,54 +197,6 @@ class PicSprite: SKSpriteNode, Hashable {
         }
     }
     
-    // Called when user selects a sprite
-    func selectSprite() {
-        
-        let texture = SKTexture(imageNamed: "\(imageName)-glow")
-        self.size = texture.size()
-        self.texture = texture
-        selected = true
-        
-    }
-    
-    // Called when user deselects a sprite
-    func deselectSprite() {
-        
-        let texture = SKTexture(imageNamed: imageName)
-        self.size = texture.size()
-        self.texture = texture
-        selected = false
-    
-    }
-    
-    // Animations for removing a sprite from the screen
-    func removeWithActions() {
-        
-        self.removeAllActions()
-        
-        runAction(Animations.sharedInstance.validGroup)
-        
-        runAction(SKAction.waitForDuration(0.6), completion: {
-            self.zRotation = 0.0
-            self.deselectSprite()
-            })
-    }
-    
-    // Animations for valid group (used in tutorial level)
-    func expand() {
-        
-        self.runAction(Animations.sharedInstance.tutorialValidGroup)
-        
-    }
-    
-    // Animations for selections of invalid group
-    func wiggleAndDeselect() {
-        
-        runAction(Animations.sharedInstance.invalidGroup) {
-            self.deselectSprite()
-        }
-        
-    }
 }
 
 func ==(lhs: PicSprite, rhs: PicSprite) -> Bool {

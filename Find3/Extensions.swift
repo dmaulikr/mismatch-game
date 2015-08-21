@@ -8,8 +8,6 @@
 
 import Foundation
 
-// Source: http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
-
 extension Array {
     mutating func shuffle() {
         for i in 0..<(count - 1) {

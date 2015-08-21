@@ -27,6 +27,7 @@ class TutorialViewController: UIViewController {
         
         let skView = view as! SKView
         skView.multipleTouchEnabled = false
+        
         scene = TutorialScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
         scene.tapThreeHandler = handleTapThree
@@ -46,7 +47,7 @@ class TutorialViewController: UIViewController {
         scene.grid.selectInitialPictures(level)
         
         let pictures = scene.grid.pictures
-        scene.addSpritesForPictures(pictures)
+        scene.addSpritesToScene(pictures)
         hintLabel.alpha = 0.0
         
     }
@@ -57,11 +58,12 @@ class TutorialViewController: UIViewController {
         
         println("Selected: \(group.description)")
         
-        if group.isValidGroup() {
-            println("valid group")
-            scene.animateValidGroupTutorial(group) {
+        if group.isValid() {
+            println(" - Valid group - ")
+            scene.animateValidGroup(group) {
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
+                
                 if defaults.arrayForKey("highScores") == nil {
                     let highScoresArray = [10]
                     defaults.setObject(highScoresArray, forKey: "highScores")
@@ -70,10 +72,13 @@ class TutorialViewController: UIViewController {
                 self.performSegueWithIdentifier("fadeSegue", sender: self)
             }
         } else {
-            println("invalid group")
-            group.pictureA.wiggleAndDeselect()
-            group.pictureB.wiggleAndDeselect()
-            group.pictureC.wiggleAndDeselect()
+            
+            println(" - Invalid group - ")
+            
+            group.pictureA.runInvalidGroupAction()
+            group.pictureB.runInvalidGroupAction()
+            group.pictureC.runInvalidGroupAction()
+            
             scene.selectedPics.removeAll()
             view.userInteractionEnabled = true
         }
@@ -82,28 +87,17 @@ class TutorialViewController: UIViewController {
     @IBAction func hintButtonTapped(sender: AnyObject) {
         
         UIView.animateWithDuration(1.0, animations: {
+            
             println("Hint button tapped")
             self.needHintButton.alpha = 0.0
+            
             },
+            
             completion: { finished in
                 self.needHintButton.removeFromSuperview()
-                UIView.animateWithDuration(1.0, animations: {
+                UIView.animateWithDuration(0.8, animations: {
                     self.hintLabel.alpha = 1.0
                 })
         })
-    }
-    
-    // Present alert after user has found 2 valid groups
-    func presentEndOfTutorialAlert() {
-        let alertController = UIAlertController(title: "You found both (mis)matches", message: "You're ready to play!", preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            println("OK pressed")
-            self.performSegueWithIdentifier("unwindToHomeTutorial", sender: self)
-        }
-        alertController.addAction(OKAction)
-        
-        self.presentViewController(alertController, animated: true) {
-            println("presenting alert controller")
-        }
     }
 }

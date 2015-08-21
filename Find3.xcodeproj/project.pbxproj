@@ -39,20 +39,19 @@
 		086D9AA01B04120B00395DD5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086D9A9F1B04120B00395DD5 /* Extensions.swift */; };
 		0871DE8C1B66948100649F94 /* Level7.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8B1B66948100649F94 /* Level7.atlas */; };
 		0871DE8E1B66949000649F94 /* Level7Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0871DE8D1B66949000649F94 /* Level7Glow.atlas */; };
+		0872FABE1B82D4E000D592AE /* Level5Glow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0872FABD1B82D4E000D592AE /* Level5Glow.atlas */; };
 		089D4CE21B3489FD005626E0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE11B3489FD005626E0 /* ExampleViewController.swift */; };
 		089D4CE41B34A33C005626E0 /* FadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE31B34A33C005626E0 /* FadeSegue.swift */; };
 		089D4CE61B34E7F3005626E0 /* LastTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */; };
 		08A7CBD11B4065340016BC81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A7CBD01B4065340016BC81 /* LaunchScreen.xib */; };
 		08B0DC401B1E186D00442AAC /* PicSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0DC3F1B1E186D00442AAC /* PicSprite.swift */; };
 		08C99CD81B015D6D00C1965E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CD71B015D6D00C1965E /* AppDelegate.swift */; };
-		08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08C99CD91B015D6D00C1965E /* GameScene.sks */; };
 		08C99CDC1B015D6D00C1965E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CDB1B015D6D00C1965E /* GameScene.swift */; };
 		08C99CDE1B015D6D00C1965E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CDD1B015D6D00C1965E /* GameViewController.swift */; };
 		08C99CE11B015D6D00C1965E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C99CDF1B015D6D00C1965E /* Main.storyboard */; };
 		08C99CE31B015D6D00C1965E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08C99CE21B015D6D00C1965E /* Images.xcassets */; };
 		08C99CF21B015D6D00C1965E /* Find3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C99CF11B015D6D00C1965E /* Find3Tests.swift */; };
 		08CD12C21B212FFE007FBC55 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CD12C11B212FFE007FBC55 /* TutorialScene.swift */; };
-		08CD12C61B21507F007FBC55 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08CD12C51B21507F007FBC55 /* Settings.bundle */; };
 		08D6BF341B3A0BA000FC113A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6BF331B3A0BA000FC113A /* HomeViewController.swift */; };
 		08D6BF3A1B3A131200FC113A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D6BF391B3A131200FC113A /* AVFoundation.framework */; };
 		08D6BF3C1B3A131C00FC113A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D6BF3B1B3A131C00FC113A /* AudioToolbox.framework */; };
@@ -102,6 +101,7 @@
 		086D9A9F1B04120B00395DD5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0871DE8B1B66948100649F94 /* Level7.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7.atlas; sourceTree = "<group>"; };
 		0871DE8D1B66949000649F94 /* Level7Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level7Glow.atlas; sourceTree = "<group>"; };
+		0872FABD1B82D4E000D592AE /* Level5Glow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Level5Glow.atlas; sourceTree = "<group>"; };
 		089D4CE11B3489FD005626E0 /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		089D4CE31B34A33C005626E0 /* FadeSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeSegue.swift; sourceTree = "<group>"; };
 		089D4CE51B34E7F3005626E0 /* LastTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTutorialViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +110,6 @@
 		08C99CD21B015D6D00C1965E /* Find3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Find3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C99CD61B015D6D00C1965E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08C99CD71B015D6D00C1965E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		08C99CD91B015D6D00C1965E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		08C99CDB1B015D6D00C1965E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		08C99CDD1B015D6D00C1965E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		08C99CE01B015D6D00C1965E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,7 +118,6 @@
 		08C99CF01B015D6D00C1965E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08C99CF11B015D6D00C1965E /* Find3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find3Tests.swift; sourceTree = "<group>"; };
 		08CD12C11B212FFE007FBC55 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
-		08CD12C51B21507F007FBC55 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		08D6BF331B3A0BA000FC113A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		08D6BF391B3A131200FC113A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		08D6BF3B1B3A131C00FC113A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -175,7 +173,6 @@
 			children = (
 				08B0DC3F1B1E186D00442AAC /* PicSprite.swift */,
 				080A25F21B3DAB980088D671 /* EndOfGameView.swift */,
-				08C99CD91B015D6D00C1965E /* GameScene.sks */,
 				08C99CDB1B015D6D00C1965E /* GameScene.swift */,
 				08CD12C11B212FFE007FBC55 /* TutorialScene.swift */,
 			);
@@ -224,6 +221,7 @@
 				0866A2671B32703B008BAD0A /* Level4.atlas */,
 				0866A2681B32703B008BAD0A /* Level4Glow.atlas */,
 				084567A01B7EA268003FA975 /* Level5.atlas */,
+				0872FABD1B82D4E000D592AE /* Level5Glow.atlas */,
 				084567A11B7EA268003FA975 /* Level6.atlas */,
 				084567A21B7EA268003FA975 /* Level6Glow.atlas */,
 				0871DE8B1B66948100649F94 /* Level7.atlas */,
@@ -246,7 +244,6 @@
 				0820BDCE1B825D8500832AD6 /* mismatch-background-music.mp3 */,
 				0820BDCA1B8259B700832AD6 /* select-sound.wav */,
 				0820BDCC1B825ACE00832AD6 /* valid-group-sound.wav */,
-				08CD12C51B21507F007FBC55 /* Settings.bundle */,
 				08C99CD61B015D6D00C1965E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -373,11 +370,10 @@
 				0820BDD11B825DC700832AD6 /* invalid-group-sound.wav in Resources */,
 				084567B11B7EA284003FA975 /* Level10Glow.atlas in Resources */,
 				0866A2741B32703B008BAD0A /* Level1Glow.atlas in Resources */,
-				08CD12C61B21507F007FBC55 /* Settings.bundle in Resources */,
+				0872FABE1B82D4E000D592AE /* Level5Glow.atlas in Resources */,
 				084567AE1B7EA284003FA975 /* Level9.atlas in Resources */,
 				0866A2781B32703B008BAD0A /* Level3Glow.atlas in Resources */,
 				0871DE8E1B66949000649F94 /* Level7Glow.atlas in Resources */,
-				08C99CDA1B015D6D00C1965E /* GameScene.sks in Resources */,
 				084567B01B7EA284003FA975 /* Level10.atlas in Resources */,
 				08C99CE11B015D6D00C1965E /* Main.storyboard in Resources */,
 				0866A2761B32703B008BAD0A /* Level2Glow.atlas in Resources */,
@@ -556,7 +552,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Find3/Find3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Find3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

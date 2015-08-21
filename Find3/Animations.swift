@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+/// Singleton class for PicSprite actions
 class Animations {
 
     var tutorialValidGroup  = SKAction()
@@ -40,7 +41,7 @@ class Animations {
         
     }
     
-// MARK: Group of 3 PicSprites selected actions
+// MARK: - Actions for all levels
     
     func validGroupActions() -> (SKAction, SKAction) {
         
@@ -79,7 +80,7 @@ class Animations {
         
     }
     
-// MARK: Actions for level 8-10
+// MARK: - Actions for levels 8-10
     
     func level8Actions() -> (SKAction, SKAction) {
         
@@ -94,7 +95,8 @@ class Animations {
         let shrinkAction = SKAction.resizeByWidth(-10, height: -10, duration: 0.5)
         let shrinkSequence = SKAction.sequence([shrinkAction, shrinkAction.reversedAction(), SKAction.waitForDuration(0.5)])
         
-        return (addWaitAndRepeat(dipSequence), addWaitAndRepeat(shrinkSequence))
+        return (waitAndRepeatActionForever(dipSequence),
+                waitAndRepeatActionForever(shrinkSequence))
     }
     
     func level9Actions() -> (SKAction, SKAction) {
@@ -111,7 +113,8 @@ class Animations {
         let stretchSequence = SKAction.sequence([stretchAction, stretchAction.reversedAction(),
             stretchAction, stretchAction.reversedAction(), SKAction.waitForDuration(1.0)])
         
-        return (addWaitAndRepeat(wobbleSequence), addWaitAndRepeat(stretchSequence))
+        return (waitAndRepeatActionForever(wobbleSequence),
+                waitAndRepeatActionForever(stretchSequence))
         
     }
     
@@ -128,10 +131,11 @@ class Animations {
         let expandSequence = SKAction.sequence([expandAction, expandAction.reversedAction(),
             SKAction.waitForDuration(1.0)])
         
-        return (addWaitAndRepeat(spinSequence), addWaitAndRepeat(expandSequence))
+        return (waitAndRepeatActionForever(spinSequence),
+                waitAndRepeatActionForever(expandSequence))
     }
     
-    func addWaitAndRepeat(action: SKAction) -> SKAction {
+    func waitAndRepeatActionForever(action: SKAction) -> SKAction {
         return SKAction.sequence([wait, SKAction.repeatActionForever(action)])
     }
     

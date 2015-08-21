@@ -10,81 +10,102 @@ import UIKit
 import QuartzCore
 import GameKit
 
-enum tags: Int {
-    case levelLabel = 100
-    case background = 101
-    case highScoreLabel = 102
-    case star1 = 201
-    case star2 = 202
-    case star3 = 203
+enum Tags: Int {
+    case LevelLabel     = 100
+    case Background     = 101
+    case HighScoreLabel = 102
+    case Star1          = 201
+    case Star2          = 202
+    case Star3          = 203
 }
 
-let lightBlue = UIColor(red: 0, green: 128.0/255.0, blue: 1.0, alpha: 1.0)
-let green = UIColor(red: 0, green: 163/255, blue: 0, alpha: 1.0)
-let purple = UIColor(red: 128.0/255.0, green: 0, blue: 1.0, alpha: 1.0)
-let darkBlue = UIColor(red: 0, green: 47.0/255.0, blue: 1.0, alpha: 1.0)
-let orange = UIColor(red: 252.0/255.0, green: 92.0/255.0, blue: 10.0/255.0, alpha: 1.0)
-let pink = UIColor(red: 223.0/255.0, green: 25.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+let LightBlue   = UIColor(red: 0, green: 128.0/255.0, blue: 1.0, alpha: 1.0)
+let Green       = UIColor(red: 0, green: 163/255, blue: 0, alpha: 1.0)
+let Purple      = UIColor(red: 128.0/255.0, green: 0, blue: 1.0, alpha: 1.0)
+let Pink        = UIColor(red: 223.0/255.0, green: 25.0/255.0, blue: 81.0/255.0, alpha: 1.0)
+let Orange      = UIColor(red: 252.0/255.0, green: 92.0/255.0, blue: 10.0/255.0, alpha: 1.0)
+let DarkBlue    = UIColor(red: 0, green: 47.0/255.0, blue: 1.0, alpha: 1.0)
 
-let oneStarScore = 10
-let twoStarScore = 15
-let threeStarScore = 20
+let OneStarScore    = 10
+let TwoStarScore    = 15
+let ThreeStarScore  = 20
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GKGameCenterControllerDelegate {
+let NumLevels = 11
+
+class HomeViewController: UIViewController, UITableViewDataSource,
+                            UITableViewDelegate, GKGameCenterControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var highScores: [Int] = [Int]()
     var unlockedLevels = 0
     
-    let colors = [lightBlue, green, purple, pink, orange, darkBlue]
+    let colors = [LightBlue, Green, Purple, Pink, Orange, DarkBlue]
     
     var tutorialPageVC: PageDataSourceViewController?
     var gameVC: GameViewController?
     
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         tableView.separatorColor = UIColor.clearColor()
+        
         let storyboard = self.storyboard
-        tutorialPageVC = storyboard?.instantiateViewControllerWithIdentifier("PageDataSourceVC") as? PageDataSourceViewController
-        gameVC = storyboard?.instantiateViewControllerWithIdentifier("GameViewController") as? GameViewController
+        
+        tutorialPageVC = storyboard?.instantiateViewControllerWithIdentifier("PageDataSourceVC")
+            as? PageDataSourceViewController
+        
+        gameVC = storyboard?.instantiateViewControllerWithIdentifier("GameViewController")
+            as? GameViewController
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(false)
         
         let defaults = NSUserDefaults.standardUserDefaults()
+
         if let scoresArray = defaults.arrayForKey("highScores") {
+            
             highScores = scoresArray as! [Int]
-            unlockedLevels = highScores.count - 1
+            
+            unlockedLevels = highScores.count - 1 // Subtract one for tutorial
+            
             if highScores[unlockedLevels] >= 10 {
-                unlockedLevels++
+                unlockedLevels++ // Unlock additional level if last high score is greater than 10
             }
         }
         
         tableView.reloadData()
     }
     
+    
+// MARK: - TableView data source methods
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return NumLevels
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("LevelCell", forIndexPath: indexPath) as! UITableViewCell
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
-        let view = cell.viewWithTag(tags.background.rawValue) as UIView!
-        let levelLabel = cell.viewWithTag(tags.levelLabel.rawValue) as! UILabel
-        let scoreLabel = cell.viewWithTag(tags.highScoreLabel.rawValue) as! UILabel
+        let view = cell.viewWithTag(Tags.Background.rawValue) as UIView!
+        let levelLabel = cell.viewWithTag(Tags.LevelLabel.rawValue) as! UILabel
+        let scoreLabel = cell.viewWithTag(Tags.HighScoreLabel.rawValue) as! UILabel
         
-        let star1 = cell.viewWithTag(tags.star1.rawValue) as! UIImageView
-        let star2 = cell.viewWithTag(tags.star2.rawValue) as! UIImageView
-        let star3 = cell.viewWithTag(tags.star3.rawValue) as! UIImageView
+        let star1 = cell.viewWithTag(Tags.Star1.rawValue) as! UIImageView
+        let star2 = cell.viewWithTag(Tags.Star2.rawValue) as! UIImageView
+        let star3 = cell.viewWithTag(Tags.Star3.rawValue) as! UIImageView
         
         view.layer.borderColor = colors[indexPath.row % 6].CGColor
         view.layer.borderWidth = 6.0
@@ -140,17 +161,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         switch score {
             
-        case 0..<oneStarScore:
+        case 0..<OneStarScore:
             stars[0].image = UIImage(named: "star-empty")
             stars[1].image = UIImage(named: "star-empty")
             stars[2].image = UIImage(named: "star-empty")
             
-        case oneStarScore..<twoStarScore:
+        case OneStarScore..<TwoStarScore:
             stars[0].image = UIImage(named: "star")
             stars[1].image = UIImage(named: "star-empty")
             stars[2].image = UIImage(named: "star-empty")
             
-        case twoStarScore..<threeStarScore:
+        case TwoStarScore..<ThreeStarScore:
             stars[0].image = UIImage(named: "star")
             stars[1].image = UIImage(named: "star")
             stars[2].image = UIImage(named: "star-empty")
@@ -161,6 +182,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             stars[2].image = UIImage(named: "star")
         }
     }
+
+// MARK: - TableView delegate methods
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
@@ -177,19 +200,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
-        println("unwind to home")
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "LevelSegue" {
-            if let gameVC = segue.destinationViewController as? GameViewController {
-                if let index = tableView.indexPathForSelectedRow()?.row {
-                    gameVC.level = index
-                }
-            }
-        }
-    }
+// MARK: - Game Center (Leaderboard)
     
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
@@ -203,6 +214,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.presentViewController(gcViewController, animated: true, completion: nil)
         
+    }
+    
+// MARK: - Navigation
+    
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        println("unwind to home")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "LevelSegue" {
+            if let gameVC = segue.destinationViewController as? GameViewController {
+                if let index = tableView.indexPathForSelectedRow()?.row {
+                    gameVC.level = index
+                }
+            }
+        }
     }
     
 }

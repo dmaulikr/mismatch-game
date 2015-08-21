@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-// Reference: http://shrikar.com/ios-swift-tutorial-uipageviewcontroller-as-user-onboarding-tool/
+// Source: http://shrikar.com/ios-swift-tutorial-uipageviewcontroller-as-user-onboarding-tool/
 
 class PageDataSourceViewController: UIViewController, UIPageViewControllerDataSource {
     
@@ -21,44 +21,61 @@ class PageDataSourceViewController: UIViewController, UIPageViewControllerDataSo
         "InstructionsPage2",
         "InstructionsPage3",
         "InstructionsPage4",
-        "InstructionsPage5"]
+        "InstructionsPage5",
+        "InstructionsPage6"]
+    
+    private let verticalOffset: CGFloat = 50.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createPageViewController()
         setupPageControl()
+        
     }
 
 //MARK: - Page View Controller methods
     
     private func createPageViewController() {
-        pageController = self.storyboard!.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        
+        pageController = self.storyboard!.instantiateViewControllerWithIdentifier("PageViewController")
+            as! UIPageViewController
         pageController.dataSource = self
         
         if pages.count > 0 {
             let firstController = getPageController(0)!
             
-            pageController.setViewControllers([firstController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+            pageController.setViewControllers([firstController],
+                direction: UIPageViewControllerNavigationDirection.Forward,
+                animated: false,
+                completion: nil)
         }
         
-        pageController.view.frame = CGRectMake(0, 50.0, self.view.frame.size.width, self.view.frame.size.height - 50.0)
+        pageController.view.frame = CGRectMake(0, verticalOffset,
+            self.view.frame.size.width,
+            self.view.frame.size.height - verticalOffset)
+        
         addChildViewController(pageController)
         self.view.addSubview(pageController.view)
         pageController.didMoveToParentViewController(self)
     }
     
     private func setupPageControl() {
+        
         let appearance = UIPageControl.appearance()
         appearance.pageIndicatorTintColor = UIColor.grayColor()
         appearance.currentPageIndicatorTintColor = UIColor.purpleColor()
         appearance.backgroundColor = UIColor.whiteColor()
+        
     }
 
     private func getPageController(index: Int) -> UIViewController? {
+        
         if index < pages.count {
+            
             let viewController = self.storyboard!.instantiateViewControllerWithIdentifier(pages[index]) as! UIViewController
             
-            if index >= 2 && index <= 4 {
+            if index >= 2 && index <= 5 {
                 let exampleVC = viewController as! ExampleViewController
                 exampleVC.page = index
             }
@@ -68,15 +85,11 @@ class PageDataSourceViewController: UIViewController, UIPageViewControllerDataSo
         return nil
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
 //MARK: - UIPageViewControllerDataSource
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(pageViewController: UIPageViewController,
+        viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         if let id = viewController.restorationIdentifier {
             if let index = find(pages, id) {

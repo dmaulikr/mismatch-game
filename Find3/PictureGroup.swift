@@ -10,7 +10,7 @@ import Foundation
 
 // PictureGroup class represents three PicSprites that may or may not form a valid group
 
-struct PictureGroup: Hashable, Printable {
+struct PictureGroup: Printable {
     let pictureA: PicSprite
     let pictureB: PicSprite
     let pictureC: PicSprite
@@ -22,7 +22,7 @@ struct PictureGroup: Hashable, Printable {
     }
     
     // Checks the three properties of each PicSprite in the group
-    func isValidGroup() -> Bool {
+    func isValid() -> Bool {
         return checkProperty1() && checkProperty2() && checkProperty3()
     }
     
@@ -50,12 +50,8 @@ struct PictureGroup: Hashable, Printable {
         }
     }
     
-    var hashValue: Int {
-        return pictureA.hashValue ^ pictureB.hashValue ^ pictureC.hashValue
-    }
-    
     var description: String {
-        return "Selected group: \(pictureA.imageName), \(pictureB.imageName), \(pictureC.imageName)"
+        return "\(pictureA.imageName), \(pictureB.imageName), \(pictureC.imageName)"
     }
 }
 

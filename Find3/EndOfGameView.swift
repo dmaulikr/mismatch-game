@@ -21,19 +21,25 @@ class EndOfGameView: UIView {
     
     func setEndOfGameText(groupsFound: Int, prevHighScore: Int, level: Int) {
         
-        if groupsFound >= oneStarScore && prevHighScore < oneStarScore && level != 10 {
+        if groupsFound >= OneStarScore && prevHighScore < OneStarScore && level != 10 {
+            
             gameOverTitle.text = "Congrats!"
             gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
+            
         } else if groupsFound > prevHighScore {
-            gameOverTitle.text = "New High Score!"
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
-        } else {
-            gameOverTitle.text = generateTitle(groupsFound)
+            
+            gameOverTitle.text = "New high score!"
             gameOverMsg.text = "You found \(groupsFound) (mis)matches."
             
-            if prevHighScore < oneStarScore && level != 10 {
-                gameOverMsg.text! += " You need at least \(oneStarScore) to unlock the next level."
+        } else {
+            
+            gameOverTitle.text = randomTitle(groupsFound)
+            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+            
+            if prevHighScore < OneStarScore && level != 10 {
+                gameOverMsg.text! += " You need at least \(OneStarScore) to unlock the next level."
             }
+            
         }
     }
     
@@ -42,32 +48,32 @@ class EndOfGameView: UIView {
         starTwo.image = UIImage(named: "star-empty")
         starThree.image = UIImage(named: "star-empty")
         
-        if groupsFound >= oneStarScore {
+        if groupsFound >= OneStarScore {
             starOne.image = UIImage(named: "star")
         }
         
-        if groupsFound >= twoStarScore {
+        if groupsFound >= TwoStarScore {
             starTwo.image = UIImage(named: "star")
         }
         
-        if groupsFound >= threeStarScore {
+        if groupsFound >= ThreeStarScore {
             starThree.image = UIImage(named: "star")
         }
     }
     
-    func generateTitle(groupsFound: Int) -> String {
+    func randomTitle(groupsFound: Int) -> String {
         
         switch groupsFound {
         case 0:
             titles = ["Better luck next time!"]
-        case 1..<oneStarScore:
-            titles = ["Not bad!", "A-okay!", "Nice!"]
-        case oneStarScore..<twoStarScore:
-            titles = ["Awesome!", "High five!", "Thumbs up!"]
-        case twoStarScore..<threeStarScore:
-            titles = ["Amazing!", "Stellar!", "Superb!"]
+        case 1..<OneStarScore:
+            titles = ["Great try!", "Nice effort!"]
+        case OneStarScore..<TwoStarScore:
+            titles = ["Awesome!", "Terrific!", "Super!"]
+        case TwoStarScore..<ThreeStarScore:
+            titles = ["Amazing!", "Impressive!", "Fantastic!"]
         default:
-            titles = ["Remarkable!", "Outstanding!", "Astonishing!"]
+            titles = ["Remarkable!", "Outstanding!", "Astonishing!"] 
         }
         
         return titles[Int(arc4random_uniform(UInt32(titles.count)))]

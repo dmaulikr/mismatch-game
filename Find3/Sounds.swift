@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 
+/// Singleton class for music and sound effects
 class Sounds {
     var backgroundMusic     = AVAudioPlayer()
     var selectSound         = AVAudioPlayer()
@@ -23,10 +24,13 @@ class Sounds {
         validGroupSound     = setupAudioPlayer("valid-group-sound", type: "wav")
         invalidGroupSound   = setupAudioPlayer("invalid-group-sound", type: "wav")
         
-        backgroundMusic.volume = 0.6
+        backgroundMusic.volume = 0.25
+        selectSound.volume = 0.6
     }
     
+    /// Returns AVAudioPlayer for given audio file
     func setupAudioPlayer(file: String, type: String) -> AVAudioPlayer {
+        
         var path = NSBundle.mainBundle().pathForResource(file, ofType: type)
         var url = NSURL.fileURLWithPath(path!)
         

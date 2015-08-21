@@ -19,37 +19,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        println("application did finish launching")
-        
-        setPreferenceDefaults()
-        
         self.authenticateLocalPlayer()
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
         
         return true
     }
     
-    // Set developer name in Settings bundle
-    func setPreferenceDefaults() {
-        var defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setValue("Susan Stevens", forKey: "SettingsCreatedBy")
-        defaults.synchronize()
-    }
     
-    // Authenticate player for Game Center
+    
+    /// Attempts to authenticate player for Game Center and load leaderboard
     func authenticateLocalPlayer() {
-        
-        println("authenticating player for game center")
         
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         
         localPlayer.authenticateHandler = { (viewController, error) -> Void in
+            
+            // Launch sign-in view controller if player not signed in to Game Center
+            
             if (viewController != nil && self.window?.rootViewController?.presentedViewController == nil) {
                 self.window?.rootViewController?.presentViewController(viewController, animated: true, completion: nil)
-            } else if (localPlayer.authenticated) {
+            }
+            
+            // If player is signed in, load the leaderboard
+            
+            else if (localPlayer.authenticated) {
+                
                 self.gameCenterEnabled = true
                 
                 localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardID: String!, error: NSError!) -> Void in
+                    
                     if error != nil {
                         println(error)
                     } else {
@@ -57,7 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 })
     
-            } else {
+            }
+            
+            // Otherwise, Game Center not enabled (do not load leaderboard)
+            
+            else {
                 self.gameCenterEnabled = false
                 println("Local player could not be authenticated, disabling game center")
                 println(error)
