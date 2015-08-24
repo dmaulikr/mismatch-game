@@ -64,7 +64,7 @@ class PageDataSourceViewController: UIViewController, UIPageViewControllerDataSo
         
         let appearance = UIPageControl.appearance()
         appearance.pageIndicatorTintColor = UIColor.grayColor()
-        appearance.currentPageIndicatorTintColor = UIColor.purpleColor()
+        appearance.currentPageIndicatorTintColor = LightBlue
         appearance.backgroundColor = UIColor.whiteColor()
         
     }

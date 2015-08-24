@@ -210,7 +210,7 @@ class HomeViewController: UIViewController, UITableViewDataSource,
         var gcViewController = GKGameCenterViewController()
         gcViewController.gameCenterDelegate = self
         gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
-        gcViewController.leaderboardIdentifier = "mismatch-leaderboard"
+        // gcViewController.leaderboardIdentifier = "mismatch_combined_leaderboard"
         
         self.presentViewController(gcViewController, animated: true, completion: nil)
         

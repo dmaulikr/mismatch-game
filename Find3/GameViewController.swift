@@ -217,9 +217,13 @@ class GameViewController: UIViewController {
             overallScore -= highScoreArray[0] // Subtract tutorial level score
         }
         
-        let leaderboardID = "mismatch_leaderboard"
+        // let leaderboardID = "mismatch_game_leaderboard"
+        
+        let leaderboardID = "mismatch_level_\(level)"
+        
         var gkScore = GKScore(leaderboardIdentifier: leaderboardID)
-        gkScore.value = Int64(overallScore)
+        // gkScore.value = Int64(overallScore)
+        gkScore.value = Int64(groupsFound)
         
         let localPlayer = GKLocalPlayer.localPlayer()
         

@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         println(error)
                     } else {
                         self.gameCenterDefaultLeaderboard = leaderboardID
+                        println("Local player authenticated")
+                        println("Default leaderboard: \(leaderboardID)")
                     }
                 })
     
