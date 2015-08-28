@@ -36,6 +36,7 @@ class ExampleViewController: UIViewController {
         displaySprites()
     }
     
+    /// Add example-page sprites to scene. Display red x on page 5.
     func displaySprites() {
         
         scene.grid.setupExamplePictures(page!)

@@ -42,6 +42,7 @@ class TutorialViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /// Set up sprites and hint label
     func beginGame() {
         
         scene.grid.selectInitialPictures(level)
@@ -52,7 +53,7 @@ class TutorialViewController: UIViewController {
         
     }
     
-    // Called when user taps three PicSprites
+    /// Called when user taps three PicSprites
     func handleTapThree(group: PictureGroup) {
         view.userInteractionEnabled = false
         

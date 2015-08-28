@@ -8,9 +8,10 @@
 
 import SpriteKit
 
+/// Subclass of GameScene used in tutorial. Overrides animation for valid group selection.
 class TutorialScene: GameScene {
     
-    // Perform animation when user selects a valid group
+    /// Perform animation when user selects a valid group
     override func animateValidGroup(group: PictureGroup, completion: () -> ()) {
         
         let expandAction = SKAction.runBlock {

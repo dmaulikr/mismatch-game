@@ -28,7 +28,7 @@ class Sounds {
         selectSound.volume = 0.6
     }
     
-    /// Returns AVAudioPlayer for given audio file
+    /// Return AVAudioPlayer for given audio file
     func setupAudioPlayer(file: String, type: String) -> AVAudioPlayer {
         
         var path = NSBundle.mainBundle().pathForResource(file, ofType: type)

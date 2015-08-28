@@ -12,6 +12,8 @@ import AVFoundation
 let TileWidth: CGFloat = 100.0
 let TileHeight: CGFloat = 100.0
 
+
+/// Subclass of SKScene used to animate sprites and handle touches
 class GameScene: SKScene {
     
     let gameLayer = SKNode()
@@ -43,7 +45,7 @@ class GameScene: SKScene {
     
 // MARK: - Add and remove sprites at start/end of game
     
-    // Add the nine starting sprites
+    /// Add the nine starting sprites
     func addSpritesToScene(pictures: Array2D<PicSprite>) {
         
         for row in 0..<NumRows {
@@ -62,6 +64,7 @@ class GameScene: SKScene {
         }
     }
     
+    /// Remove displayed PicSprites from the scene
     func removeSpritesFromScene(pictures: Array2D<PicSprite>) {
         
         for row in 0..<NumRows {
@@ -75,14 +78,14 @@ class GameScene: SKScene {
     
 // MARK: - Convert between point and column/row on grid
 
-    // Return the center point for a particular column and row on the grid
+    /// Return the center point for a particular column and row on the grid
     func pointForColumn(column: Int, row: Int) -> CGPoint {
         
         return CGPoint(x: CGFloat(column)*TileWidth + TileWidth/2, y: CGFloat(row)*TileHeight + TileHeight/2)
         
     }
     
-    // Convert a point to a particular column and row on the grid
+    /// Convert a point to a particular column and row on the grid
     func convertPoint(point: CGPoint) -> (success: Bool, column: Int, row: Int) {
         
         if point.x >= 0 && point.y >= 0
@@ -150,7 +153,7 @@ class GameScene: SKScene {
     
 // MARK: - Add and remove sprites upon valid group selection
     
-    // Perform animation and remove valid group selected by user
+    /// Perform animation and remove valid group selected by user
     func animateValidGroup(group: PictureGroup, completion: () -> ()) {
         
         group.pictureA.runValidGroupAction()
@@ -170,7 +173,7 @@ class GameScene: SKScene {
         selectedPics.removeAll(keepCapacity: true)
     }
     
-    // Animate sprites falling down after a valid group has been selected
+    /// Animate sprites falling down after a valid group has been selected
     func animateFallingPictures(columns: [[PicSprite]], completion: () -> ()) {
         
         var longestDuration: NSTimeInterval = 0
@@ -194,7 +197,7 @@ class GameScene: SKScene {
         runAction(SKAction.waitForDuration(longestDuration), completion: completion)
     }
     
-    // Animate new sprites falling into place after valid group selected
+    /// Animate new sprites falling into place after valid group selected
     func animateNewPictures(columns: [[PicSprite]], completion: () -> ()) {
         
         var longestDuration: NSTimeInterval = 0

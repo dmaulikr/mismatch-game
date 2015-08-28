@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Subclass of UIView presented at end of each game
 class EndOfGameView: UIView {
 
     @IBOutlet weak var starOne: UIImageView!
@@ -19,6 +20,7 @@ class EndOfGameView: UIView {
     
     var titles: [String] = []
     
+    /// Set text to be displayed at end of game
     func setEndOfGameText(groupsFound: Int, prevHighScore: Int, level: Int) {
         
         if groupsFound >= OneStarScore && prevHighScore < OneStarScore && level != 10 {
@@ -43,6 +45,7 @@ class EndOfGameView: UIView {
         }
     }
     
+    /// Fill correct stars at end of game
     func setEndOfGameStars(groupsFound: Int) {
         starOne.image = UIImage(named: "star-empty")
         starTwo.image = UIImage(named: "star-empty")
@@ -61,6 +64,7 @@ class EndOfGameView: UIView {
         }
     }
     
+    /// Returns a random end-of-game message appropriate for number of (mis)matches found
     func randomTitle(groupsFound: Int) -> String {
         
         switch groupsFound {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Final page of tutorial; appears after user finds one (mis)match
 class LastTutorialViewController: UIViewController {
     
 // MARK: - Navigation

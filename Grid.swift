@@ -12,6 +12,7 @@ import SpriteKit
 let NumColumns = 3
 let NumRows = 3
 
+/// Class that determines which sprites are onscreen
 class Grid {
     
     private var allPictures: Array<PicSprite>
@@ -32,6 +33,7 @@ class Grid {
 
 // MARK: - Set-up initial grid
     
+    /// Set the level of the PicSprites at the beginning of the game
     func setLevel(level: Int) {
         
         for picSprite in allPictures {
@@ -51,6 +53,7 @@ class Grid {
         }
     }
     
+    /// Determine which 9 sprites are displayed at the start of game
     func selectInitialPictures(level: Int) {
         
         allPictures.shuffle()
@@ -78,6 +81,7 @@ class Grid {
         } while !containsValidGroup()
     }
     
+    /// Set up sprites for example pages in tutorial
     func setupExamplePictures(page: Int) {
         
         index = 0
@@ -122,7 +126,7 @@ class Grid {
         
     }
     
-    // Mark any pictures currently onscreen as being offscreen
+    /// Mark any pictures currently onscreen as being offscreen
     func clearOnscreenPictures() {
         if pictures.columns * pictures.rows == NumColumns * NumRows {
             for row in 0..<NumRows {
@@ -133,7 +137,7 @@ class Grid {
         }
     }
     
-    
+    /// Check if the sprites in the grid contain a valid group (i.e., a "(mis)match")
     func containsValidGroup() -> Bool {
         let numTiles = NumRows * NumColumns
             
@@ -159,7 +163,7 @@ class Grid {
         return false
     }
     
-    // Return the PicSprite at a given place on the grid
+    /// Return the PicSprite at a given place on the grid
     func pictureAtColumn(column: Int, row: Int) -> PicSprite? {
         assert(column >= 0 && column < NumColumns)
         assert(row >= 0 && row < NumRows)
@@ -168,14 +172,14 @@ class Grid {
 
 // MARK: - Remove valid group and refill grid
     
-    // Remove a PictureGroup from the grid
+    /// Remove a PictureGroup from the grid
     func removePictures(group: PictureGroup) {
         pictures[group.pictureA.column!, group.pictureA.row!] = nil
         pictures[group.pictureB.column!, group.pictureB.row!] = nil
         pictures[group.pictureC.column!, group.pictureC.row!] = nil
     }
     
-    // Move PicSprites down to fill holes left by valid group that was removed
+    /// Move PicSprites down to fill holes left by valid group that was removed
     func fillHoles() -> [[PicSprite]] {
         var columns = [[PicSprite]]()
         
@@ -203,7 +207,7 @@ class Grid {
         return columns
     }
     
-    // Add PicSprites after valid group found
+    /// Add new PicSprites after valid group found
     func addMorePictures() -> [[PicSprite]] {
         var columns = [[PicSprite]]()
         
@@ -244,7 +248,7 @@ class Grid {
         return columns
     }
     
-    // Mark given PicSprites (ordered in arrays by column) as NOT onscreen
+    /// Mark given PicSprites (ordered in arrays by column) as NOT onscreen
     func clearPicsInColumns(columns: [[PicSprite]]) {
         for array in columns {
             for picture in array {

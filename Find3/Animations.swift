@@ -43,6 +43,11 @@ class Animations {
     
 // MARK: - Actions for all levels
     
+    /** 
+    Create actions used when user selects valid group of 3 images.
+    Return tuple consisting of tutorial action and level action.
+    */
+    
     func validGroupActions() -> (SKAction, SKAction) {
         
         let grow = SKAction.resizeByWidth(10, height: 10, duration: 0.3)
@@ -63,6 +68,7 @@ class Animations {
         
     }
     
+    /// Create action used when user selects invalid group of 3 images
     func invalidGroupAction() -> SKAction {
         
         let moveRight = SKAction.moveByX(5.0, y: 0.0, duration: 0.025)
@@ -82,6 +88,7 @@ class Animations {
     
 // MARK: - Actions for levels 8-10
     
+    /// Create 2 actions used as properties in level 8
     func level8Actions() -> (SKAction, SKAction) {
         
         // Property 0: dip action
@@ -99,6 +106,7 @@ class Animations {
                 waitAndRepeatActionForever(shrinkSequence))
     }
     
+    /// Create 2 actions used as properties in level 9
     func level9Actions() -> (SKAction, SKAction) {
         
         // Property 0: wobble action
@@ -118,6 +126,7 @@ class Animations {
         
     }
     
+    /// Create 2 actions used as properties in level 10
     func level10Actions() -> (SKAction, SKAction) {
         
         // Property 0: spin action
@@ -135,6 +144,10 @@ class Animations {
                 waitAndRepeatActionForever(expandSequence))
     }
     
+    /** 
+    Helper function that takes an action and returns an action sequence
+    consisting of a random-duration wait and the action repeated forever.
+    */
     func waitAndRepeatActionForever(action: SKAction) -> SKAction {
         return SKAction.sequence([wait, SKAction.repeatActionForever(action)])
     }

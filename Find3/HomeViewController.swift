@@ -157,6 +157,7 @@ class HomeViewController: UIViewController, UITableViewDataSource,
         return cell
     }
     
+    /// Display stars for each level on homepage
     func formatStars(score: Int, stars: [UIImageView]) {
         
         switch score {

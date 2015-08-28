@@ -8,7 +8,7 @@
 
 import Foundation
 
-// PictureGroup class represents three PicSprites that may or may not form a valid group
+/// Struct consisting of three PicSprites that may or may not form a valid group
 
 struct PictureGroup: Printable {
     let pictureA: PicSprite
@@ -21,11 +21,12 @@ struct PictureGroup: Printable {
         self.pictureC = pictureC
     }
     
-    // Checks the three properties of each PicSprite in the group
+    /// Check the three properties of each PicSprite in the group
     func isValid() -> Bool {
         return checkProperty1() && checkProperty2() && checkProperty3()
     }
     
+    /// Determine whether the first property is the same or unique for 3 PicSprites
     private func checkProperty1() -> Bool {
         if pictureA.property1 == pictureB.property1 {
             return pictureA.property1 == pictureC.property1 && pictureB.property1 == pictureC.property1
@@ -34,6 +35,7 @@ struct PictureGroup: Printable {
         }
     }
     
+    /// Determine whether the second property is the same or unique for 3 PicSprites
     private func checkProperty2() -> Bool {
         if pictureA.property2 == pictureB.property2 {
             return pictureA.property2 == pictureC.property2 && pictureB.property2 == pictureC.property2
@@ -42,6 +44,7 @@ struct PictureGroup: Printable {
         }
     }
     
+    /// Determine whether the third property is the same or unique for 3 PicSprites
     private func checkProperty3() -> Bool {
         if pictureA.property3 == pictureB.property3 {
             return pictureA.property3 == pictureC.property3 && pictureB.property3 == pictureC.property3

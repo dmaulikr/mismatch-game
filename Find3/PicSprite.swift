@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import SpriteKit
 
-// A PicSprite is one of the shapes displayed onscreen
+/// Class for an image in the game
 
 class PicSprite: SKSpriteNode, Hashable {
     var selected: Bool = false
@@ -55,7 +55,7 @@ class PicSprite: SKSpriteNode, Hashable {
     
 // MARK: - Class functions
     
-    // Create all 27 PicSprites for a given level
+    /// Create array of all 27 PicSprites for a given level
     class func createAll(level: Int) -> Array<PicSprite> {
         var sprites = [PicSprite]()
         var i = 0
@@ -71,6 +71,7 @@ class PicSprite: SKSpriteNode, Hashable {
         return sprites
     }
     
+    /// Create array of 9 PicSprites used in example pages in tutorial
     class func createExamplePics() -> Array<PicSprite> {
         var allSprites = createAll(1)
         var sprites = [PicSprite]()
@@ -90,7 +91,7 @@ class PicSprite: SKSpriteNode, Hashable {
         return sprites
     }
     
-    // Return an array of the nine PicSprites used in the tutorial level
+    /// Create array of 9 PicSprites used on the test page in tutorial
     class func createTutorialPics() -> Array<PicSprite> {
         var allSprites = createAll(1)
         var sprites = [PicSprite]()
@@ -115,7 +116,7 @@ class PicSprite: SKSpriteNode, Hashable {
     
 // MARK: - Selection and deselection
     
-    // Called when user selects a sprite
+    /// Called when user selects a sprite
     func selectSprite() {
         
         let texture = SKTexture(imageNamed: "\(imageName)-glow")
@@ -125,7 +126,7 @@ class PicSprite: SKSpriteNode, Hashable {
         
     }
     
-    // Called when user deselects a sprite
+    /// Called when user deselects a sprite
     func deselectSprite() {
         
         let texture = SKTexture(imageNamed: imageName)
@@ -137,6 +138,10 @@ class PicSprite: SKSpriteNode, Hashable {
     
 // MARK: - Animations
     
+    /** 
+    Called when user selects a valid group of 3 images.
+    Removes the images and resets rotation and selection properties of the sprites.
+    */
     func runValidGroupAction() {
         
         removeAllActions()
@@ -149,6 +154,7 @@ class PicSprite: SKSpriteNode, Hashable {
             })
     }
     
+    /// Called when user selects a valid group of 3 images in tutorial level
     func runTutorialValidGroupAction() {
         runAction(Animations.sharedInstance.tutorialValidGroup)
     }
@@ -163,6 +169,7 @@ class PicSprite: SKSpriteNode, Hashable {
     
 // MARK: - Levels 8-10 animations
     
+    /// Add actions to sprites in levels 8-10
     func addAnimations(level: Int) {
         
         removeAllActions()

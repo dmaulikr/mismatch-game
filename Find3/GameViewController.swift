@@ -76,6 +76,7 @@ class GameViewController: UIViewController {
     
 // MARK: - Start of game
     
+    /// Set up sprites, timers and labels for beginning of game
     func beginGame() {
         
         scene.grid.selectInitialPictures(level)
@@ -101,7 +102,7 @@ class GameViewController: UIViewController {
     
 // MARK: - During game
     
-    // Decrement the counter every second; display alert after 2 minutes
+    /// Decrement the counter every second; display end-of-game alert after 2 minutes
     func updateCounter() {
         
         counter--
@@ -120,7 +121,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    // Called when user has selected 3 sprites
+    /// Called when user has selected 3 sprites
     func handleTapThree(group: PictureGroup) {
         self.view.userInteractionEnabled = false
         
@@ -150,7 +151,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    // Increment number of groups found
+    /// Increment number of groups found
     func updateGroupsFoundLabel() {
         groupsFound++
         groupsFoundLabel.text = String(groupsFound)
@@ -158,7 +159,7 @@ class GameViewController: UIViewController {
 
 // MARK: - End of game
     
-    // Display alert when two minutes have passed
+    /// Display alert when two minutes have passed
     func presentEndOfGameAlert(prevHighScore: Int) {
         
         view.userInteractionEnabled = true
@@ -177,7 +178,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    /* Returns the previous high score */
+    /// Updates high score in NSUserDefaults and returns previous high score for current level
     func updateHighScore() -> Int {
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -205,6 +206,7 @@ class GameViewController: UIViewController {
         return prevHighScore
     }
     
+    /// Sends new score to Game Center
     func updateGameCenter() {
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -238,12 +240,14 @@ class GameViewController: UIViewController {
     
 // MARK: - Pause and resume
     
+    /// Pause timer and background music
     func pauseGame() {
         println("pausing game")
         scene.removeActionForKey("runTimer")
         Sounds.sharedInstance.backgroundMusic.pause()
     }
     
+    /// Restart timer and background music
     func resumeGame() {
         println("resuming game")
         scene.runAction(runTimer, withKey: "runTimer")
