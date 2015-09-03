@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
     var runTimer: SKAction!
     var counter: Int = GameLengthInSeconds
     var groupsFound: Int = 0
+    var musicCurrentTime: NSTimeInterval = 0.0
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -113,7 +114,7 @@ class GameViewController: UIViewController {
         if counter == 0 {
             
             self.scene.userInteractionEnabled = false
-            self.scene.removeActionForKey("runRemovePicTimer")
+            self.scene.removeActionForKey("runTimer")
             
             let prevHighScore = updateHighScore()
             presentEndOfGameAlert(prevHighScore)
@@ -243,14 +244,16 @@ class GameViewController: UIViewController {
     /// Pause timer and background music
     func pauseGame() {
         println("pausing game")
-        scene.removeActionForKey("runTimer")
+        scene.paused = true
         Sounds.sharedInstance.backgroundMusic.pause()
+        musicCurrentTime = Sounds.sharedInstance.backgroundMusic.currentTime        
     }
     
     /// Restart timer and background music
     func resumeGame() {
         println("resuming game")
-        scene.runAction(runTimer, withKey: "runTimer")
+        scene.paused = false
+        Sounds.sharedInstance.backgroundMusic.currentTime = musicCurrentTime
         Sounds.sharedInstance.backgroundMusic.play()
     }
     

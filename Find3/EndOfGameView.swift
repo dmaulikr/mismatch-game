@@ -23,20 +23,22 @@ class EndOfGameView: UIView {
     /// Set text to be displayed at end of game
     func setEndOfGameText(groupsFound: Int, prevHighScore: Int, level: Int) {
         
+        let unit = groupsFound == 1 ? "(mis)match" : "(mis)matches"
+        
         if groupsFound >= OneStarScore && prevHighScore < OneStarScore && level != 10 {
             
             gameOverTitle.text = "Congrats!"
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
+            gameOverMsg.text! += "You found \(groupsFound) (mis)matches and unlocked the next level."
             
         } else if groupsFound > prevHighScore {
             
             gameOverTitle.text = "New high score!"
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+            gameOverMsg.text! += "You found \(groupsFound) " + unit + "."
             
         } else {
             
             gameOverTitle.text = randomTitle(groupsFound)
-            gameOverMsg.text = "You found \(groupsFound) (mis)matches."
+            gameOverMsg.text = "You found \(groupsFound) " + unit + "."
             
             if prevHighScore < OneStarScore && level != 10 {
                 gameOverMsg.text! += " You need at least \(OneStarScore) to unlock the next level."
@@ -68,10 +70,8 @@ class EndOfGameView: UIView {
     func randomTitle(groupsFound: Int) -> String {
         
         switch groupsFound {
-        case 0:
-            titles = ["Better luck next time!"]
-        case 1..<OneStarScore:
-            titles = ["Great try!", "Nice effort!"]
+        case 0..<OneStarScore:
+            titles = ["Time's up!"]
         case OneStarScore..<TwoStarScore:
             titles = ["Awesome!", "Terrific!", "Super!"]
         case TwoStarScore..<ThreeStarScore:
