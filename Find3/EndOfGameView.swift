@@ -28,12 +28,12 @@ class EndOfGameView: UIView {
         if groupsFound >= OneStarScore && prevHighScore < OneStarScore && level != 10 {
             
             gameOverTitle.text = "Congrats!"
-            gameOverMsg.text! += "You found \(groupsFound) (mis)matches and unlocked the next level."
+            gameOverMsg.text = "You found \(groupsFound) (mis)matches and unlocked the next level."
             
         } else if groupsFound > prevHighScore {
             
             gameOverTitle.text = "New high score!"
-            gameOverMsg.text! += "You found \(groupsFound) " + unit + "."
+            gameOverMsg.text = "You found \(groupsFound) " + unit + "."
             
         } else {
             
