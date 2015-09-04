@@ -40,11 +40,12 @@ class EndOfGameView: UIView {
             gameOverTitle.text = randomTitle(groupsFound)
             gameOverMsg.text = "You found \(groupsFound) " + unit + "."
             
-            if prevHighScore < OneStarScore && level != 10 {
-                gameOverMsg.text! += " You need at least \(OneStarScore) to unlock the next level."
-            }
-            
         }
+        
+        if prevHighScore < OneStarScore && groupsFound < OneStarScore && level != 10 {
+            gameOverMsg.text! += " You need at least \(OneStarScore) to unlock the next level."
+        }
+        
     }
     
     /// Fill correct stars at end of game

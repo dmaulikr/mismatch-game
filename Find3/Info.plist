@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleDisplayName</key>
 	<string>Mismatch</string>
 	<key>CFBundleExecutable</key>
@@ -21,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -45,5 +43,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

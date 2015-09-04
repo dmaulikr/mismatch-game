@@ -210,22 +210,9 @@ class GameViewController: UIViewController {
     /// Sends new score to Game Center
     func updateGameCenter() {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var overallScore = 0
-        
-        if var highScoreArray = defaults.arrayForKey("highScores") as? [Int] {
-            for highScore in highScoreArray {
-                overallScore += highScore
-            }
-            overallScore -= highScoreArray[0] // Subtract tutorial level score
-        }
-        
-        // let leaderboardID = "mismatch_game_leaderboard"
-        
         let leaderboardID = "mismatch_level_\(level)"
         
         var gkScore = GKScore(leaderboardIdentifier: leaderboardID)
-        // gkScore.value = Int64(overallScore)
         gkScore.value = Int64(groupsFound)
         
         let localPlayer = GKLocalPlayer.localPlayer()
@@ -246,7 +233,7 @@ class GameViewController: UIViewController {
         println("pausing game")
         scene.paused = true
         Sounds.sharedInstance.backgroundMusic.pause()
-        musicCurrentTime = Sounds.sharedInstance.backgroundMusic.currentTime        
+        musicCurrentTime = Sounds.sharedInstance.backgroundMusic.currentTime
     }
     
     /// Restart timer and background music
