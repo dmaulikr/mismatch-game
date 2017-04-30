@@ -25,11 +25,11 @@ class Animations {
     var spin    = SKAction()
     var expand  = SKAction()
     
-    let wait    = SKAction.waitForDuration(0.5, withRange: 0.5)
+    let wait    = SKAction.wait(forDuration: 0.5, withRange: 0.5)
     
     static let sharedInstance = Animations()
     
-    private init() {
+    fileprivate init() {
         
         (tutorialValidGroup, validGroup) = validGroupActions()
         
@@ -50,39 +50,39 @@ class Animations {
     
     func validGroupActions() -> (SKAction, SKAction) {
         
-        let grow = SKAction.resizeByWidth(10, height: 10, duration: 0.3)
-        grow.timingMode = .EaseIn
+        let grow = SKAction.resize(byWidth: 10, height: 10, duration: 0.3)
+        grow.timingMode = .easeIn
         
-        let playValidSound = SKAction.runBlock {
-            if !Sounds.sharedInstance.validGroupSound.playing {
+        let playValidSound = SKAction.run {
+            if !Sounds.sharedInstance.validGroupSound.isPlaying {
                 Sounds.sharedInstance.validGroupSound.play()
             }
         }
         
-        let disappear = SKAction.resizeByWidth(-80, height: -80, duration: 0.2)
-        disappear.timingMode = .EaseOut
+        let disappear = SKAction.resize(byWidth: -80, height: -80, duration: 0.2)
+        disappear.timingMode = .easeOut
         
         let validGroupSequence = SKAction.sequence([grow, playValidSound, disappear, SKAction.removeFromParent()])
         
-         return (SKAction.sequence([grow, grow.reversedAction()]), validGroupSequence)
+         return (SKAction.sequence([grow, grow.reversed()]), validGroupSequence)
         
     }
     
     /// Create action used when user selects invalid group of 3 images
     func invalidGroupAction() -> SKAction {
         
-        let moveRight = SKAction.moveByX(5.0, y: 0.0, duration: 0.025)
-        let moveLeft = SKAction.moveByX(-5.0, y: 0.0, duration: 0.025)
+        let moveRight = SKAction.moveBy(x: 5.0, y: 0.0, duration: 0.025)
+        let moveLeft = SKAction.moveBy(x: -5.0, y: 0.0, duration: 0.025)
         
-        let wiggle = SKAction.sequence([moveLeft, moveLeft.reversedAction(), moveRight, moveRight.reversedAction()])
+        let wiggle = SKAction.sequence([moveLeft, moveLeft.reversed(), moveRight, moveRight.reversed()])
         
-        let playInvalidSound = SKAction.runBlock {
-            if !Sounds.sharedInstance.invalidGroupSound.playing {
+        let playInvalidSound = SKAction.run {
+            if !Sounds.sharedInstance.invalidGroupSound.isPlaying {
                 Sounds.sharedInstance.invalidGroupSound.play()
             }
         }
         
-        return SKAction.sequence([playInvalidSound, SKAction.repeatAction(wiggle, count: 4)])
+        return SKAction.sequence([playInvalidSound, SKAction.repeat(wiggle, count: 4)])
         
     }
     
@@ -93,14 +93,14 @@ class Animations {
         
         // Property 0: dip action
         
-        let dipAction = SKAction.rotateByAngle(-CGFloat(M_PI / 8.0), duration: 0.1)
-        let dipSequence = SKAction.sequence([dipAction, dipAction.reversedAction(),
-            SKAction.waitForDuration(1.0)])
+        let dipAction = SKAction.rotate(byAngle: -(CGFloat.pi / 8.0), duration: 0.1)
+        let dipSequence = SKAction.sequence([dipAction, dipAction.reversed(),
+            SKAction.wait(forDuration: 1.0)])
         
         // Property 1: shrink action
         
-        let shrinkAction = SKAction.resizeByWidth(-10, height: -10, duration: 0.5)
-        let shrinkSequence = SKAction.sequence([shrinkAction, shrinkAction.reversedAction(), SKAction.waitForDuration(0.5)])
+        let shrinkAction = SKAction.resize(byWidth: -10, height: -10, duration: 0.5)
+        let shrinkSequence = SKAction.sequence([shrinkAction, shrinkAction.reversed(), SKAction.wait(forDuration: 0.5)])
         
         return (waitAndRepeatActionForever(dipSequence),
                 waitAndRepeatActionForever(shrinkSequence))
@@ -111,15 +111,15 @@ class Animations {
         
         // Property 0: wobble action
         
-        let wobbleRightAction = SKAction.rotateByAngle(-CGFloat(M_PI / 6.0), duration: 0.4)
-        let wobbleLeftAction = SKAction.rotateByAngle(CGFloat(M_PI / 6.0), duration: 0.4)
-        let wobbleSequence = SKAction.sequence([wobbleRightAction, wobbleRightAction.reversedAction(), wobbleLeftAction, wobbleLeftAction.reversedAction()])
+        let wobbleRightAction = SKAction.rotate(byAngle: -(CGFloat.pi / 6), duration: 0.4)
+        let wobbleLeftAction = SKAction.rotate(byAngle: (CGFloat.pi / 6.0), duration: 0.4)
+        let wobbleSequence = SKAction.sequence([wobbleRightAction, wobbleRightAction.reversed(), wobbleLeftAction, wobbleLeftAction.reversed()])
         
         // Property 1: stretch action
         
-        let stretchAction = SKAction.scaleXBy(1.2, y: 1.0, duration: 0.1)
-        let stretchSequence = SKAction.sequence([stretchAction, stretchAction.reversedAction(),
-            stretchAction, stretchAction.reversedAction(), SKAction.waitForDuration(1.0)])
+        let stretchAction = SKAction.scaleX(by: 1.2, y: 1.0, duration: 0.1)
+        let stretchSequence = SKAction.sequence([stretchAction, stretchAction.reversed(),
+            stretchAction, stretchAction.reversed(), SKAction.wait(forDuration: 1.0)])
         
         return (waitAndRepeatActionForever(wobbleSequence),
                 waitAndRepeatActionForever(stretchSequence))
@@ -131,14 +131,14 @@ class Animations {
         
         // Property 0: spin action
         
-        let spinAction = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.25)
-        let spinSequence = SKAction.sequence([spinAction, SKAction.waitForDuration(1.0)])
+        let spinAction = SKAction.rotate(byAngle: CGFloat.pi, duration: 0.25)
+        let spinSequence = SKAction.sequence([spinAction, SKAction.wait(forDuration: 1.0)])
         
         // Property 1: expand action
         
-        let expandAction = SKAction.scaleBy(1.1, duration: 0.2)
-        let expandSequence = SKAction.sequence([expandAction, expandAction.reversedAction(),
-            SKAction.waitForDuration(1.0)])
+        let expandAction = SKAction.scale(by: 1.1, duration: 0.2)
+        let expandSequence = SKAction.sequence([expandAction, expandAction.reversed(),
+            SKAction.wait(forDuration: 1.0)])
         
         return (waitAndRepeatActionForever(spinSequence),
                 waitAndRepeatActionForever(expandSequence))
@@ -148,8 +148,8 @@ class Animations {
     Helper function that takes an action and returns an action sequence
     consisting of a random-duration wait and the action repeated forever.
     */
-    func waitAndRepeatActionForever(action: SKAction) -> SKAction {
-        return SKAction.sequence([wait, SKAction.repeatActionForever(action)])
+    func waitAndRepeatActionForever(_ action: SKAction) -> SKAction {
+        return SKAction.sequence([wait, SKAction.repeatForever(action)])
     }
     
 }

@@ -12,7 +12,7 @@ import SpriteKit
 
 /// Class for an image in the game
 
-class PicSprite: SKSpriteNode, Hashable {
+class PicSprite: SKSpriteNode {
     var selected: Bool = false
     var onscreen: Bool = false
     
@@ -42,11 +42,11 @@ class PicSprite: SKSpriteNode, Hashable {
         }
         
         let texture = SKTexture(imageNamed: imageName)
-        super.init(texture: texture, color: nil, size: texture.size())
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         self.addAnimations(level)
         
-        self.userInteractionEnabled = false
+        self.isUserInteractionEnabled = false
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -56,7 +56,7 @@ class PicSprite: SKSpriteNode, Hashable {
 // MARK: - Class functions
     
     /// Create array of all 27 PicSprites for a given level
-    class func createAll(level: Int) -> Array<PicSprite> {
+    class func createAll(_ level: Int) -> Array<PicSprite> {
         var sprites = [PicSprite]()
         var i = 0
         for property1 in 0..<3 {
@@ -64,7 +64,7 @@ class PicSprite: SKSpriteNode, Hashable {
                 for property3 in 0..<3 {
                     let sprite = PicSprite(prop1: property1, prop2: property2, prop3: property3, imageNum: i, level: level)
                     sprites += [sprite]
-                    i++
+                    i += 1
                 }
             }
         }
@@ -146,9 +146,9 @@ class PicSprite: SKSpriteNode, Hashable {
         
         removeAllActions()
         
-        runAction(Animations.sharedInstance.validGroup)
+        run(Animations.sharedInstance.validGroup)
         
-        runAction(SKAction.waitForDuration(0.6), completion: {
+        run(SKAction.wait(forDuration: 0.6), completion: {
             self.zRotation = 0.0
             self.deselectSprite()
             })
@@ -156,26 +156,26 @@ class PicSprite: SKSpriteNode, Hashable {
     
     /// Called when user selects a valid group of 3 images in tutorial level
     func runTutorialValidGroupAction() {
-        runAction(Animations.sharedInstance.tutorialValidGroup)
+        run(Animations.sharedInstance.tutorialValidGroup)
     }
     
     func runInvalidGroupAction() {
         
-        runAction(Animations.sharedInstance.invalidGroup) {
+        run(Animations.sharedInstance.invalidGroup, completion: {
             self.deselectSprite()
-        }
+        }) 
         
     }
     
 // MARK: - Levels 8-10 animations
     
     /// Add actions to sprites in levels 8-10
-    func addAnimations(level: Int) {
+    func addAnimations(_ level: Int) {
         
         removeAllActions()
         action = nil
         
-        let waitAction = SKAction.waitForDuration(0.5, withRange: 0.5)
+        // let waitAction = SKAction.wait(forDuration: 0.5, withRange: 0.5)
         
         if level == 8 {
             

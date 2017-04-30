@@ -15,7 +15,7 @@ let NumRows = 3
 /// Class that determines which sprites are onscreen
 class Grid {
     
-    private var allPictures: Array<PicSprite>
+    fileprivate var allPictures: Array<PicSprite>
     var pictures = Array2D<PicSprite>(columns: NumColumns, rows: NumRows)
     
     var index = 0
@@ -34,7 +34,7 @@ class Grid {
 // MARK: - Set-up initial grid
     
     /// Set the level of the PicSprites at the beginning of the game
-    func setLevel(level: Int) {
+    func setLevel(_ level: Int) {
         
         for picSprite in allPictures {
             
@@ -54,17 +54,17 @@ class Grid {
     }
     
     /// Determine which 9 sprites are displayed at the start of game
-    func selectInitialPictures(level: Int) {
+    func selectInitialPictures(_ level: Int) {
         
         allPictures.shuffle()
         
-        do {
+        repeat {
             clearOnscreenPictures()
             for row in 0..<NumRows {
                 for column in 0..<NumColumns {
                     
                     while allPictures[index].parent != nil || allPictures[index].onscreen {
-                        index++
+                        index += 1
                         if index == allPictures.count {
                             allPictures.shuffle()
                             index = 0
@@ -82,7 +82,7 @@ class Grid {
     }
     
     /// Set up sprites for example pages in tutorial
-    func setupExamplePictures(page: Int) {
+    func setupExamplePictures(_ page: Int) {
         
         index = 0
         
@@ -100,7 +100,7 @@ class Grid {
                 
                 pictures[column, row] = picture
                 
-                index++
+                index += 1
             }
         }
         
@@ -164,7 +164,7 @@ class Grid {
     }
     
     /// Return the PicSprite at a given place on the grid
-    func pictureAtColumn(column: Int, row: Int) -> PicSprite? {
+    func pictureAtColumn(_ column: Int, row: Int) -> PicSprite? {
         assert(column >= 0 && column < NumColumns)
         assert(row >= 0 && row < NumRows)
         return pictures[column, row]
@@ -173,7 +173,7 @@ class Grid {
 // MARK: - Remove valid group and refill grid
     
     /// Remove a PictureGroup from the grid
-    func removePictures(group: PictureGroup) {
+    func removePictures(_ group: PictureGroup) {
         pictures[group.pictureA.column!, group.pictureA.row!] = nil
         pictures[group.pictureB.column!, group.pictureB.row!] = nil
         pictures[group.pictureC.column!, group.pictureC.row!] = nil
@@ -211,16 +211,19 @@ class Grid {
     func addMorePictures() -> [[PicSprite]] {
         var columns = [[PicSprite]]()
         
-        do {
+        repeat {
             
             if !columns.isEmpty { clearPicsInColumns(columns) }
             columns.removeAll()
             for column in 0..<NumColumns {
                 
                 var array = [PicSprite]()
-                for (var row = NumRows - 1; row >= 0 && pictures[column, row] == nil; --row) {
+                
+                for row in (0..<NumRows).reversed() where pictures[column, row] == nil {
+                
+                // for (var row = NumRows - 1; row >= 0 && pictures[column, row] == nil; row -= 1) {
                     while allPictures[index].parent != nil || allPictures[index].onscreen {
-                        index++
+                        index += 1
                         if index == allPictures.count {
                             allPictures.shuffle()
                             index = 0
@@ -233,7 +236,7 @@ class Grid {
                     picture.onscreen = true
                     pictures[column, row] = picture
                     array.append(picture)
-                    index++
+                    index += 1
                     if index == allPictures.count {
                         allPictures.shuffle()
                         index = 0
@@ -249,7 +252,7 @@ class Grid {
     }
     
     /// Mark given PicSprites (ordered in arrays by column) as NOT onscreen
-    func clearPicsInColumns(columns: [[PicSprite]]) {
+    func clearPicsInColumns(_ columns: [[PicSprite]]) {
         for array in columns {
             for picture in array {
                 picture.onscreen = false

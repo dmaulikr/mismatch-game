@@ -10,7 +10,7 @@ import Foundation
 
 /// Struct consisting of three PicSprites that may or may not form a valid group
 
-struct PictureGroup: Printable {
+struct PictureGroup: CustomStringConvertible {
     let pictureA: PicSprite
     let pictureB: PicSprite
     let pictureC: PicSprite
@@ -27,7 +27,7 @@ struct PictureGroup: Printable {
     }
     
     /// Determine whether the first property is the same or unique for 3 PicSprites
-    private func checkProperty1() -> Bool {
+    fileprivate func checkProperty1() -> Bool {
         if pictureA.property1 == pictureB.property1 {
             return pictureA.property1 == pictureC.property1 && pictureB.property1 == pictureC.property1
         } else {
@@ -36,7 +36,7 @@ struct PictureGroup: Printable {
     }
     
     /// Determine whether the second property is the same or unique for 3 PicSprites
-    private func checkProperty2() -> Bool {
+    fileprivate func checkProperty2() -> Bool {
         if pictureA.property2 == pictureB.property2 {
             return pictureA.property2 == pictureC.property2 && pictureB.property2 == pictureC.property2
         } else {
@@ -45,7 +45,7 @@ struct PictureGroup: Printable {
     }
     
     /// Determine whether the third property is the same or unique for 3 PicSprites
-    private func checkProperty3() -> Bool {
+    fileprivate func checkProperty3() -> Bool {
         if pictureA.property3 == pictureB.property3 {
             return pictureA.property3 == pictureC.property3 && pictureB.property3 == pictureC.property3
         } else {

@@ -18,7 +18,7 @@ class TutorialViewController: UIViewController {
     var scene: TutorialScene!
     let level = 0
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -26,10 +26,10 @@ class TutorialViewController: UIViewController {
         super.viewDidLoad()
         
         let skView = view as! SKView
-        skView.multipleTouchEnabled = false
+        skView.isMultipleTouchEnabled = false
         
         scene = TutorialScene(size: skView.bounds.size)
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.tapThreeHandler = handleTapThree
         scene.grid = Grid(level: level, layer: scene.picturesLayer)
         skView.presentScene(scene)
@@ -54,49 +54,49 @@ class TutorialViewController: UIViewController {
     }
     
     /// Called when user taps three PicSprites
-    func handleTapThree(group: PictureGroup) {
-        view.userInteractionEnabled = false
+    func handleTapThree(_ group: PictureGroup) {
+        view.isUserInteractionEnabled = false
         
-        println("Selected: \(group.description)")
+        print("Selected: \(group.description)")
         
         if group.isValid() {
-            println(" - Valid group - ")
+            print(" - Valid group - ")
             scene.animateValidGroup(group) {
                 
-                let defaults = NSUserDefaults.standardUserDefaults()
+                let defaults = UserDefaults.standard
                 
-                if defaults.arrayForKey("highScores") == nil {
+                if defaults.array(forKey: "highScores") == nil {
                     let highScoresArray = [10]
-                    defaults.setObject(highScoresArray, forKey: "highScores")
+                    defaults.set(highScoresArray, forKey: "highScores")
                 }
                 
-                self.performSegueWithIdentifier("fadeSegue", sender: self)
+                self.performSegue(withIdentifier: "fadeSegue", sender: self)
             }
         } else {
             
-            println(" - Invalid group - ")
+            print(" - Invalid group - ")
             
             group.pictureA.runInvalidGroupAction()
             group.pictureB.runInvalidGroupAction()
             group.pictureC.runInvalidGroupAction()
             
             scene.selectedPics.removeAll()
-            view.userInteractionEnabled = true
+            view.isUserInteractionEnabled = true
         }
     }
     
-    @IBAction func hintButtonTapped(sender: AnyObject) {
+    @IBAction func hintButtonTapped(_ sender: AnyObject) {
         
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             
-            println("Hint button tapped")
+            print("Hint button tapped")
             self.needHintButton.alpha = 0.0
             
             },
             
             completion: { finished in
                 self.needHintButton.removeFromSuperview()
-                UIView.animateWithDuration(0.8, animations: {
+                UIView.animate(withDuration: 0.8, animations: {
                     self.hintLabel.alpha = 1.0
                 })
         })

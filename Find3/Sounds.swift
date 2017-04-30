@@ -18,7 +18,7 @@ class Sounds {
     
     static let sharedInstance = Sounds()
     
-    private init() {
+    fileprivate init() {
         backgroundMusic     = setupAudioPlayer("mismatch-background-music", type: "mp3")
         selectSound         = setupAudioPlayer("select-sound", type: "wav")
         validGroupSound     = setupAudioPlayer("valid-group-sound", type: "wav")
@@ -29,15 +29,15 @@ class Sounds {
     }
     
     /// Return AVAudioPlayer for given audio file
-    func setupAudioPlayer(file: String, type: String) -> AVAudioPlayer {
+    func setupAudioPlayer(_ file: String, type: String) -> AVAudioPlayer {
         
-        var path = NSBundle.mainBundle().pathForResource(file, ofType: type)
-        var url = NSURL.fileURLWithPath(path!)
+        let path = Bundle.main.path(forResource: file, ofType: type)
+        let url = URL(fileURLWithPath: path!)
         
-        var error: NSError?
+        // var error: NSError?
         
         var audioPlayer: AVAudioPlayer?
-        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        audioPlayer = try! AVAudioPlayer(contentsOf: url)
         
         return audioPlayer!
     }

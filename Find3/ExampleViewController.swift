@@ -15,7 +15,7 @@ class ExampleViewController: UIViewController {
     var page: Int?
     let level = -1
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -23,15 +23,15 @@ class ExampleViewController: UIViewController {
         super.viewDidLoad()
         
         let skView = view as! SKView
-        skView.multipleTouchEnabled = false
+        skView.isMultipleTouchEnabled = false
         
         scene = TutorialScene(size: skView.bounds.size)
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.grid = Grid(level: level, layer: scene.picturesLayer)
         
         skView.presentScene(scene)
         
-        view.userInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         
         displaySprites()
     }

@@ -12,15 +12,15 @@ import SpriteKit
 class TutorialScene: GameScene {
     
     /// Perform animation when user selects a valid group
-    override func animateValidGroup(group: PictureGroup, completion: () -> ()) {
+    override func animateValidGroup(_ group: PictureGroup, completion: @escaping () -> ()) {
         
-        let expandAction = SKAction.runBlock {
+        let expandAction = SKAction.run {
             group.pictureA.runTutorialValidGroupAction()
             group.pictureB.runTutorialValidGroupAction()
             group.pictureC.runTutorialValidGroupAction()
         }
         
-        runAction(SKAction.sequence([expandAction, SKAction.waitForDuration(1.0)]), completion: completion)
+        run(SKAction.sequence([expandAction, SKAction.wait(forDuration: 1.0)]), completion: completion)
     }
     
 }

@@ -13,15 +13,15 @@ class LastTutorialViewController: UIViewController {
     
 // MARK: - Navigation
 
-    @IBAction func startButtonTapped(sender: AnyObject) {
+    @IBAction func startButtonTapped(_ sender: AnyObject) {
         
-        performSegueWithIdentifier("Level1Segue", sender: self)
+        performSegue(withIdentifier: "Level1Segue", sender: self)
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Level1Segue" {
-            if let gameVC = segue.destinationViewController as? GameViewController {
+            if let gameVC = segue.destination as? GameViewController {
                 gameVC.level = 1
             }
         }

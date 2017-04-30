@@ -11,12 +11,12 @@ import QuartzCore
 import GameKit
 
 enum Tags: Int {
-    case LevelLabel     = 100
-    case Background     = 101
-    case HighScoreLabel = 102
-    case Star1          = 201
-    case Star2          = 202
-    case Star3          = 203
+    case levelLabel     = 100
+    case background     = 101
+    case highScoreLabel = 102
+    case star1          = 201
+    case star2          = 202
+    case star3          = 203
 }
 
 let LightBlue   = UIColor(red: 0, green: 128.0/255.0, blue: 1.0, alpha: 1.0)
@@ -51,31 +51,31 @@ class HomeViewController: UIViewController, UITableViewDataSource,
         
         super.viewDidLoad()
         
-        tableView.separatorColor = UIColor.clearColor()
+        tableView.separatorColor = UIColor.clear
         
         let storyboard = self.storyboard
         
-        tutorialPageVC = storyboard?.instantiateViewControllerWithIdentifier("PageDataSourceVC")
+        tutorialPageVC = storyboard?.instantiateViewController(withIdentifier: "PageDataSourceVC")
             as? PageDataSourceViewController
         
-        gameVC = storyboard?.instantiateViewControllerWithIdentifier("GameViewController")
+        gameVC = storyboard?.instantiateViewController(withIdentifier: "GameViewController")
             as? GameViewController
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(false)
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
 
-        if let scoresArray = defaults.arrayForKey("highScores") {
+        if let scoresArray = defaults.array(forKey: "highScores") {
             
             highScores = scoresArray as! [Int]
             
             unlockedLevels = highScores.count - 1 // Subtract one for tutorial
             
             if highScores[unlockedLevels] >= 10 {
-                unlockedLevels++ // Unlock additional level if last high score is greater than 10
+                unlockedLevels += 1 // Unlock additional level if last high score is greater than 10
             }
         }
         
@@ -85,42 +85,42 @@ class HomeViewController: UIViewController, UITableViewDataSource,
     
 // MARK: - TableView data source methods
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return NumLevels
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("LevelCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LevelCell", for: indexPath) 
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let view = cell.viewWithTag(Tags.Background.rawValue) as UIView!
-        let levelLabel = cell.viewWithTag(Tags.LevelLabel.rawValue) as! UILabel
-        let scoreLabel = cell.viewWithTag(Tags.HighScoreLabel.rawValue) as! UILabel
+        let view = cell.viewWithTag(Tags.background.rawValue) as UIView!
+        let levelLabel = cell.viewWithTag(Tags.levelLabel.rawValue) as! UILabel
+        let scoreLabel = cell.viewWithTag(Tags.highScoreLabel.rawValue) as! UILabel
         
-        let star1 = cell.viewWithTag(Tags.Star1.rawValue) as! UIImageView
-        let star2 = cell.viewWithTag(Tags.Star2.rawValue) as! UIImageView
-        let star3 = cell.viewWithTag(Tags.Star3.rawValue) as! UIImageView
+        let star1 = cell.viewWithTag(Tags.star1.rawValue) as! UIImageView
+        let star2 = cell.viewWithTag(Tags.star2.rawValue) as! UIImageView
+        let star3 = cell.viewWithTag(Tags.star3.rawValue) as! UIImageView
         
-        view.layer.borderColor = colors[indexPath.row % 6].CGColor
-        view.layer.borderWidth = 6.0
+        view?.layer.borderColor = colors[indexPath.row % 6].cgColor
+        view?.layer.borderWidth = 6.0
         
         
         if indexPath.row == 0 {
             
             // Tutorial Level
             
-            view.alpha = 1.0
+            view?.alpha = 1.0
             levelLabel.text = "Tutorial"
             
-            star1.hidden = true
-            star2.hidden = true
-            star3.hidden = true
+            star1.isHidden = true
+            star2.isHidden = true
+            star3.isHidden = true
             
             scoreLabel.text = ""
             
@@ -128,12 +128,12 @@ class HomeViewController: UIViewController, UITableViewDataSource,
             
             // Levels that have been played
             
-            view.alpha = 1.0
+            view?.alpha = 1.0
             levelLabel.text = "Level \(indexPath.row)"
             
-            star1.hidden = false
-            star2.hidden = false
-            star3.hidden = false
+            star1.isHidden = false
+            star2.isHidden = false
+            star3.isHidden = false
             
             formatStars(highScores[indexPath.row], stars: [star1, star2, star3])
             
@@ -143,13 +143,13 @@ class HomeViewController: UIViewController, UITableViewDataSource,
             
             // Levels that have NOT been played
             
-            view.alpha = indexPath.row > unlockedLevels ? 0.5 : 1.0
+            view?.alpha = indexPath.row > unlockedLevels ? 0.5 : 1.0
             
             levelLabel.text = "Level \(indexPath.row)"
             
-            star1.hidden = true
-            star2.hidden = true
-            star3.hidden = true
+            star1.isHidden = true
+            star2.isHidden = true
+            star3.isHidden = true
             
             scoreLabel.text = ""
         }
@@ -158,7 +158,7 @@ class HomeViewController: UIViewController, UITableViewDataSource,
     }
     
     /// Display stars for each level on homepage
-    func formatStars(score: Int, stars: [UIImageView]) {
+    func formatStars(_ score: Int, stars: [UIImageView]) {
         
         switch score {
             
@@ -186,15 +186,15 @@ class HomeViewController: UIViewController, UITableViewDataSource,
 
 // MARK: - TableView delegate methods
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-            self.presentViewController(tutorialPageVC!, animated: true, completion: nil)
+            self.present(tutorialPageVC!, animated: true, completion: nil)
             
         } else if indexPath.row <= unlockedLevels {
             
             gameVC!.level = indexPath.row
-            self.presentViewController(gameVC!, animated: true, completion: nil)
+            self.present(gameVC!, animated: true, completion: nil)
             
             // performSegueWithIdentifier("LevelSegue", sender: self)
             
@@ -203,30 +203,30 @@ class HomeViewController: UIViewController, UITableViewDataSource,
     
 // MARK: - Game Center (Leaderboard)
     
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
-        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func showLeaderboard() {
-        var gcViewController = GKGameCenterViewController()
+        let gcViewController = GKGameCenterViewController()
         gcViewController.gameCenterDelegate = self
-        gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcViewController.viewState = GKGameCenterViewControllerState.leaderboards
         // gcViewController.leaderboardIdentifier = "mismatch_combined_leaderboard"
         
-        self.presentViewController(gcViewController, animated: true, completion: nil)
+        self.present(gcViewController, animated: true, completion: nil)
         
     }
     
 // MARK: - Navigation
     
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
-        println("unwind to home")
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {
+        print("unwind to home")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LevelSegue" {
-            if let gameVC = segue.destinationViewController as? GameViewController {
-                if let index = tableView.indexPathForSelectedRow()?.row {
+            if let gameVC = segue.destination as? GameViewController {
+                if let index = tableView.indexPathForSelectedRow?.row {
                     gameVC.level = index
                 }
             }

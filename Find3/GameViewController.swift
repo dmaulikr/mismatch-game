@@ -26,9 +26,9 @@ class GameViewController: UIViewController {
     var runTimer: SKAction!
     var counter: Int = GameLengthInSeconds
     var groupsFound: Int = 0
-    var musicCurrentTime: NSTimeInterval = 0.0
+    var musicCurrentTime: TimeInterval = 0.0
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -36,31 +36,31 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         skView = view as! SKView
-        skView.multipleTouchEnabled = false
+        skView.isMultipleTouchEnabled = false
         
         scene = GameScene(size: skView.bounds.size)
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.tapThreeHandler = handleTapThree
         scene.grid = Grid(level: level, layer: scene.picturesLayer)
         
         gameOverAlert.layer.cornerRadius = 10.0
-        gameOverAlert.layer.borderColor = LightBlue.CGColor
+        gameOverAlert.layer.borderColor = LightBlue.cgColor
         gameOverAlert.layer.borderWidth = 1.0
         
         skView.presentScene(scene)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         scene.grid.setLevel(level) 
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseGame", name: "pauseGame", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resumeGame", name: "resumeGame", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.pauseGame), name: NSNotification.Name(rawValue: "pauseGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.resumeGame), name: NSNotification.Name(rawValue: "resumeGame"), object: nil)
         
         gameOverAlert.alpha = 0.0
-        gameOverAlert.hidden = true
+        gameOverAlert.isHidden = true
         
-        scene.userInteractionEnabled = true
+        scene.isUserInteractionEnabled = true
         scene.alpha = 1.0
         groupsFoundLabel.alpha = 1.0
         timerLabel.alpha = 1.0
@@ -68,7 +68,7 @@ class GameViewController: UIViewController {
         beginGame()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         Sounds.sharedInstance.backgroundMusic.currentTime = 0
         Sounds.sharedInstance.backgroundMusic.play()
@@ -91,13 +91,13 @@ class GameViewController: UIViewController {
         groupsFoundLabel.text = ""
         groupsFound = 0
         
-        let timer = SKAction.waitForDuration(1.0)
-        var updateCounterAction = SKAction.runBlock {
+        let timer = SKAction.wait(forDuration: 1.0)
+        let updateCounterAction = SKAction.run {
             self.updateCounter()
         }
         
-        runTimer = SKAction.repeatAction(SKAction.sequence([timer, updateCounterAction]), count: counter)
-        scene.runAction(runTimer, withKey: "runTimer")
+        runTimer = SKAction.repeat(SKAction.sequence([timer, updateCounterAction]), count: counter)
+        scene.run(runTimer, withKey: "runTimer")
         
     }
     
@@ -106,15 +106,15 @@ class GameViewController: UIViewController {
     /// Decrement the counter every second; display end-of-game alert after 2 minutes
     func updateCounter() {
         
-        counter--
+        counter -= 1
         let minutes = counter / 60
         let seconds = counter % 60
         timerLabel.text = String(format: "%01d:%02d", arguments: [minutes, seconds])
         
         if counter == 0 {
             
-            self.scene.userInteractionEnabled = false
-            self.scene.removeActionForKey("runTimer")
+            self.scene.isUserInteractionEnabled = false
+            self.scene.removeAction(forKey: "runTimer")
             
             let prevHighScore = updateHighScore()
             presentEndOfGameAlert(prevHighScore)
@@ -123,13 +123,13 @@ class GameViewController: UIViewController {
     }
     
     /// Called when user has selected 3 sprites
-    func handleTapThree(group: PictureGroup) {
-        self.view.userInteractionEnabled = false
+    func handleTapThree(_ group: PictureGroup) {
+        self.view.isUserInteractionEnabled = false
         
-        println("Selected: \(group.description)")
+        print("Selected: \(group.description)")
         
         if group.isValid() {
-            println(" - Valid group - ")
+            print(" - Valid group - ")
             updateGroupsFoundLabel()
             scene.grid.removePictures(group)
             
@@ -138,40 +138,40 @@ class GameViewController: UIViewController {
                 self.scene.animateFallingPictures(columns) {
                     let columns = self.scene.grid.addMorePictures()
                     self.scene.animateNewPictures(columns) {
-                        self.view.userInteractionEnabled = true
+                        self.view.isUserInteractionEnabled = true
                     }
                 }
             }
         } else {
-            println(" - Invalid group - ")
+            print(" - Invalid group - ")
             group.pictureA.runInvalidGroupAction()
             group.pictureB.runInvalidGroupAction()
             group.pictureC.runInvalidGroupAction()
             scene.selectedPics.removeAll()
-            self.view.userInteractionEnabled = true
+            self.view.isUserInteractionEnabled = true
         }
     }
     
     /// Increment number of groups found
     func updateGroupsFoundLabel() {
-        groupsFound++
+        groupsFound += 1
         groupsFoundLabel.text = String(groupsFound)
     }
 
 // MARK: - End of game
     
     /// Display alert when two minutes have passed
-    func presentEndOfGameAlert(prevHighScore: Int) {
+    func presentEndOfGameAlert(_ prevHighScore: Int) {
         
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         
         gameOverAlert.setEndOfGameText(groupsFound, prevHighScore: prevHighScore, level: level)
         gameOverAlert.setEndOfGameStars(groupsFound)
-        gameOverAlert.hidden = false
+        gameOverAlert.isHidden = false
         
         updateGameCenter()
         
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.groupsFoundLabel.alpha = 0.5
             self.timerLabel.alpha = 0.5
             self.scene.alpha = 0.5
@@ -182,10 +182,10 @@ class GameViewController: UIViewController {
     /// Updates high score in NSUserDefaults and returns previous high score for current level
     func updateHighScore() -> Int {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         var prevHighScore = 0
         
-        if var highScoreArray = defaults.arrayForKey("highScores") as? [Int] {
+        if var highScoreArray = defaults.array(forKey: "highScores") as? [Int] {
             
             
             
@@ -202,7 +202,7 @@ class GameViewController: UIViewController {
                 highScoreArray[level] = prevHighScore >= groupsFound ? prevHighScore : groupsFound
             }
             
-            defaults.setObject(highScoreArray, forKey: "highScores")
+            defaults.set(highScoreArray, forKey: "highScores")
         }
         return prevHighScore
     }
@@ -212,16 +212,16 @@ class GameViewController: UIViewController {
         
         let leaderboardID = "mismatch_level_\(level)"
         
-        var gkScore = GKScore(leaderboardIdentifier: leaderboardID)
+        let gkScore = GKScore(leaderboardIdentifier: leaderboardID)
         gkScore.value = Int64(groupsFound)
         
-        let localPlayer = GKLocalPlayer.localPlayer()
+        // let localPlayer = GKLocalPlayer.localPlayer()
         
-        GKScore.reportScores([gkScore], withCompletionHandler: { (error: NSError!) -> Void in
-            if error != nil {
-                println(error.localizedDescription)
+        GKScore.report([gkScore], withCompletionHandler: { (error: Error?) -> Void in
+            if let error = error {
+                print(error.localizedDescription)
             } else {
-                println("New score submitted to game center")
+                print("New score submitted to game center")
             }
         })
     }
@@ -230,30 +230,30 @@ class GameViewController: UIViewController {
     
     /// Pause timer and background music
     func pauseGame() {
-        println("pausing game")
-        scene.paused = true
+        print("pausing game")
+        scene.isPaused = true
         Sounds.sharedInstance.backgroundMusic.pause()
         musicCurrentTime = Sounds.sharedInstance.backgroundMusic.currentTime
     }
     
     /// Restart timer and background music
     func resumeGame() {
-        println("resuming game")
-        scene.paused = false
+        print("resuming game")
+        scene.isPaused = false
         Sounds.sharedInstance.backgroundMusic.currentTime = musicCurrentTime
         Sounds.sharedInstance.backgroundMusic.play()
     }
     
 // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         Sounds.sharedInstance.backgroundMusic.stop()
         
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        scene.removeActionForKey("runTimer")
+        NotificationCenter.default.removeObserver(self)
+        scene.removeAction(forKey: "runTimer")
         
         scene.removeSpritesFromScene(scene.grid.pictures)
-        scene.selectedPics.removeAll(keepCapacity: true)
+        scene.selectedPics.removeAll(keepingCapacity: true)
     }
     
 }

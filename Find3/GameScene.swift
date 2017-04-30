@@ -29,7 +29,7 @@ class GameScene: SKScene {
         super.init(size: size)
         
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        backgroundColor = SKColor.whiteColor()
+        backgroundColor = SKColor.white
         
         let layerPosition = CGPoint(x: -TileWidth * CGFloat(NumColumns) / 2, y: -TileHeight * CGFloat(NumRows) / 2)
         picturesLayer.position = layerPosition
@@ -46,7 +46,7 @@ class GameScene: SKScene {
 // MARK: - Add and remove sprites at start/end of game
     
     /// Add the nine starting sprites
-    func addSpritesToScene(pictures: Array2D<PicSprite>) {
+    func addSpritesToScene(_ pictures: Array2D<PicSprite>) {
         
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
@@ -57,7 +57,7 @@ class GameScene: SKScene {
                     
                     if let action = picture.action {
                         picture.removeAllActions()
-                        picture.runAction(action)
+                        picture.run(action)
                     }
                 }
             }
@@ -65,7 +65,7 @@ class GameScene: SKScene {
     }
     
     /// Remove displayed PicSprites from the scene
-    func removeSpritesFromScene(pictures: Array2D<PicSprite>) {
+    func removeSpritesFromScene(_ pictures: Array2D<PicSprite>) {
         
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
@@ -79,14 +79,14 @@ class GameScene: SKScene {
 // MARK: - Convert between point and column/row on grid
 
     /// Return the center point for a particular column and row on the grid
-    func pointForColumn(column: Int, row: Int) -> CGPoint {
+    func pointForColumn(_ column: Int, row: Int) -> CGPoint {
         
         return CGPoint(x: CGFloat(column)*TileWidth + TileWidth/2, y: CGFloat(row)*TileHeight + TileHeight/2)
         
     }
     
     /// Convert a point to a particular column and row on the grid
-    func convertPoint(point: CGPoint) -> (success: Bool, column: Int, row: Int) {
+    func convertPoint(_ point: CGPoint) -> (success: Bool, column: Int, row: Int) {
         
         if point.x >= 0 && point.y >= 0
             && point.x < CGFloat(NumColumns) * TileWidth
@@ -103,17 +103,17 @@ class GameScene: SKScene {
     
 // MARK: - Touch detection
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch = touches.first as! UITouch
-        let location = touch.locationInNode(picturesLayer)
+        let touch = touches.first!
+        let location = touch.location(in: picturesLayer)
         let (success, column, row) = convertPoint(location)
         
         if success {
             
             // Play select sound
             
-            if Sounds.sharedInstance.selectSound.playing {
+            if Sounds.sharedInstance.selectSound.isPlaying {
                 Sounds.sharedInstance.selectSound.stop()
                 Sounds.sharedInstance.selectSound.currentTime = 0.0
             }
@@ -126,8 +126,8 @@ class GameScene: SKScene {
                 if picture.selected {
                     
                     picture.deselectSprite()
-                    if let index = find(selectedPics, picture) {
-                        selectedPics.removeAtIndex(index)
+                    if let index = selectedPics.index(of: picture) {
+                        selectedPics.remove(at: index)
                     }
                     
                 } else {
@@ -154,13 +154,13 @@ class GameScene: SKScene {
 // MARK: - Add and remove sprites upon valid group selection
     
     /// Perform animation and remove valid group selected by user
-    func animateValidGroup(group: PictureGroup, completion: () -> ()) {
+    func animateValidGroup(_ group: PictureGroup, completion: @escaping () -> ()) {
         
         group.pictureA.runValidGroupAction()
         group.pictureB.runValidGroupAction()
         group.pictureC.runValidGroupAction()
         
-        runAction(SKAction.waitForDuration(0.6), completion: completion)
+        run(SKAction.wait(forDuration: 0.6), completion: completion)
         
         group.pictureA.onscreen = false
         group.pictureB.onscreen = false
@@ -170,70 +170,70 @@ class GameScene: SKScene {
         group.pictureB.selected = false
         group.pictureC.selected = false
         
-        selectedPics.removeAll(keepCapacity: true)
+        selectedPics.removeAll(keepingCapacity: true)
     }
     
     /// Animate sprites falling down after a valid group has been selected
-    func animateFallingPictures(columns: [[PicSprite]], completion: () -> ()) {
+    func animateFallingPictures(_ columns: [[PicSprite]], completion: @escaping () -> ()) {
         
-        var longestDuration: NSTimeInterval = 0
+        var longestDuration: TimeInterval = 0
         
         for array in columns {
-            for (idx, picture) in enumerate(array) {
+            for (idx, picture) in array.enumerated() {
                 
                 let newPosition = pointForColumn(picture.column!, row: picture.row!)
                 
-                let delay = 0.05 + 0.15 * NSTimeInterval(idx)
-                let duration = NSTimeInterval(((picture.position.y - newPosition.y) / TileHeight) * 0.1)
+                let delay = 0.05 + 0.15 * TimeInterval(idx)
+                let duration = TimeInterval(((picture.position.y - newPosition.y) / TileHeight) * 0.1)
                 
                 longestDuration = max(longestDuration, duration + delay)
                 
-                let moveAction = SKAction.moveTo(newPosition, duration: duration)
-                moveAction.timingMode = .EaseOut
-                picture.runAction(SKAction.sequence([SKAction.waitForDuration(delay), moveAction]))
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
+                moveAction.timingMode = .easeOut
+                picture.run(SKAction.sequence([SKAction.wait(forDuration: delay), moveAction]))
                 
             }
         }
-        runAction(SKAction.waitForDuration(longestDuration), completion: completion)
+        run(SKAction.wait(forDuration: longestDuration), completion: completion)
     }
     
     /// Animate new sprites falling into place after valid group selected
-    func animateNewPictures(columns: [[PicSprite]], completion: () -> ()) {
+    func animateNewPictures(_ columns: [[PicSprite]], completion: @escaping () -> ()) {
         
-        var longestDuration: NSTimeInterval = 0
+        var longestDuration: TimeInterval = 0
         
         for array in columns {
             
             let startRow = array[0].row! + 1
             
-            for (idx, picture) in enumerate(array) {
+            for (idx, picture) in array.enumerated() {
                 
                 picture.position = pointForColumn(picture.column!, row: startRow)
                 picturesLayer.addChild(picture)
                 
                 let newPosition = pointForColumn(picture.column!, row: picture.row!)
                 
-                let delay = 0.1 + 0.2 * NSTimeInterval(array.count - idx - 1)
-                let duration = NSTimeInterval(startRow - picture.row!) * 0.1
+                let delay = 0.1 + 0.2 * TimeInterval(array.count - idx - 1)
+                let duration = TimeInterval(startRow - picture.row!) * 0.1
                 longestDuration = max(longestDuration, duration + delay)
                 
 
-                let moveAction = SKAction.moveTo(newPosition, duration: duration)
-                moveAction.timingMode = .EaseOut
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
+                moveAction.timingMode = .easeOut
                 picture.alpha = 0
-                picture.runAction(
+                picture.run(
                     SKAction.sequence([
-                        SKAction.waitForDuration(delay),
-                        SKAction.group([SKAction.fadeInWithDuration(0.05), moveAction]),
+                        SKAction.wait(forDuration: delay),
+                        SKAction.group([SKAction.fadeIn(withDuration: 0.05), moveAction]),
                     ]))
                 
                 
                 if let action = picture.action {
-                    picture.runAction(action)
+                    picture.run(action)
                 }
             }
         }
-        runAction(SKAction.waitForDuration(longestDuration), completion: completion)
+        run(SKAction.wait(forDuration: longestDuration), completion: completion)
     }
     
 }
