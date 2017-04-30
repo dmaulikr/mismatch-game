@@ -268,7 +268,7 @@
                                 <rect key="frame" x="70.5" y="256.5" width="234" height="154"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBG-oV-coi">
-                                        <rect key="frame" x="102" y="119" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="119" width="233" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="OK">
@@ -352,7 +352,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
                 <exit id="yED-n6-fc9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="718" y="250"/>
+            <point key="canvasLocation" x="717.60000000000002" y="249.62518740629687"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vOd-EL-q54">
