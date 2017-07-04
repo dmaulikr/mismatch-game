@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var groupsFoundLabel: UILabel!
     @IBOutlet weak var gameOverAlert: EndOfGameView!
+    @IBOutlet weak var pausedOverlay: UIVisualEffectView!
     
     var runTimer: SKAction!
     var counter: Int = GameLengthInSeconds
@@ -64,6 +65,7 @@ class GameViewController: UIViewController {
         scene.alpha = 1.0
         groupsFoundLabel.alpha = 1.0
         timerLabel.alpha = 1.0
+        pausedOverlay.isHidden = true
         
         beginGame()
     }
@@ -80,6 +82,7 @@ class GameViewController: UIViewController {
     /// Set up sprites, timers and labels for beginning of game
     func beginGame() {
         
+        scene.isPaused = false
         scene.grid.selectInitialPictures(level)
         
         let pictures = scene.grid.pictures
@@ -230,7 +233,6 @@ class GameViewController: UIViewController {
     
     /// Pause timer and background music
     func pauseGame() {
-        print("pausing game")
         scene.isPaused = true
         Sounds.sharedInstance.backgroundMusic.pause()
         musicCurrentTime = Sounds.sharedInstance.backgroundMusic.currentTime
@@ -238,10 +240,26 @@ class GameViewController: UIViewController {
     
     /// Restart timer and background music
     func resumeGame() {
-        print("resuming game")
         scene.isPaused = false
         Sounds.sharedInstance.backgroundMusic.currentTime = musicCurrentTime
         Sounds.sharedInstance.backgroundMusic.play()
+    }
+    
+    @IBAction func didTapPauseButton(_ sender: Any) {
+        pauseGame()
+        pausedOverlay.isHidden = false
+        UIView.animate(withDuration: 0.1, animations: {
+            self.pausedOverlay.alpha = 1.0
+        })
+    }
+    
+    @IBAction func didTapResumeButton(_ sender: Any) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.pausedOverlay.alpha = 0
+        }, completion: { _ in
+            self.pausedOverlay.isHidden = true
+            self.resumeGame()
+        })
     }
     
 // MARK: - Navigation

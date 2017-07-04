@@ -51,10 +51,10 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LevelCell" rowHeight="130" id="GTV-a7-0sW">
-                                        <rect key="frame" x="0.0" y="22" width="200" height="130"/>
+                                        <rect key="frame" x="0.0" y="22" width="201" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GTV-a7-0sW" id="zDv-RF-bxW">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="129.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="101" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylf-oA-qPA">
@@ -250,18 +250,26 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBy-24-d2y">
-                                <rect key="frame" x="313" y="28" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="ZDo-X2-sUD"/>
-                                    <constraint firstAttribute="height" constant="30" id="zHT-Eh-SWw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBy-24-d2y">
+                                <rect key="frame" x="289" y="28" width="86" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="8" maxX="20" maxY="8"/>
                                 <state key="normal" title="Home">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="yED-n6-fc9" kind="unwind" identifier="unwindToHomeFromButton" unwindAction="unwindToHome:" id="r9f-8q-qWY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-CQ-Egs">
+                                <rect key="frame" x="0.0" y="28" width="87" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="8" maxX="20" maxY="8"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapPauseButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Nw3-4e-Us3"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gii-Nt-IkO" customClass="EndOfGameView" customModule="Mismatch" customModuleProvider="target">
@@ -321,19 +329,67 @@
                                     <outlet property="starTwo" destination="uiK-NB-APR" id="QAh-2o-8BP"/>
                                 </connections>
                             </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFf-wL-xeZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bK4-iH-sTT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(paused)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwV-sO-pQk">
+                                            <rect key="frame" x="35" y="315" width="305" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="lCS-p2-oGO"/>
+                                                <constraint firstAttribute="width" constant="305" id="pSg-ag-VTf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Superclarendon-Regular" family="Superclarendon" pointSize="30"/>
+                                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7p-l1-Zse">
+                                            <rect key="frame" x="160" y="391" width="55" height="30"/>
+                                            <state key="normal" title="Resume"/>
+                                            <connections>
+                                                <action selector="didTapResumeButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Mdq-Iy-K2j"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yz0-4d-LOZ">
+                                            <rect key="frame" x="155" y="429" width="65" height="30"/>
+                                            <state key="normal" title="Go Home"/>
+                                            <connections>
+                                                <segue destination="yED-n6-fc9" kind="unwind" unwindAction="unwindToHome:" id="tNY-Vs-xoG"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="w7p-l1-Zse" firstAttribute="centerX" secondItem="RwV-sO-pQk" secondAttribute="centerX" id="7SQ-8f-tvA"/>
+                                        <constraint firstItem="yz0-4d-LOZ" firstAttribute="top" secondItem="w7p-l1-Zse" secondAttribute="bottom" constant="8" id="U0o-w5-dBL"/>
+                                        <constraint firstItem="RwV-sO-pQk" firstAttribute="centerX" secondItem="bK4-iH-sTT" secondAttribute="centerX" id="dbH-Nr-YCP"/>
+                                        <constraint firstItem="w7p-l1-Zse" firstAttribute="top" secondItem="RwV-sO-pQk" secondAttribute="bottom" constant="40" id="hhd-7N-iY2"/>
+                                        <constraint firstItem="RwV-sO-pQk" firstAttribute="centerY" secondItem="bK4-iH-sTT" secondAttribute="centerY" id="sml-e5-gNv"/>
+                                        <constraint firstItem="yz0-4d-LOZ" firstAttribute="centerX" secondItem="RwV-sO-pQk" secondAttribute="centerX" id="yc9-Nr-6O1"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="xFf-wL-xeZ" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="07C-8B-x75"/>
                             <constraint firstAttribute="centerX" secondItem="gii-Nt-IkO" secondAttribute="centerX" id="3e6-NC-kQd"/>
                             <constraint firstItem="khH-OB-KpY" firstAttribute="top" secondItem="qeM-Q0-qtY" secondAttribute="bottom" constant="60" id="58P-HC-6Ll"/>
                             <constraint firstAttribute="centerY" secondItem="qeM-Q0-qtY" secondAttribute="centerY" constant="-200" id="6za-fl-erR"/>
+                            <constraint firstItem="lVa-CQ-Egs" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="95I-4c-He7"/>
+                            <constraint firstAttribute="trailing" secondItem="tBy-24-d2y" secondAttribute="trailing" id="BCO-aK-hF5"/>
                             <constraint firstAttribute="centerX" secondItem="vUQ-WD-7Fc" secondAttribute="centerX" id="Omo-fg-23M"/>
+                            <constraint firstItem="xFf-wL-xeZ" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="VYz-vi-wgZ"/>
                             <constraint firstItem="vUQ-WD-7Fc" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="60" id="XIu-gN-iuQ"/>
                             <constraint firstAttribute="centerY" secondItem="gii-Nt-IkO" secondAttribute="centerY" id="Z28-QS-vVd"/>
+                            <constraint firstItem="tBy-24-d2y" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="8" id="ayG-o5-A1I"/>
+                            <constraint firstAttribute="trailing" secondItem="xFf-wL-xeZ" secondAttribute="trailing" id="baT-0Z-AYE"/>
                             <constraint firstAttribute="centerX" secondItem="qeM-Q0-qtY" secondAttribute="centerX" id="h3M-mV-qUm"/>
+                            <constraint firstItem="khH-OB-KpY" firstAttribute="top" secondItem="xFf-wL-xeZ" secondAttribute="bottom" id="hdA-ZG-OBm"/>
                             <constraint firstAttribute="centerY" secondItem="vUQ-WD-7Fc" secondAttribute="centerY" constant="200" id="kUG-yS-wfQ"/>
-                            <constraint firstItem="tBy-24-d2y" firstAttribute="top" secondItem="maK-i9-Uhn" secondAttribute="bottom" constant="8" id="pjp-MJ-rHa"/>
-                            <constraint firstItem="tBy-24-d2y" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="zba-zP-EVv"/>
+                            <constraint firstItem="lVa-CQ-Egs" firstAttribute="top" secondItem="tBy-24-d2y" secondAttribute="top" id="uMm-fN-gDp"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -345,6 +401,7 @@
                     <connections>
                         <outlet property="gameOverAlert" destination="gii-Nt-IkO" id="Sup-Nn-kST"/>
                         <outlet property="groupsFoundLabel" destination="vUQ-WD-7Fc" id="v5e-rv-77T"/>
+                        <outlet property="pausedOverlay" destination="xFf-wL-xeZ" id="v42-Id-DW1"/>
                         <outlet property="timerLabel" destination="qeM-Q0-qtY" id="W8s-Ib-bPi"/>
                         <segue destination="yED-n6-fc9" kind="unwind" identifier="unwindToHomeSegue" unwindAction="unwindToHome:" id="Qon-lJ-030"/>
                     </connections>
@@ -515,13 +572,13 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="LaS-gu-Dn5"/>
+                                <exclude reference="WTs-WH-KSj"/>
+                                <exclude reference="fkw-OT-ER0"/>
                                 <exclude reference="NIV-d3-mr3"/>
                                 <exclude reference="Qff-Ec-dIA"/>
                                 <exclude reference="omM-dw-Sro"/>
                                 <exclude reference="qem-I5-AtT"/>
-                                <exclude reference="LaS-gu-Dn5"/>
-                                <exclude reference="WTs-WH-KSj"/>
-                                <exclude reference="fkw-OT-ER0"/>
                                 <exclude reference="C8S-3S-8zB"/>
                                 <exclude reference="IGo-m0-dqx"/>
                                 <exclude reference="ODM-SP-7sw"/>
@@ -532,15 +589,15 @@
                                 <exclude reference="EVr-z1-Tc6"/>
                                 <exclude reference="VAt-Rs-tE0"/>
                                 <exclude reference="g4T-71-Lj1"/>
-                                <exclude reference="JCa-jE-2vg"/>
-                                <exclude reference="VdH-DQ-Iqa"/>
-                                <exclude reference="i6L-5X-qUt"/>
-                                <exclude reference="oox-l7-xtV"/>
                                 <exclude reference="13P-yN-TJB"/>
                                 <exclude reference="3WB-ws-c3d"/>
                                 <exclude reference="FSN-MU-Zac"/>
                                 <exclude reference="OI6-Rh-oh1"/>
                                 <exclude reference="wzH-Qa-rD3"/>
+                                <exclude reference="JCa-jE-2vg"/>
+                                <exclude reference="VdH-DQ-Iqa"/>
+                                <exclude reference="i6L-5X-qUt"/>
+                                <exclude reference="oox-l7-xtV"/>
                             </mask>
                         </variation>
                     </view>
